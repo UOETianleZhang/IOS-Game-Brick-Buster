@@ -10,6 +10,9 @@ import UIKit
 import SpriteKit
 import GameplayKit
 
+var stage: Int64 = 1
+var equipments: [equipment] = []
+
 class GameViewController: UIViewController {
 
     override func viewDidLoad() {
