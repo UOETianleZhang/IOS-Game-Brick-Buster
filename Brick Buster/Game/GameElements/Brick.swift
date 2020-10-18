@@ -19,7 +19,7 @@ class Brick: SKShapeNode {
     
     override init() {
         super.init()
-        print("here")
+        
         self.width = 50
         self.height = 20
         initObject()
@@ -38,6 +38,7 @@ class Brick: SKShapeNode {
         self.physicsBody?.linearDamping = 0
         self.physicsBody?.restitution = 1.0
         self.physicsBody?.isDynamic = false
+        self.physicsBody?.friction = 0.0
     }
     
     func setShape(width: Int, height: Int){

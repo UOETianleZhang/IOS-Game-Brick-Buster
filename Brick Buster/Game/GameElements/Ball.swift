@@ -32,6 +32,7 @@ class Ball: SKShapeNode {
         self.physicsBody?.usesPreciseCollisionDetection = true;
         self.physicsBody?.linearDamping = 0
         self.physicsBody?.restitution = 1.0
+        self.physicsBody?.friction = 0.0
     }
     
     func setShape(radius: Int){

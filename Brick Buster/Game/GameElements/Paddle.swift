@@ -36,6 +36,7 @@ class Paddle: SKShapeNode {
         self.physicsBody?.linearDamping = 0
         self.physicsBody?.restitution = 1.0
         self.physicsBody?.isDynamic = false
+        self.physicsBody?.friction = 0.0
     }
     
     func setShape(width: Int, height: Int){

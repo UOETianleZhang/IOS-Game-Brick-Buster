@@ -59,6 +59,8 @@ class GameScene: SKScene {
         ground.physicsBody?.collisionBitMask = BitMask.Ball
         ground.physicsBody?.categoryBitMask = BitMask.Ground
         ground.physicsBody?.contactTestBitMask = BitMask.Ball
+        ground.physicsBody?.restitution = 1.0
+        ground.physicsBody?.friction = 0.0
         addChild(ground)
 
         //create wall
@@ -69,6 +71,7 @@ class GameScene: SKScene {
         wall.physicsBody?.categoryBitMask = BitMask.Wall
         wall.physicsBody?.contactTestBitMask = BitMask.Wall
         wall.physicsBody = SKPhysicsBody(edgeLoopFrom: CGRect(x: 0, y: 0, width: size.width, height: size.height))
+        wall.physicsBody?.friction = 0.0
         addChild(wall)
         
         //create ball
