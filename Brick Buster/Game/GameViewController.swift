@@ -41,7 +41,7 @@ class GameViewController: UIViewController {
     
     @IBAction func moveLeftHolding(_ sender: Any) {
         guard moveLeftTimer == nil else { return }
-        moveLeftTimer = Timer.scheduledTimer(timeInterval: 0.04, target: self, selector: #selector(moveLeft), userInfo: nil, repeats: true)
+        moveLeftTimer = Timer.scheduledTimer(timeInterval: 0.04, target: self, selector: #selector(paddleMoveLeft), userInfo: nil, repeats: true)
     }
 
     
@@ -57,14 +57,14 @@ class GameViewController: UIViewController {
     
     @IBAction func moveRightHolding(_ sender: Any) {
         guard moveRightTimer == nil else { return }
-        moveRightTimer = Timer.scheduledTimer(timeInterval: 0.04, target: self, selector: #selector(moveRight), userInfo: nil, repeats: true)
+        moveRightTimer = Timer.scheduledTimer(timeInterval: 0.04, target: self, selector: #selector(paddleMoveRight), userInfo: nil, repeats: true)
     }
     
-    @objc func moveRight(){
-        self.scene?.moveRight()
+    @objc func paddleMoveRight(){
+        self.scene?.paddleMoveRight()
     }
     
-    @objc func moveLeft(){
-        self.scene?.moveLeft()
+    @objc func paddleMoveLeft(){
+        self.scene?.paddleMoveLeft()
     }
 }

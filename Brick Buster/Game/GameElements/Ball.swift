@@ -10,6 +10,7 @@ import SpriteKit
 
 class Ball: SKShapeNode {
     var isShot = false
+    var radius = 8
     
     
     override init() {
@@ -24,10 +25,10 @@ class Ball: SKShapeNode {
     
     private func initObject() {
         self.fillColor = .red
-        self.physicsBody = SKPhysicsBody(circleOfRadius: 10)
+        self.physicsBody = SKPhysicsBody(circleOfRadius: CGFloat(self.radius))
         self.physicsBody?.categoryBitMask = BitMask.Ball
-        self.physicsBody?.contactTestBitMask = BitMask.Box | BitMask.Ground
-        self.physicsBody?.collisionBitMask = BitMask.Box
+        self.physicsBody?.contactTestBitMask = BitMask.Brick | BitMask.Ground | BitMask.Paddle | BitMask.Wall
+        self.physicsBody?.collisionBitMask = BitMask.Brick | BitMask.Ground | BitMask.Paddle | BitMask.Wall
         self.physicsBody?.usesPreciseCollisionDetection = true;
         self.physicsBody?.linearDamping = 0
         self.physicsBody?.restitution = 1.0

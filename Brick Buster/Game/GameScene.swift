@@ -13,8 +13,14 @@ class GameScene: SKScene {
     
     
     var contentCreated = false
-    private var testBox:SKShapeNode?
+    private var paddle:SKShapeNode?
     private var balls = [Ball]()
+    private var bricks = [Brick]()
+    private var brickWidth = 50
+    private var brickHeight = 20
+    private var paddleWidth = 70
+    private var paddleHeight = 15
+    private var ballRadius = 8
     
     override init(size: CGSize) {
         super.init(size: size)
@@ -35,16 +41,6 @@ class GameScene: SKScene {
     }
 
     private func createContent() {
-//        //create balls
-//        for _ in 0..<10 {
-//            let ball = SKShapeNode(circleOfRadius: 10)
-//            ball.fillColor = .red
-//            addChild(ball)
-//            ball.position = CGPoint(x: size.width / 2, y: 500)
-//            ball.physicsBody = SKPhysicsBody(circleOfRadius: 10)
-//            ball.physicsBody?.velocity = CGVector(dx: 200, dy: 200)
-//        }
-//
         //create ground
         let ground = SKSpriteNode(color: .gray, size: CGSize(width: size.width, height: size.height/10))
         ground.position = CGPoint(x: size.width / 2, y: 0)
@@ -67,68 +63,33 @@ class GameScene: SKScene {
         
         //create ball
         for _ in 0..<1 {
+            //create ball
             let ball = Ball(circleOfRadius: 10)
-            balls.append(ball)
-            ball.fillColor = .red
-            addChild(ball)
-            ball.physicsBody = SKPhysicsBody(circleOfRadius: 10)
-            // 设置初速度
-            //ball.physicsBody?.velocity = CGVector(dx: 600 + CGFloat(row) * 1, dy: 600)
             ball.position = CGPoint(x: size.width / 2, y: size.height/10)
-
-            ball.physicsBody?.categoryBitMask = BitMask.Ball
-            ball.physicsBody?.contactTestBitMask = BitMask.Box
-            ball.physicsBody?.collisionBitMask = BitMask.Box
-
-            ball.physicsBody?.linearDamping = 0
-            ball.physicsBody?.restitution = 1
+            
+            //append ball
+            balls.append(ball)
+            addChild(ball)
         }
         
-        //create box
-//        for row in 1...5 {
-//            let box = SKShapeNode(rectOf: CGSize(width: 50, height: 50))
-//            box.position = CGPoint(x: 50 + (row * 50 + 20), y: (400 - row * 50 + 20))
-//            box.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 50, height: 50))
-//            box.physicsBody?.categoryBitMask = BitMask.Box
-//            box.physicsBody?.contactTestBitMask = BitMask.Ball
-//            box.physicsBody?.collisionBitMask = BitMask.Box
-//            box.physicsBody?.linearDamping = 0
-//            box.physicsBody?.restitution = 1.0
-//            box.physicsBody?.isDynamic = false
-//            box.fillColor = .red
-//
-//            let label = Label(text: "\(row)")
-//            label.fontSize = 22
-//            label.typoTag = 666
-//            label.fontName = "Arial-BoldMT"
-//            label.color = .white
-//            label.position = CGPoint(x: 0, y: -label.frame.size.height / 2)
-//            box.addChild(label)
-//
-//            addChild(box)
-//        }
+        //create brick
+        for _ in 0..<1 {
+            //create brick
+            let brick = Brick(rectOf: CGSize(width: self.brickWidth, height: self.brickHeight))
+            brick.position = CGPoint(x: 200, y: 300)
+            
+            //append brick
+            bricks.append(brick)
+            addChild(brick)
+        }
         
-        //test move box
-        testBox = SKShapeNode(rectOf: CGSize(width: 50, height: 50))
-        testBox!.position = CGPoint(x: 100, y: 400)
-        testBox!.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 50, height: 50))
-        testBox!.physicsBody?.categoryBitMask = BitMask.Box
-        testBox!.physicsBody?.contactTestBitMask = BitMask.Ball
-        testBox!.physicsBody?.collisionBitMask = BitMask.Box
-        testBox!.physicsBody?.linearDamping = 0
-        testBox!.physicsBody?.restitution = 1.0
-        testBox!.physicsBody?.isDynamic = false
-        testBox!.fillColor = .blue
         
-        let label = Label(text: "1000")
-        label.fontSize = 22
-        label.typoTag = 666
-        label.fontName = "Arial-BoldMT"
-        label.color = .white
-        label.position = CGPoint(x: 0, y: -label.frame.size.height / 2)
-        testBox!.addChild(label)
+        //create paddle
+        //testBox = SKShapeNode(rectOf: CGSize(width: 50, height: 50))
+        paddle = Paddle(rectOf: CGSize(width: self.paddleWidth, height: self.paddleHeight))
+        paddle!.position = CGPoint(x: 100, y: 200)
         
-        addChild(testBox!)
+        addChild(paddle!)
     }
 }
 
@@ -136,7 +97,7 @@ class GameScene: SKScene {
 extension GameScene: SKPhysicsContactDelegate {
     func didBegin(_ contact: SKPhysicsContact) {
         switch contact.bodyA.categoryBitMask {
-        case BitMask.Box:
+        case BitMask.Brick:
             checkNodeIsBox(contact.bodyA.node)
 
         default:
@@ -144,7 +105,7 @@ extension GameScene: SKPhysicsContactDelegate {
         }
 
         switch contact.bodyB.categoryBitMask {
-        case BitMask.Box:
+        case BitMask.Brick:
             checkNodeIsBox(contact.bodyB.node)
 
         default:
@@ -160,16 +121,24 @@ extension GameScene: SKPhysicsContactDelegate {
 
 extension GameScene {
     private func checkNodeIsBox(_ node: SKNode?) {
-        guard let box = node else { return }
+        //guard let box = node else { return }
 
-        if box.physicsBody?.categoryBitMask == BitMask.Box {
-            let label = box.children.first! as! Label
-            var tag = Int(label.text!)!
-            if (tag > 1) {
-                tag -= 1
-                label.text = "\(tag)"
-            } else {
-                box.removeFromParent()
+//        if box.physicsBody?.categoryBitMask == BitMask.Brick {
+//            let label = box.children.first! as! Label
+//            var tag = Int(label.text!)!
+//            if (tag > 1) {
+//                tag -= 1
+//                label.text = "\(tag)"
+//            } else {
+//                box.removeFromParent()
+//            }
+//        }
+        
+        guard let brick = node as? Brick else { return }
+        
+        if brick.physicsBody?.categoryBitMask == BitMask.Brick {
+            if brick.hitRemaining == 0{
+                brick.removeFromParent()
             }
         }
     }
@@ -192,11 +161,11 @@ extension GameScene {
 }
 
 extension GameScene {
-    func moveRight(){
-        testBox?.position = CGPoint(x: (testBox?.position.x)! + 10, y: (testBox?.position.y)!)
+    func paddleMoveRight(){
+        paddle?.position = CGPoint(x: (paddle?.position.x)! + 10, y: (paddle?.position.y)!)
     }
     
-    func moveLeft(){
-        testBox?.position = CGPoint(x: (testBox?.position.x)! - 10, y: (testBox?.position.y)!)
+    func paddleMoveLeft(){
+        paddle?.position = CGPoint(x: (paddle?.position.x)! - 10, y: (paddle?.position.y)!)
     }
 }
