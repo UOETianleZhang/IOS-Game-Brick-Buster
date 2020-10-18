@@ -21,10 +21,20 @@ class GameScene: SKScene {
     private var paddleWidth = 70
     private var paddleHeight = 15
     private var ballRadius = 8
+    private var map: [[Int]]?
     
     override init(size: CGSize) {
         super.init(size: size)
         
+        self.map = [[]]
+        physicsWorld.gravity = CGVector(dx: 0, dy: 0)
+        physicsWorld.contactDelegate = self
+    }
+    
+    init(size: CGSize, map: [[Int]]){
+        super.init(size: size)
+        
+        self.map = map;
         physicsWorld.gravity = CGVector(dx: 0, dy: 0)
         physicsWorld.contactDelegate = self
     }
@@ -73,16 +83,7 @@ class GameScene: SKScene {
         }
         
         //create brick
-        for _ in 0..<1 {
-            //create brick
-            let brick = Brick(rectOf: CGSize(width: self.brickWidth, height: self.brickHeight))
-            brick.position = CGPoint(x: 200, y: 300)
-            
-            //append brick
-            bricks.append(brick)
-            addChild(brick)
-        }
-        
+        self.createBricks()
         
         //create paddle
         //testBox = SKShapeNode(rectOf: CGSize(width: 50, height: 50))
@@ -90,6 +91,51 @@ class GameScene: SKScene {
         paddle!.position = CGPoint(x: 100, y: 200)
         
         addChild(paddle!)
+    }
+    
+    private func createBricks(){
+        if self.map!.count == 0 || self.map![0].count == 0{
+            return
+        }
+        
+        let bricksHeightNum = self.map!.count
+        let bricksWidthNum = self.map![0].count
+        
+        let leftBoarder = 20
+        let rightBoarder = 20
+        let upBoarder = 20
+        let downBoarder = 100
+        
+        
+        self.brickWidth = (Int(size.width) - leftBoarder - rightBoarder)/bricksWidthNum
+        self.brickHeight = (Int(size.height) - upBoarder - downBoarder)/bricksHeightNum
+        if self.brickHeight > 20 {
+            self.brickHeight = 20
+        }
+        
+        print("brickWidth:\(self.brickWidth), brickHeight:\(self.brickHeight)")
+        
+        //create bricks
+        for i in 0..<bricksHeightNum {
+            let brickList = self.map![i]
+            let yPosition = Float(size.height) - Float(upBoarder) - (Float(i) + 0.5)*Float(self.brickHeight)
+            for j in 0..<bricksWidthNum{
+                if brickList[j] != 0{
+                    //create bricks
+                    let xPosition = Float(leftBoarder) + (Float(j) + 0.5)*Float(self.brickWidth)
+                    
+                    //print("(\(xPosition), \(yPosition))")
+                    
+                    //create brick
+                    let brick = Brick(rectOf: CGSize(width: self.brickWidth, height: self.brickHeight))
+                    brick.position = CGPoint(x: Int(xPosition), y: Int(yPosition))
+
+                    //append brick
+                    bricks.append(brick)
+                    addChild(brick)
+                }
+            }
+        }
     }
 }
 

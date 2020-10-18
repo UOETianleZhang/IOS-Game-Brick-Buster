@@ -24,7 +24,7 @@ class GameViewController: UIViewController {
 
         if let view = self.view as! SKView? {
 
-            self.scene = GameScene(size: view.frame.size)
+            self.scene = GameScene(size: view.frame.size, map: map2)
             self.scene!.scaleMode = .aspectFill
             view.presentScene(scene)
             view.ignoresSiblingOrder = true

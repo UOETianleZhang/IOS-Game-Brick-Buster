@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0F5D1E94253CC90E00D35998 /* Paddle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5D1E93253CC90D00D35998 /* Paddle.swift */; };
+		0F5D1E99253CD09D00D35998 /* Maps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5D1E98253CD09D00D35998 /* Maps.swift */; };
 		0F6EE5BF253A239500883121 /* Defination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F6EE5BE253A239500883121 /* Defination.swift */; };
 		0F6EE5C4253A23AF00883121 /* Ball.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F6EE5C3253A23AF00883121 /* Ball.swift */; };
 		0F7811F9253A2B3F006E96CE /* Brick.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7811F8253A2B3F006E96CE /* Brick.swift */; };
@@ -46,6 +47,7 @@
 
 /* Begin PBXFileReference section */
 		0F5D1E93253CC90D00D35998 /* Paddle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Paddle.swift; sourceTree = "<group>"; };
+		0F5D1E98253CD09D00D35998 /* Maps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Maps.swift; sourceTree = "<group>"; };
 		0F6EE5BE253A239500883121 /* Defination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Defination.swift; sourceTree = "<group>"; };
 		0F6EE5C3253A23AF00883121 /* Ball.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ball.swift; sourceTree = "<group>"; };
 		0F7811F8253A2B3F006E96CE /* Brick.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Brick.swift; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 				0F6EE5C3253A23AF00883121 /* Ball.swift */,
 				0F7811F8253A2B3F006E96CE /* Brick.swift */,
 				0F5D1E93253CC90D00D35998 /* Paddle.swift */,
+				0F5D1E98253CD09D00D35998 /* Maps.swift */,
 			);
 			path = GameElements;
 			sourceTree = "<group>";
@@ -309,6 +312,7 @@
 			files = (
 				A0C403EA2539F88F00DD4C85 /* LoginViewController.swift in Sources */,
 				0F5D1E94253CC90E00D35998 /* Paddle.swift in Sources */,
+				0F5D1E99253CD09D00D35998 /* Maps.swift in Sources */,
 				0F7811F9253A2B3F006E96CE /* Brick.swift in Sources */,
 				A0C403B8253968C300DD4C85 /* GameScene.swift in Sources */,
 				A0C403BA253968C300DD4C85 /* GameViewController.swift in Sources */,

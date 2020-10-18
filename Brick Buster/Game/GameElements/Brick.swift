@@ -20,6 +20,16 @@ class Brick: SKShapeNode {
     override init() {
         super.init()
         
+        self.width = 50
+        self.height = 20
+        initObject()
+    }
+    
+    init(width: Int, height: Int){
+        super.init()
+        
+        self.width = width
+        self.height = height
         initObject()
     }
     
