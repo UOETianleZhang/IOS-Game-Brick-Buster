@@ -37,4 +37,9 @@ class Paddle: SKShapeNode {
         self.physicsBody?.restitution = 1.0
         self.physicsBody?.isDynamic = false
     }
+    
+    func setShape(width: Int, height: Int){
+        self.width = width
+        self.height = height
+    }
 }

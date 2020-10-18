@@ -33,5 +33,9 @@ class Ball: SKShapeNode {
         self.physicsBody?.linearDamping = 0
         self.physicsBody?.restitution = 1.0
     }
+    
+    func setShape(radius: Int){
+        self.radius = radius
+    }
 }
 

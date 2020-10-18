@@ -13,14 +13,14 @@ class GameScene: SKScene {
     
     
     var contentCreated = false
-    private var paddle:SKShapeNode?
+    private var paddle:Paddle?
     private var balls = [Ball]()
     private var bricks = [Brick]()
     private var brickWidth = 50
     private var brickHeight = 20
     private var paddleWidth = 70
     private var paddleHeight = 15
-    private var ballRadius = 8
+    private var ballRadius = 5
     private var map: [[Int]]?
     
     override init(size: CGSize) {
@@ -74,8 +74,9 @@ class GameScene: SKScene {
         //create ball
         for _ in 0..<1 {
             //create ball
-            let ball = Ball(circleOfRadius: 10)
-            ball.position = CGPoint(x: size.width / 2, y: size.height/10)
+            let ball = Ball(circleOfRadius: CGFloat(self.ballRadius))
+            ball.setShape(radius: self.ballRadius)
+            ball.position = CGPoint(x: 100, y: 105)
             
             //append ball
             balls.append(ball)
@@ -87,8 +88,9 @@ class GameScene: SKScene {
         
         //create paddle
         //testBox = SKShapeNode(rectOf: CGSize(width: 50, height: 50))
-        paddle = Paddle(rectOf: CGSize(width: self.paddleWidth, height: self.paddleHeight))
-        paddle!.position = CGPoint(x: 100, y: 200)
+        self.paddle = Paddle(rectOf: CGSize(width: self.paddleWidth, height: self.paddleHeight))
+        self.paddle!.setShape(width: self.paddleWidth, height: self.paddleHeight)
+        self.paddle!.position = CGPoint(x: 100, y: 100)
         
         addChild(paddle!)
     }
@@ -123,11 +125,10 @@ class GameScene: SKScene {
                 if brickList[j] != 0{
                     //create bricks
                     let xPosition = Float(leftBoarder) + (Float(j) + 0.5)*Float(self.brickWidth)
-                    
-                    //print("(\(xPosition), \(yPosition))")
-                    
+                                        
                     //create brick
                     let brick = Brick(rectOf: CGSize(width: self.brickWidth, height: self.brickHeight))
+                    brick.setShape(width: self.brickWidth, height: self.brickHeight)
                     brick.position = CGPoint(x: Int(xPosition), y: Int(yPosition))
 
                     //append brick
@@ -159,10 +160,10 @@ extension GameScene: SKPhysicsContactDelegate {
         }
     }
 
-    func didEnd(_ contact: SKPhysicsContact) {
-        print(contact.bodyA.contactTestBitMask)
-        print(contact.bodyB.contactTestBitMask)
-    }
+//    func didEnd(_ contact: SKPhysicsContact) {
+//        print(contact.bodyA.contactTestBitMask)
+//        print(contact.bodyB.contactTestBitMask)
+//    }
 }
 
 extension GameScene {
@@ -208,10 +209,14 @@ extension GameScene {
 
 extension GameScene {
     func paddleMoveRight(){
-        paddle?.position = CGPoint(x: (paddle?.position.x)! + 10, y: (paddle?.position.y)!)
+        if paddle!.position.x + CGFloat(paddle!.width)/2.0 < size.width - 20{
+            paddle?.position = CGPoint(x: (paddle?.position.x)! + 10, y: (paddle?.position.y)!)
+        }
     }
     
     func paddleMoveLeft(){
-        paddle?.position = CGPoint(x: (paddle?.position.x)! - 10, y: (paddle?.position.y)!)
+        if paddle!.position.x - CGFloat(paddle!.width)/2.0 > 20{
+            paddle?.position = CGPoint(x: (paddle?.position.x)! - 10, y: (paddle?.position.y)!)
+        }
     }
 }
