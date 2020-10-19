@@ -13,7 +13,8 @@ class GameScene: SKScene {
     
     
     var contentCreated = false
-    private var remainingBrickNum = 0;
+    private var isGameStart = false
+    private var remainingBrickNum = 0
     private var paddle:Paddle?
     private var balls = [Ball]()
     private var bricks = [Brick]()
@@ -91,7 +92,6 @@ class GameScene: SKScene {
         self.createBricks()
         
         //create paddle
-        //testBox = SKShapeNode(rectOf: CGSize(width: 50, height: 50))
         self.paddle = Paddle(rectOf: CGSize(width: self.paddleWidth, height: self.paddleHeight))
         self.paddle!.setShape(width: self.paddleWidth, height: self.paddleHeight)
         self.paddle!.position = CGPoint(x: 100, y: 100)
@@ -198,7 +198,10 @@ extension GameScene {
 
 extension GameScene {
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        shot()
+        if !self.isGameStart{
+            self.isGameStart = true
+            shot()
+        }
     }
 }
 
