@@ -13,6 +13,7 @@ class GameScene: SKScene {
     
     
     var contentCreated = false
+    private var remainingBrickNum = 0;
     private var paddle:Paddle?
     private var balls = [Ball]()
     private var bricks = [Brick]()
@@ -126,7 +127,6 @@ class GameScene: SKScene {
             let yPosition = Float(size.height) - Float(upBoarder) - (Float(i) + 0.5)*Float(self.brickHeight)
             for j in 0..<bricksWidthNum{
                 if brickList[j] != 0{
-                    //create bricks
                     let xPosition = Float(leftBoarder) + (Float(j) + 0.5)*Float(self.brickWidth)
                                         
                     //create brick
@@ -137,6 +137,7 @@ class GameScene: SKScene {
                     //append brick
                     bricks.append(brick)
                     addChild(brick)
+                    self.remainingBrickNum += 1
                 }
             }
         }
@@ -148,7 +149,7 @@ extension GameScene: SKPhysicsContactDelegate {
     func didBegin(_ contact: SKPhysicsContact) {
         switch contact.bodyA.categoryBitMask {
         case BitMask.Brick:
-            checkNodeIsBox(contact.bodyA.node)
+            checkNodeIsBrick(contact.bodyA.node)
 
         default:
             break
@@ -156,7 +157,7 @@ extension GameScene: SKPhysicsContactDelegate {
 
         switch contact.bodyB.categoryBitMask {
         case BitMask.Brick:
-            checkNodeIsBox(contact.bodyB.node)
+            checkNodeIsBrick(contact.bodyB.node)
 
         default:
             break
@@ -170,25 +171,16 @@ extension GameScene: SKPhysicsContactDelegate {
 }
 
 extension GameScene {
-    private func checkNodeIsBox(_ node: SKNode?) {
-        //guard let box = node else { return }
-
-//        if box.physicsBody?.categoryBitMask == BitMask.Brick {
-//            let label = box.children.first! as! Label
-//            var tag = Int(label.text!)!
-//            if (tag > 1) {
-//                tag -= 1
-//                label.text = "\(tag)"
-//            } else {
-//                box.removeFromParent()
-//            }
-//        }
-        
+    private func checkNodeIsBrick(_ node: SKNode?) {        
         guard let brick = node as? Brick else { return }
         
         if brick.physicsBody?.categoryBitMask == BitMask.Brick {
             if brick.hitRemaining == 0{
                 brick.removeFromParent()
+                self.remainingBrickNum -= 1
+                if self.remainingBrickNum == 0{
+                    print("Win")
+                }
             }
         }
     }
