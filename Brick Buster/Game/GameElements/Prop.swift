@@ -11,12 +11,12 @@ import Foundation
 import SpriteKit
 
 class Prop: SKSpriteNode {
-    var width = 25
-    var height = 25
+    var width = 10
+    var height = 10
     
     
     init(position: CGPoint) {
-        super.init(texture: nil ,color: .green, size: CGSize(width: width, height: height))
+        super.init(texture: nil ,color: #colorLiteral(red: 0.9411764741, green: 0.4980392158, blue: 0.3529411852, alpha: 1), size: CGSize(width: width, height: height))
         self.position = position
         initObject()
     }

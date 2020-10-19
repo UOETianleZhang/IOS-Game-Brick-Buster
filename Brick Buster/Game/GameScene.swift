@@ -168,6 +168,22 @@ extension GameScene: SKPhysicsContactDelegate {
             return
         }
         
+        let firstBody: SKPhysicsBody
+        let secondBody: SKPhysicsBody
+
+        if contact.bodyA.categoryBitMask < contact.bodyB.categoryBitMask {
+            firstBody = contact.bodyA
+            secondBody = contact.bodyB
+        } else {
+            firstBody = contact.bodyB
+            secondBody = contact.bodyA
+        }
+
+        // prop hits paddle
+        if (firstBody.categoryBitMask == BitMask.Paddle) && (secondBody.categoryBitMask == BitMask.Prop) {
+            paddleHitProp(paddle: firstBody.node, prop: secondBody.node)
+        }
+        
     }
 
 //    func didEnd(_ contact: SKPhysicsContact) {
@@ -188,6 +204,9 @@ extension GameScene {
                     print("Win")
                 }
             }
+            // generate a prop and make it drop down in a const speed. This prop can make the paddle longer
+            let prop = Prop(position: CGPoint(x: node!.position.x, y: node!.position.y))
+            addChild(prop)
         }
     }
     
@@ -200,8 +219,16 @@ extension GameScene {
             if self.remainingBallNum == 0{
                 print("Lose")
             }
-            let prop = Prop(position: CGPoint(x: node!.position.x, y: node!.position.y))
-            addChild(prop)
+        }
+    }
+    
+    private func paddleHitProp(paddle: SKNode?, prop: SKNode?) {
+        guard let paddle = paddle as? Paddle else { return }
+        guard let prop = prop as? Prop else { return }
+        
+        if prop.physicsBody?.categoryBitMask == BitMask.Prop {
+            prop.removeFromParent()
+            paddle.xScale *= 1.5
         }
     }
 }
