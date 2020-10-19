@@ -15,6 +15,7 @@ class GameScene: SKScene {
     var contentCreated = false
     private var isGameStart = false
     private var remainingBrickNum = 0
+    private var remainingBallNum = 1
     private var paddle:Paddle?
     private var balls = [Ball]()
     private var bricks = [Brick]()
@@ -77,7 +78,7 @@ class GameScene: SKScene {
         addChild(wall)
         
         //create ball
-        for _ in 0..<1 {
+        for _ in 0..<remainingBallNum {
             //create ball
             let ball = Ball(circleOfRadius: CGFloat(self.ballRadius))
             ball.setShape(radius: self.ballRadius)
@@ -147,21 +148,26 @@ class GameScene: SKScene {
 
 extension GameScene: SKPhysicsContactDelegate {
     func didBegin(_ contact: SKPhysicsContact) {
-        switch contact.bodyA.categoryBitMask {
-        case BitMask.Brick:
-            checkNodeIsBrick(contact.bodyA.node)
-
-        default:
-            break
+        //check if ball hit brick
+        if contact.bodyA.categoryBitMask == BitMask.Brick && contact.bodyB.categoryBitMask == BitMask.Ball {
+            ballHitBrick(contact.bodyA.node)
+            return
         }
-
-        switch contact.bodyB.categoryBitMask {
-        case BitMask.Brick:
-            checkNodeIsBrick(contact.bodyB.node)
-
-        default:
-            break
+        if contact.bodyA.categoryBitMask == BitMask.Ball && contact.bodyB.categoryBitMask == BitMask.Brick {
+            ballHitBrick(contact.bodyB.node)
+            return
         }
+        
+        //check if ball hit ground
+        if contact.bodyA.categoryBitMask == BitMask.Ground && contact.bodyB.categoryBitMask == BitMask.Ball {
+            ballHitGround(contact.bodyB.node)
+            return
+        }
+        if contact.bodyA.categoryBitMask == BitMask.Ball && contact.bodyB.categoryBitMask == BitMask.Ground {
+            ballHitGround(contact.bodyA.node)
+            return
+        }
+        
     }
 
 //    func didEnd(_ contact: SKPhysicsContact) {
@@ -171,7 +177,7 @@ extension GameScene: SKPhysicsContactDelegate {
 }
 
 extension GameScene {
-    private func checkNodeIsBrick(_ node: SKNode?) {        
+    private func ballHitBrick(_ node: SKNode?) {        
         guard let brick = node as? Brick else { return }
         
         if brick.physicsBody?.categoryBitMask == BitMask.Brick {
@@ -184,13 +190,25 @@ extension GameScene {
             }
         }
     }
+    
+    private func ballHitGround(_ node: SKNode?) {
+        guard let ball = node as? Ball else { return }
+        
+        if ball.physicsBody?.categoryBitMask == BitMask.Ball {
+            ball.removeFromParent()
+            self.remainingBallNum -= 1
+            if self.remainingBallNum == 0{
+                print("Lose")
+            }
+        }
+    }
 }
 
 extension GameScene {
     private func shot() {
         for (index, ball) in balls.enumerated() {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.1 * Double(index)) {
-                ball.physicsBody?.applyForce(CGVector(dx: 400 + CGFloat(index) * 0.1, dy: 800))
+                ball.physicsBody?.applyForce(CGVector(dx: 200 + CGFloat(index) * 0.1, dy: 300))
             }
         }
     }
