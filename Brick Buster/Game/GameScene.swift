@@ -200,6 +200,8 @@ extension GameScene {
             if self.remainingBallNum == 0{
                 print("Lose")
             }
+            let prop = Prop(position: CGPoint(x: node!.position.x, y: node!.position.y))
+            addChild(prop)
         }
     }
 }
