@@ -12,6 +12,9 @@
 		0F6EE5BF253A239500883121 /* Defination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F6EE5BE253A239500883121 /* Defination.swift */; };
 		0F6EE5C4253A23AF00883121 /* Ball.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F6EE5C3253A23AF00883121 /* Ball.swift */; };
 		0F7811F9253A2B3F006E96CE /* Brick.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7811F8253A2B3F006E96CE /* Brick.swift */; };
+		0FC76495254087D70020B4B8 /* WaitingForGameStart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FC76494254087D70020B4B8 /* WaitingForGameStart.swift */; };
+		0FC7649A254088440020B4B8 /* PlayingGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FC76499254088440020B4B8 /* PlayingGame.swift */; };
+		0FC7649F254088800020B4B8 /* GameOver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FC7649E254088800020B4B8 /* GameOver.swift */; };
 		A0C403B2253968C300DD4C85 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C403B1253968C300DD4C85 /* AppDelegate.swift */; };
 		A0C403B4253968C300DD4C85 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = A0C403B3253968C300DD4C85 /* GameScene.sks */; };
 		A0C403B6253968C300DD4C85 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = A0C403B5253968C300DD4C85 /* Actions.sks */; };
@@ -52,6 +55,9 @@
 		0F6EE5BE253A239500883121 /* Defination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Defination.swift; sourceTree = "<group>"; };
 		0F6EE5C3253A23AF00883121 /* Ball.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ball.swift; sourceTree = "<group>"; };
 		0F7811F8253A2B3F006E96CE /* Brick.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Brick.swift; sourceTree = "<group>"; };
+		0FC76494254087D70020B4B8 /* WaitingForGameStart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaitingForGameStart.swift; sourceTree = "<group>"; };
+		0FC76499254088440020B4B8 /* PlayingGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayingGame.swift; sourceTree = "<group>"; };
+		0FC7649E254088800020B4B8 /* GameOver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOver.swift; sourceTree = "<group>"; };
 		A0C403AE253968C300DD4C85 /* Brick Buster.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Brick Buster.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0C403B1253968C300DD4C85 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A0C403B3253968C300DD4C85 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -103,6 +109,7 @@
 		0F6EE5BA253A22FF00883121 /* Game */ = {
 			isa = PBXGroup;
 			children = (
+				0FC76493254087BD0020B4B8 /* GameStates */,
 				0F7811FD253CBF3E006E96CE /* GameElements */,
 				A0C403B9253968C300DD4C85 /* GameViewController.swift */,
 				A0C403B7253968C300DD4C85 /* GameScene.swift */,
@@ -121,6 +128,16 @@
 				EBF3AC29253CE61D0006C931 /* Prop.swift */,
 			);
 			path = GameElements;
+			sourceTree = "<group>";
+		};
+		0FC76493254087BD0020B4B8 /* GameStates */ = {
+			isa = PBXGroup;
+			children = (
+				0FC76494254087D70020B4B8 /* WaitingForGameStart.swift */,
+				0FC76499254088440020B4B8 /* PlayingGame.swift */,
+				0FC7649E254088800020B4B8 /* GameOver.swift */,
+			);
+			path = GameStates;
 			sourceTree = "<group>";
 		};
 		A0C403A5253968C200DD4C85 = {
@@ -320,12 +337,15 @@
 				0F7811F9253A2B3F006E96CE /* Brick.swift in Sources */,
 				A0C403B8253968C300DD4C85 /* GameScene.swift in Sources */,
 				A0C403BA253968C300DD4C85 /* GameViewController.swift in Sources */,
+				0FC7649A254088440020B4B8 /* PlayingGame.swift in Sources */,
 				A0C403E82539734900DD4C85 /* StageViewController.swift in Sources */,
+				0FC76495254087D70020B4B8 /* WaitingForGameStart.swift in Sources */,
 				0F6EE5BF253A239500883121 /* Defination.swift in Sources */,
 				A0C403B2253968C300DD4C85 /* AppDelegate.swift in Sources */,
 				0F6EE5C4253A23AF00883121 /* Ball.swift in Sources */,
 				A0C403E625396F4B00DD4C85 /* MainViewController.swift in Sources */,
 				A0C403EC2539FD0F00DD4C85 /* StoreViewController.swift in Sources */,
+				0FC7649F254088800020B4B8 /* GameOver.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

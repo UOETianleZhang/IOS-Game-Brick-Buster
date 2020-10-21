@@ -9,9 +9,9 @@
 import SpriteKit
 import GameplayKit
 
+let GameMessageName = "gameMessage"
+
 class GameScene: SKScene {
-    
-    
     var contentCreated = false
     private var isGameStart = false
     private var remainingBrickNum = 0
