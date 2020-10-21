@@ -13,7 +13,8 @@ let GameMessageName = "gameMessage"
 
 class GameScene: SKScene {
     var contentCreated = false
-    private var isGameStart = false
+    lazy var gameState: GKStateMachine = GKStateMachine(states: [
+      WaitingForStart(scene: self), PlayingGame(scene: self), GameOver(scene: self)])
     private var remainingBrickNum = 0
     private var remainingBallNum = 1
     private var paddle:Paddle?
@@ -25,6 +26,18 @@ class GameScene: SKScene {
     private var paddleHeight = 15
     private var ballRadius = 5
     private var map: [[Int]]?
+    private var gameWon : Bool = false {
+      didSet {
+        let gameOver = childNode(withName: GameMessageName) as! SKSpriteNode
+        let textureName = gameWon ? "YouWon" : "GameOver"
+        let texture = SKTexture(imageNamed: textureName)
+        let actionSequence = SKAction.sequence([SKAction.setTexture(texture),
+          SKAction.scale(to: 1.0, duration: 0.25)])
+        
+        gameOver.run(actionSequence)
+        //run(gameWon ? gameWonSound : gameOverSound)
+      }
+    }
     
     override init(size: CGSize) {
         super.init(size: size)
@@ -96,8 +109,16 @@ class GameScene: SKScene {
         self.paddle = Paddle(rectOf: CGSize(width: self.paddleWidth, height: self.paddleHeight))
         self.paddle!.setShape(width: self.paddleWidth, height: self.paddleHeight)
         self.paddle!.position = CGPoint(x: 100, y: 100)
-        
         addChild(paddle!)
+        
+        //create game message
+        let gameMessage = SKSpriteNode(imageNamed: "TapToPlay")
+        gameMessage.name = GameMessageName
+        gameMessage.position = CGPoint(x: frame.midX, y: frame.midY)
+        gameMessage.setScale(0.0)
+        addChild(gameMessage)
+        
+        gameState.enter(WaitingForStart.self)
     }
     
     private func createBricks(){
@@ -198,10 +219,13 @@ extension GameScene {
         
         if brick.physicsBody?.categoryBitMask == BitMask.Brick {
             if brick.hitRemaining == 0{
-                brick.removeFromParent()
-                self.remainingBrickNum -= 1
-                if self.remainingBrickNum == 0{
-                    print("Win")
+                if !(gameState.currentState is GameOver){
+                    brick.removeFromParent()
+                    self.remainingBrickNum -= 1
+                    if self.remainingBrickNum == 0{
+                        gameState.enter(GameOver.self)
+                        gameWon = true
+                    }
                 }
             }
             // generate a prop and make it drop down in a const speed. This prop can make the paddle longer
@@ -214,10 +238,13 @@ extension GameScene {
         guard let ball = node as? Ball else { return }
         
         if ball.physicsBody?.categoryBitMask == BitMask.Ball {
-            ball.removeFromParent()
-            self.remainingBallNum -= 1
-            if self.remainingBallNum == 0{
-                print("Lose")
+            if !(gameState.currentState is GameOver){
+                ball.removeFromParent()
+                self.remainingBallNum -= 1
+                if self.remainingBallNum == 0{
+                    gameState.enter(GameOver.self)
+                    gameWon = false
+                }
             }
         }
     }
@@ -245,9 +272,12 @@ extension GameScene {
 
 extension GameScene {
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if !self.isGameStart{
-            self.isGameStart = true
-            shot()
+        switch gameState.currentState {
+            case is WaitingForStart:
+                gameState.enter(PlayingGame.self)
+                shot()
+            default:
+                break
         }
     }
 }
