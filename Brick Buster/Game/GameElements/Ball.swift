@@ -25,6 +25,7 @@ class Ball: SKShapeNode {
     
     private func initObject() {
         self.fillColor = .red
+        self.name = "ball"
         self.physicsBody = SKPhysicsBody(circleOfRadius: CGFloat(self.radius))
         self.physicsBody?.categoryBitMask = BitMask.Ball
         self.physicsBody?.contactTestBitMask = BitMask.Brick | BitMask.Ground | BitMask.Paddle | BitMask.Wall
@@ -37,6 +38,15 @@ class Ball: SKShapeNode {
     
     func setShape(radius: Int){
         self.radius = radius
+    }
+    
+    func shotWithFixedSpeed(angle : Double) {
+        let v : Double = 350
+        let dx = v * cos(angle * Double.pi / 180)
+        let dy = v * sin(angle * Double.pi / 180)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            self.physicsBody?.applyForce(CGVector(dx: dx, dy: dy))
+        }
     }
 }
 

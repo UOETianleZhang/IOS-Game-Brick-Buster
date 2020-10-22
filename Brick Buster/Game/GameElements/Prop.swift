@@ -11,12 +11,11 @@ import Foundation
 import SpriteKit
 
 class Prop: SKSpriteNode {
-    var width = 10
-    var height = 10
+    var width = 30
+    var height = 30
     
-    
-    init(position: CGPoint) {
-        super.init(texture: nil ,color: #colorLiteral(red: 0.9411764741, green: 0.4980392158, blue: 0.3529411852, alpha: 1), size: CGSize(width: width, height: height))
+    init(position: CGPoint, img:UIImage) {
+        super.init(texture: SKTexture(image: img) ,color: .clear, size: CGSize(width: width, height: height))
         self.position = position
         initObject()
     }
@@ -35,5 +34,66 @@ class Prop: SKSpriteNode {
         self.physicsBody?.isDynamic = true
         self.physicsBody?.velocity = CGVector(dx: 0, dy: -30)
     }
+    
+    func conduct(gameScene : GameScene, paddle: Paddle, prop: Prop) {
+        fatalError("must override")
+    }
 }
 
+class ProlongProp : Prop {
+    init(position: CGPoint) {
+        super.init(position: position, img: #imageLiteral(resourceName: "long"))
+    }
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    override func conduct(gameScene : GameScene, paddle: Paddle, prop: Prop) {
+        paddle.xScale *= 1.5
+    }
+}
+
+class ShortenProp : Prop {
+    init(position: CGPoint) {
+        super.init(position: position, img: #imageLiteral(resourceName: "short"))
+    }
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    override func conduct(gameScene : GameScene, paddle: Paddle, prop: Prop) {
+        paddle.xScale /= 1.5
+    }
+}
+
+class ThreeBallsProp : Prop {
+    init(position: CGPoint) {
+        super.init(position: position, img: #imageLiteral(resourceName: "three"))
+    }
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    override func conduct(gameScene : GameScene, paddle: Paddle, prop: Prop) {
+        let pos = CGPoint(x: paddle.position.x + CGFloat(paddle.width / 2), y: paddle.position.y)
+        gameScene.createBall(position: pos).shotWithFixedSpeed(angle: 45)
+        gameScene.createBall(position: pos).shotWithFixedSpeed(angle: 90)
+        gameScene.createBall(position: pos).shotWithFixedSpeed(angle: 135)
+    }
+}
+
+class ExpandProp : Prop {
+    init(position: CGPoint) {
+        super.init(position: position, img: #imageLiteral(resourceName: "expand"))
+    }
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    override func conduct(gameScene : GameScene, paddle: Paddle, prop: Prop) {
+        for ball in gameScene.children.filter({ $0.name == "ball" }) {
+            let ball = ball as! Ball
+            let pos = ball.position
+            ball.removeFromParent()
+            gameScene.createBall(position: pos).shotWithFixedSpeed(angle: 90)
+            gameScene.createBall(position: pos).shotWithFixedSpeed(angle: 210)
+            gameScene.createBall(position: pos).shotWithFixedSpeed(angle: 330)
+        }
+    }
+}

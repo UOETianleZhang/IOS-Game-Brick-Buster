@@ -22,8 +22,6 @@ class GameScene: SKScene {
     private var bricks = [Brick]()
     private var brickWidth = 50
     private var brickHeight = 20
-    private var paddleWidth = 70
-    private var paddleHeight = 15
     private var ballRadius = 5
     private var map: [[Int]]?
     private var gameWon : Bool = false {
@@ -66,6 +64,18 @@ class GameScene: SKScene {
         }
     }
 
+    func createBall(position : CGPoint) -> Ball {
+        //create ball
+        let ball = Ball(circleOfRadius: CGFloat(self.ballRadius))
+        ball.setShape(radius: self.ballRadius)
+        ball.position = position
+        
+        //append ball
+        balls.append(ball)
+        addChild(ball)
+        return ball
+    }
+    
     private func createContent() {
         //create ground
         let ground = SKSpriteNode(color: .gray, size: CGSize(width: size.width, height: size.height/10))
@@ -92,22 +102,14 @@ class GameScene: SKScene {
         
         //create ball
         for _ in 0..<remainingBallNum {
-            //create ball
-            let ball = Ball(circleOfRadius: CGFloat(self.ballRadius))
-            ball.setShape(radius: self.ballRadius)
-            ball.position = CGPoint(x: 100, y: 105)
-            
-            //append ball
-            balls.append(ball)
-            addChild(ball)
+            createBall(position: CGPoint(x: 100, y: 105))
         }
         
         //create brick
         self.createBricks()
         
         //create paddle
-        self.paddle = Paddle(rectOf: CGSize(width: self.paddleWidth, height: self.paddleHeight))
-        self.paddle!.setShape(width: self.paddleWidth, height: self.paddleHeight)
+        self.paddle = Paddle()
         self.paddle!.position = CGPoint(x: 100, y: 100)
         addChild(paddle!)
         
@@ -229,7 +231,22 @@ extension GameScene {
                 }
             }
             // generate a prop and make it drop down in a const speed. This prop can make the paddle longer
-            let prop = Prop(position: CGPoint(x: node!.position.x, y: node!.position.y))
+            let pos = CGPoint(x: node!.position.x, y: node!.position.y)
+            
+            let prop : Prop
+            let rand =  Int.randomIntNumber(lower: 0, upper: 5)
+            switch rand {
+            case 0:
+                prop = ProlongProp(position: pos)
+            case 1:
+                prop = ShortenProp(position: pos)
+            case 2:
+                prop = ThreeBallsProp(position: pos)
+            case 3:
+                prop = ExpandProp(position: pos)
+            default:
+                prop = ProlongProp(position: pos)
+            }
             addChild(prop)
         }
     }
@@ -254,8 +271,8 @@ extension GameScene {
         guard let prop = prop as? Prop else { return }
         
         if prop.physicsBody?.categoryBitMask == BitMask.Prop {
+            prop.conduct(gameScene: self, paddle: paddle, prop: prop)
             prop.removeFromParent()
-            paddle.xScale *= 1.5
         }
     }
 }

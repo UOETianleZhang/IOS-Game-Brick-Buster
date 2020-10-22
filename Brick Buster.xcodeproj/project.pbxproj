@@ -29,6 +29,7 @@
 		A0C403E82539734900DD4C85 /* StageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C403E72539734900DD4C85 /* StageViewController.swift */; };
 		A0C403EA2539F88F00DD4C85 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C403E92539F88F00DD4C85 /* LoginViewController.swift */; };
 		A0C403EC2539FD0F00DD4C85 /* StoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C403EB2539FD0F00DD4C85 /* StoreViewController.swift */; };
+		EB84F7A72540CF6800321F6D /* Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB84F7A62540CF6800321F6D /* Tools.swift */; };
 		EBF3AC2A253CE61D0006C931 /* Prop.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF3AC29253CE61D0006C931 /* Prop.swift */; };
 /* End PBXBuildFile section */
 
@@ -78,6 +79,7 @@
 		A0C403E72539734900DD4C85 /* StageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StageViewController.swift; sourceTree = "<group>"; };
 		A0C403E92539F88F00DD4C85 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		A0C403EB2539FD0F00DD4C85 /* StoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreViewController.swift; sourceTree = "<group>"; };
+		EB84F7A62540CF6800321F6D /* Tools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tools.swift; sourceTree = "<group>"; };
 		EBF3AC29253CE61D0006C931 /* Prop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Prop.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -109,6 +111,7 @@
 		0F6EE5BA253A22FF00883121 /* Game */ = {
 			isa = PBXGroup;
 			children = (
+				EB84F7A52540CF5500321F6D /* Tools */,
 				0FC76493254087BD0020B4B8 /* GameStates */,
 				0F7811FD253CBF3E006E96CE /* GameElements */,
 				A0C403B9253968C300DD4C85 /* GameViewController.swift */,
@@ -195,6 +198,14 @@
 				A0C403D9253968CA00DD4C85 /* Info.plist */,
 			);
 			path = "Brick BusterUITests";
+			sourceTree = "<group>";
+		};
+		EB84F7A52540CF5500321F6D /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				EB84F7A62540CF6800321F6D /* Tools.swift */,
+			);
+			path = Tools;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -338,6 +349,7 @@
 				A0C403B8253968C300DD4C85 /* GameScene.swift in Sources */,
 				A0C403BA253968C300DD4C85 /* GameViewController.swift in Sources */,
 				0FC7649A254088440020B4B8 /* PlayingGame.swift in Sources */,
+				EB84F7A72540CF6800321F6D /* Tools.swift in Sources */,
 				A0C403E82539734900DD4C85 /* StageViewController.swift in Sources */,
 				0FC76495254087D70020B4B8 /* WaitingForGameStart.swift in Sources */,
 				0F6EE5BF253A239500883121 /* Defination.swift in Sources */,
