@@ -10,18 +10,21 @@ import Foundation
 
 import SpriteKit
 
-class Paddle: SKShapeNode {
+class Paddle: SKSpriteNode {
     var isHit = false
     var hitRemaining = 0
-    var width : Int = 70
-    var height : Int = 15
+    static let img = #imageLiteral(resourceName: "paddle")
+    let width : Int = 70
+    let height : Int = 20
     
-    
-    override init() {
-        super.init()
-        let rect = CGRect(origin: CGPoint(x: -width / 2, y: -height / 2), size: CGSize(width: width, height: height))
-        self.path = CGPath(rect: rect, transform: nil)
+    override private init(texture: SKTexture?, color: UIColor, size: CGSize) {
+        super.init(texture: texture, color: color, size: CGSize(width: width, height: height))
+        self.position = position
         initObject()
+    }
+    
+    convenience init() {
+        self.init(texture: SKTexture(image: Paddle.img), color: .clear, size: CGSize())
     }
     
     
@@ -31,7 +34,6 @@ class Paddle: SKShapeNode {
     }
     
     private func initObject() {
-        self.fillColor = .purple
         self.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: self.width, height: self.height))
         self.physicsBody?.categoryBitMask = BitMask.Paddle
         self.physicsBody?.contactTestBitMask = BitMask.Ball
@@ -40,10 +42,5 @@ class Paddle: SKShapeNode {
         self.physicsBody?.restitution = 1.0
         self.physicsBody?.isDynamic = false
         self.physicsBody?.friction = 0.0
-    }
-    
-    func setShape(width: Int, height: Int){
-        self.width = width
-        self.height = height
     }
 }

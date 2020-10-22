@@ -10,19 +10,22 @@ import Foundation
 
 import SpriteKit
 
-class Brick: SKShapeNode {
+class Brick: SKSpriteNode {
     var isHit = false
     var hitRemaining = 0
-    var width = 50
+    var img = #imageLiteral(resourceName: "block")
+    var width = 100
     var height = 20
     
-    
-    override init() {
-        super.init()
-        
-        self.width = 50
-        self.height = 20
+    override private init(texture: SKTexture?, color: UIColor, size: CGSize) {
+        super.init(texture: SKTexture(image: img), color: color, size: size)
+        self.width = Int(size.width)
+        self.height = Int(size.height)
         initObject()
+    }
+    
+    convenience init(rectOf: CGSize) {
+        self.init(texture: nil, color: .clear, size: rectOf)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -30,7 +33,6 @@ class Brick: SKShapeNode {
     }
     
     private func initObject() {
-        self.fillColor = .blue
         self.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: self.width, height: self.height))
         self.physicsBody?.categoryBitMask = BitMask.Brick
         self.physicsBody?.contactTestBitMask = BitMask.Ball
@@ -39,10 +41,5 @@ class Brick: SKShapeNode {
         self.physicsBody?.restitution = 1.0
         self.physicsBody?.isDynamic = false
         self.physicsBody?.friction = 0.0
-    }
-    
-    func setShape(width: Int, height: Int){
-        self.width = width
-        self.height = height
     }
 }

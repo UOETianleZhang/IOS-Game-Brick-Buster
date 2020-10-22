@@ -20,7 +20,7 @@ class GameScene: SKScene {
     private var paddle:Paddle?
     private var balls = [Ball]()
     private var bricks = [Brick]()
-    private var brickWidth = 50
+    private var brickWidth = 100
     private var brickHeight = 20
     private var ballRadius = 5
     private var map: [[Int]]?
@@ -151,11 +151,10 @@ class GameScene: SKScene {
             let yPosition = Float(size.height) - Float(upBoarder) - (Float(i) + 0.5)*Float(self.brickHeight)
             for j in 0..<bricksWidthNum{
                 if brickList[j] != 0{
-                    let xPosition = Float(leftBoarder) + (Float(j) + 0.5)*Float(self.brickWidth)
+                    let xPosition = Float(leftBoarder) + (Float(j) - 0.5)*Float(self.brickWidth)
                                         
                     //create brick
                     let brick = Brick(rectOf: CGSize(width: self.brickWidth, height: self.brickHeight))
-                    brick.setShape(width: self.brickWidth, height: self.brickHeight)
                     brick.position = CGPoint(x: Int(xPosition), y: Int(yPosition))
 
                     //append brick
