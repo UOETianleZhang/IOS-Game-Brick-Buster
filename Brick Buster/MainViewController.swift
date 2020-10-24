@@ -9,11 +9,14 @@
 import UIKit
 
 class MainViewController: UIViewController {
+    
+    let backgroundImageView = UIImageView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         let loginVC = self.storyboard?.instantiateViewController(withIdentifier: "loginVC") as! LoginViewController
-        self.navigationController?.pushViewController(loginVC, animated: true)
+        self.navigationController?.pushViewController(loginVC, animated: false)
+        setBackground()
         // Do any additional setup after loading the view.
     }
     
@@ -28,6 +31,18 @@ class MainViewController: UIViewController {
     @IBAction func settings(_ sender: Any) {
     }
     
+    func setBackground() {
+        view.addSubview(backgroundImageView)
+        backgroundImageView.translatesAutoresizingMaskIntoConstraints = false
+        backgroundImageView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        backgroundImageView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        backgroundImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        backgroundImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        backgroundImageView.contentMode = .scaleAspectFill;
+        
+        backgroundImageView.image = UIImage(named: "loginbg")
+        view.sendSubviewToBack(backgroundImageView)
+    }
     /*
     // MARK: - Navigation
 

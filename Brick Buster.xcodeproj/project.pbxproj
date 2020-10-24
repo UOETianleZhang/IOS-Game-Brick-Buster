@@ -21,6 +21,12 @@
 		A0C403E82539734900DD4C85 /* StageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C403E72539734900DD4C85 /* StageViewController.swift */; };
 		A0C403EA2539F88F00DD4C85 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C403E92539F88F00DD4C85 /* LoginViewController.swift */; };
 		A0C403EC2539FD0F00DD4C85 /* StoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C403EB2539FD0F00DD4C85 /* StoreViewController.swift */; };
+		A0E762252543F2D000CDDE29 /* BlueButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E762242543F2D000CDDE29 /* BlueButton.swift */; };
+		A0E762272543F54900CDDE29 /* Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E762262543F54900CDDE29 /* Styles.swift */; };
+		A0E762292543FA1100CDDE29 /* LoginText.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E762282543FA1100CDDE29 /* LoginText.swift */; };
+		A0E7622B2544BECA00CDDE29 /* GreenButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E7622A2544BECA00CDDE29 /* GreenButton.swift */; };
+		A0E7622D2544C2B800CDDE29 /* RankButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E7622C2544C2B800CDDE29 /* RankButton.swift */; };
+		A0E7622F2544CB9D00CDDE29 /* SettingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E7622E2544CB9D00CDDE29 /* SettingButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +67,12 @@
 		A0C403E72539734900DD4C85 /* StageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StageViewController.swift; sourceTree = "<group>"; };
 		A0C403E92539F88F00DD4C85 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		A0C403EB2539FD0F00DD4C85 /* StoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreViewController.swift; sourceTree = "<group>"; };
+		A0E762242543F2D000CDDE29 /* BlueButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueButton.swift; sourceTree = "<group>"; };
+		A0E762262543F54900CDDE29 /* Styles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Styles.swift; sourceTree = "<group>"; };
+		A0E762282543FA1100CDDE29 /* LoginText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginText.swift; sourceTree = "<group>"; };
+		A0E7622A2544BECA00CDDE29 /* GreenButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreenButton.swift; sourceTree = "<group>"; };
+		A0E7622C2544C2B800CDDE29 /* RankButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankButton.swift; sourceTree = "<group>"; };
+		A0E7622E2544CB9D00CDDE29 /* SettingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +136,12 @@
 				A0C403E72539734900DD4C85 /* StageViewController.swift */,
 				A0C403E92539F88F00DD4C85 /* LoginViewController.swift */,
 				A0C403EB2539FD0F00DD4C85 /* StoreViewController.swift */,
+				A0E762242543F2D000CDDE29 /* BlueButton.swift */,
+				A0E762262543F54900CDDE29 /* Styles.swift */,
+				A0E762282543FA1100CDDE29 /* LoginText.swift */,
+				A0E7622A2544BECA00CDDE29 /* GreenButton.swift */,
+				A0E7622C2544C2B800CDDE29 /* RankButton.swift */,
+				A0E7622E2544CB9D00CDDE29 /* SettingButton.swift */,
 			);
 			path = "Brick Buster";
 			sourceTree = "<group>";
@@ -279,12 +297,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A0E762272543F54900CDDE29 /* Styles.swift in Sources */,
 				A0C403EA2539F88F00DD4C85 /* LoginViewController.swift in Sources */,
+				A0E7622B2544BECA00CDDE29 /* GreenButton.swift in Sources */,
+				A0E7622D2544C2B800CDDE29 /* RankButton.swift in Sources */,
+				A0E7622F2544CB9D00CDDE29 /* SettingButton.swift in Sources */,
+				A0E762252543F2D000CDDE29 /* BlueButton.swift in Sources */,
 				A0C403B8253968C300DD4C85 /* GameScene.swift in Sources */,
 				A0C403BA253968C300DD4C85 /* GameViewController.swift in Sources */,
 				A0C403E82539734900DD4C85 /* StageViewController.swift in Sources */,
 				A0C403B2253968C300DD4C85 /* AppDelegate.swift in Sources */,
 				A0C403E625396F4B00DD4C85 /* MainViewController.swift in Sources */,
+				A0E762292543FA1100CDDE29 /* LoginText.swift in Sources */,
 				A0C403EC2539FD0F00DD4C85 /* StoreViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
