@@ -13,6 +13,7 @@ import UIKit
 struct Colors {
     static let tropicBlue = UIColor(red: 0, green: 192/255, blue: 255/255, alpha: 1)
     static let tropicGreen = UIColor(red: 21/255, green: 203/255, blue: 106/255, alpha: 1)
+    static let tropicRed = UIColor(red: 240/255, green: 78/255, blue: 69/255, alpha: 1)
 }
 
 

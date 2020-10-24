@@ -21,7 +21,7 @@ class LoginViewController: UIViewController {
     @IBAction func login(_ sender: Any) {
         let transition = CATransition()
         transition.duration = 0.5
-        transition.type = CATransitionType.reveal
+        transition.type = CATransitionType(rawValue: "cube")
         transition.subtype = CATransitionSubtype.fromBottom
         self.navigationController?.view.layer.add(transition, forKey: kCATransition)
         self.navigationController?.popViewController(animated: false)

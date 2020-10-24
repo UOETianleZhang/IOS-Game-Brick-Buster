@@ -8,6 +8,11 @@
 
 import UIKit
 
+enum equipment {
+    case life
+    case bat
+}
+
 class MainViewController: UIViewController {
     
     let backgroundImageView = UIImageView()
@@ -22,13 +27,39 @@ class MainViewController: UIViewController {
     
     @IBAction func stages(_ sender: Any) {
         let stageVC = self.storyboard?.instantiateViewController(withIdentifier: "stageVC") as! StageViewController
-        self.navigationController?.pushViewController(stageVC, animated: true)
+        let transition = CATransition()
+        transition.duration = 0.5
+        transition.type = CATransitionType(rawValue: "cube")
+        transition.subtype = CATransitionSubtype.fromRight
+        self.navigationController?.view.layer.add(transition, forKey: kCATransition)
+        self.navigationController?.pushViewController(stageVC, animated: false)
     }
-    @IBAction func leaderboards(_ sender: Any) {
+    @IBAction func rankings(_ sender: Any) {
+        let rankVC = self.storyboard?.instantiateViewController(withIdentifier: "rankVC") as! RankViewController
+        let transition = CATransition()
+        transition.duration = 0.5
+        transition.type = CATransitionType(rawValue: "cube")
+        transition.subtype = CATransitionSubtype.fromRight
+        self.navigationController?.view.layer.add(transition, forKey: kCATransition)
+        self.navigationController?.pushViewController(rankVC, animated: false)
     }
     @IBAction func store(_ sender: Any) {
+        let storeVC = self.storyboard?.instantiateViewController(withIdentifier: "storeVC") as! StoreViewController
+        let transition = CATransition()
+        transition.duration = 0.5
+        transition.type = CATransitionType(rawValue: "cube")
+        transition.subtype = CATransitionSubtype.fromRight
+        self.navigationController?.view.layer.add(transition, forKey: kCATransition)
+        self.navigationController?.pushViewController(storeVC, animated: false)
     }
     @IBAction func settings(_ sender: Any) {
+        let settingVC = self.storyboard?.instantiateViewController(withIdentifier: "settingVC") as! SettingViewController
+        let transition = CATransition()
+        transition.duration = 0.5
+        transition.type = CATransitionType(rawValue: "cube")
+        transition.subtype = CATransitionSubtype.fromRight
+        self.navigationController?.view.layer.add(transition, forKey: kCATransition)
+        self.navigationController?.pushViewController(settingVC, animated: false)
     }
     
     func setBackground() {

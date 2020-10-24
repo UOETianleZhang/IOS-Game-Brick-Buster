@@ -1,41 +1,21 @@
 //
-//  StoreViewController.swift
+//  SettingViewController.swift
 //  Brick Buster
 //
-//  Created by yujian on 2020/10/16.
+//  Created by yujian on 2020/10/24.
 //  Copyright © 2020 tra. All rights reserved.
 //
 
 import UIKit
 
-class StoreViewController: UIViewController {
-    @IBOutlet weak var lives: UILabel!
-    @IBOutlet weak var bats: UILabel!
-    @IBOutlet weak var lifeStepper: UIStepper!
-    @IBOutlet weak var batStepper: UIStepper!
-    @IBOutlet weak var total: UILabel!
-    
-    var newLives = 0
-    var newBats = 0
+class SettingViewController: UIViewController {
     
     let backgroundImageView = UIImageView()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setBackground()
         // Do any additional setup after loading the view.
-    }
-    
-    @IBAction func life(_ sender: Any) {
-        newLives = Int(lifeStepper.value)
-        lives.text = "\(newLives)"
-        total.text = "\(5*newLives+10*newBats)"
-    }
-    
-    @IBAction func ball(_ sender: Any) {
-        newBats = Int(batStepper.value)
-        bats.text = "\(Int(newBats))"
-        total.text = "\(5*newLives+10*newBats)"
     }
     
     @IBAction func back(_ sender: Any) {
@@ -59,6 +39,7 @@ class StoreViewController: UIViewController {
         backgroundImageView.image = UIImage(named: "loginbg")
         view.sendSubviewToBack(backgroundImageView)
     }
+    
     /*
     // MARK: - Navigation
 
