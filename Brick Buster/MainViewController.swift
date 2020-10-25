@@ -7,14 +7,23 @@
 //
 
 import UIKit
+import AVKit
 
 enum equipment {
     case life
     case bat
 }
 
-var coins: Int64 = 0
+var coins: Int64 = 10
+var lives: Int64 = 0
+var bats: Int64 = 0
 var progress: Int64 = 0
+var music: Float = 1.0
+var sound: Float = 1.0
+let soundFile = URL(fileURLWithPath: Bundle.main.path(forResource: "btn_click_sound", ofType: "mp3")!)
+let musicFile = URL(fileURLWithPath: Bundle.main.path(forResource: "Astronomia", ofType: "mp3")!)
+var musicPlayer = AVAudioPlayer()
+var audioPlayer = AVAudioPlayer()
 
 class MainViewController: UIViewController {
     
@@ -26,7 +35,28 @@ class MainViewController: UIViewController {
         let loginVC = self.storyboard?.instantiateViewController(withIdentifier: "loginVC") as! LoginViewController
         self.navigationController?.pushViewController(loginVC, animated: false)
         setBackground()
+        playMusic()
         // Do any additional setup after loading the view.
+    }
+    
+    func playSound() {
+        do {
+            audioPlayer = try AVAudioPlayer(contentsOf: soundFile)
+            audioPlayer.volume = sound
+            audioPlayer.play()
+        } catch {
+            print("sound error")
+        }
+    }
+    
+    func playMusic() {
+        do {
+            musicPlayer = try AVAudioPlayer(contentsOf: musicFile)
+            musicPlayer.volume = music
+            musicPlayer.play()
+        } catch {
+            print("music error")
+        }
     }
     
     @IBAction func stages(_ sender: Any) {
@@ -37,6 +67,7 @@ class MainViewController: UIViewController {
         transition.subtype = CATransitionSubtype.fromRight
         self.navigationController?.view.layer.add(transition, forKey: kCATransition)
         self.navigationController?.pushViewController(stageVC, animated: false)
+        playSound()
     }
     @IBAction func rankings(_ sender: Any) {
         let rankVC = self.storyboard?.instantiateViewController(withIdentifier: "rankVC") as! RankViewController
@@ -46,6 +77,7 @@ class MainViewController: UIViewController {
         transition.subtype = CATransitionSubtype.fromRight
         self.navigationController?.view.layer.add(transition, forKey: kCATransition)
         self.navigationController?.pushViewController(rankVC, animated: false)
+        playSound()
     }
     @IBAction func store(_ sender: Any) {
         let storeVC = self.storyboard?.instantiateViewController(withIdentifier: "storeVC") as! StoreViewController
@@ -55,6 +87,7 @@ class MainViewController: UIViewController {
         transition.subtype = CATransitionSubtype.fromRight
         self.navigationController?.view.layer.add(transition, forKey: kCATransition)
         self.navigationController?.pushViewController(storeVC, animated: false)
+        playSound()
     }
     @IBAction func settings(_ sender: Any) {
         let settingVC = self.storyboard?.instantiateViewController(withIdentifier: "settingVC") as! SettingViewController
@@ -64,6 +97,7 @@ class MainViewController: UIViewController {
         transition.subtype = CATransitionSubtype.fromRight
         self.navigationController?.view.layer.add(transition, forKey: kCATransition)
         self.navigationController?.pushViewController(settingVC, animated: false)
+        playSound()
     }
     
     func setBackground() {

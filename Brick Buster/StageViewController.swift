@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVKit
 
 class StageViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
@@ -31,6 +32,16 @@ class StageViewController: UIViewController, UICollectionViewDelegate, UICollect
         // Do any additional setup after loading the view.
     }
     
+    func playSound() {
+        do {
+            audioPlayer = try AVAudioPlayer(contentsOf: soundFile)
+            audioPlayer.volume = sound
+            audioPlayer.play()
+        } catch {
+            print("sound error")
+        }
+    }
+    
     @IBAction func back(_ sender: Any) {
         let transition = CATransition()
         transition.duration = 0.5
@@ -42,6 +53,7 @@ class StageViewController: UIViewController, UICollectionViewDelegate, UICollect
     
     @IBAction func play(_ sender: Any) {
         startGame(s: 1, equips: [.life, .bat])
+        playSound()
     }
     
     func startGame(s: Int64, equips: [equipment]) {

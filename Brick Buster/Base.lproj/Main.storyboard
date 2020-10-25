@@ -520,6 +520,9 @@
                                     <constraint firstAttribute="width" constant="200" id="cXT-5Q-RMg"/>
                                 </constraints>
                                 <state key="normal" title="Checkout"/>
+                                <connections>
+                                    <action selector="checkout:" destination="gvd-nd-AdG" eventType="touchUpInside" id="bRT-IT-dcs"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jwv-OG-Har">
                                 <rect key="frame" x="220" y="435" width="43" height="21"/>
@@ -612,11 +615,14 @@
                     </view>
                     <navigationItem key="navigationItem" id="7iw-hS-E1v"/>
                     <connections>
+                        <outlet property="bat" destination="fSA-n9-rST" id="Nqy-TV-ogs"/>
                         <outlet property="batStepper" destination="eyr-he-4jR" id="9yW-VI-vot"/>
-                        <outlet property="bats" destination="fSA-n9-rST" id="Nqy-TV-ogs"/>
+                        <outlet property="currBat" destination="OoA-jc-J54" id="1DA-y3-4os"/>
+                        <outlet property="currLife" destination="WjJ-jL-O2Z" id="OsC-6w-bQP"/>
+                        <outlet property="life" destination="wcj-67-HjQ" id="VFy-K5-eWw"/>
                         <outlet property="lifeStepper" destination="k2T-c9-dul" id="TlW-Ad-btP"/>
-                        <outlet property="lives" destination="wcj-67-HjQ" id="VFy-K5-eWw"/>
                         <outlet property="total" destination="cVO-Z2-Vox" id="pRh-91-Q4n"/>
+                        <outlet property="wallet" destination="Jwv-OG-Har" id="KkP-N1-lfo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rBf-42-OJp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -638,27 +644,24 @@
                                     <constraint firstAttribute="width" constant="200" id="Rrh-9h-z01"/>
                                 </constraints>
                                 <state key="normal" title="Confirm"/>
-                            </button>
-                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="2sv-cS-784">
-                                <rect key="frame" x="174" y="132" width="118" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </slider>
-                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="hvi-Ro-eGV">
-                                <rect key="frame" x="172" y="213" width="118" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </slider>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ys2-57-Jzi">
-                                <rect key="frame" x="16" y="20" width="27" height="22"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button" image="arrowshape.turn.up.left.fill" catalog="system">
-                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
-                                </state>
                                 <connections>
-                                    <action selector="back:" destination="aGd-Vf-HkK" eventType="touchUpInside" id="5aS-DJ-Fop"/>
-                                    <action selector="back:" destination="gvd-nd-AdG" eventType="touchUpInside" id="afL-uT-ba5"/>
-                                    <action selector="back:" destination="b6b-sg-MSW" eventType="touchUpInside" id="zj3-pY-lgf"/>
+                                    <action selector="confirm:" destination="aGd-Vf-HkK" eventType="touchUpInside" id="gSR-cx-Zkd"/>
                                 </connections>
                             </button>
+                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="2sv-cS-784">
+                                <rect key="frame" x="174" y="132" width="118" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="musicVolume:" destination="aGd-Vf-HkK" eventType="valueChanged" id="GqK-tj-26O"/>
+                                </connections>
+                            </slider>
+                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="hvi-Ro-eGV">
+                                <rect key="frame" x="172" y="213" width="118" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="soundVolume:" destination="aGd-Vf-HkK" eventType="valueChanged" id="k39-yV-Tcf"/>
+                                </connections>
+                            </slider>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="MUSIC" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Y1-Bt-OKB">
                                 <rect key="frame" x="93" y="132" width="51" height="28"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -681,6 +684,10 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="q8D-yK-bCU"/>
                     </view>
+                    <connections>
+                        <outlet property="musicSlider" destination="2sv-cS-784" id="aaq-2J-pZq"/>
+                        <outlet property="soundSlider" destination="hvi-Ro-eGV" id="b8h-fn-3np"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XCN-bC-q6j" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

@@ -32,6 +32,8 @@
 		A0E762352544D45600CDDE29 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E762342544D45600CDDE29 /* SettingViewController.swift */; };
 		A0E7623825451B2600CDDE29 /* StageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E7623625451B2600CDDE29 /* StageCollectionViewCell.swift */; };
 		A0E7623925451B2600CDDE29 /* StageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A0E7623725451B2600CDDE29 /* StageCollectionViewCell.xib */; };
+		A0E7623B2545395B00CDDE29 /* btn_click_sound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A0E7623A2545395B00CDDE29 /* btn_click_sound.mp3 */; };
+		A0E7623F25454AEC00CDDE29 /* Astronomia.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A0E7623E25454AEB00CDDE29 /* Astronomia.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +85,8 @@
 		A0E762342544D45600CDDE29 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		A0E7623625451B2600CDDE29 /* StageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StageCollectionViewCell.swift; sourceTree = "<group>"; };
 		A0E7623725451B2600CDDE29 /* StageCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StageCollectionViewCell.xib; sourceTree = "<group>"; };
+		A0E7623A2545395B00CDDE29 /* btn_click_sound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = btn_click_sound.mp3; sourceTree = "<group>"; };
+		A0E7623E25454AEB00CDDE29 /* Astronomia.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Astronomia.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +137,8 @@
 		A0C403B0253968C300DD4C85 /* Brick Buster */ = {
 			isa = PBXGroup;
 			children = (
+				A0E7623E25454AEB00CDDE29 /* Astronomia.mp3 */,
+				A0E7623A2545395B00CDDE29 /* btn_click_sound.mp3 */,
 				A0C403B1253968C300DD4C85 /* AppDelegate.swift */,
 				A0C403B3253968C300DD4C85 /* GameScene.sks */,
 				A0C403B5253968C300DD4C85 /* Actions.sks */,
@@ -284,8 +290,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				A0C403BD253968C300DD4C85 /* Main.storyboard in Resources */,
+				A0E7623F25454AEC00CDDE29 /* Astronomia.mp3 in Resources */,
 				A0C403B4253968C300DD4C85 /* GameScene.sks in Resources */,
 				A0C403BF253968CA00DD4C85 /* Assets.xcassets in Resources */,
+				A0E7623B2545395B00CDDE29 /* btn_click_sound.mp3 in Resources */,
 				A0C403C2253968CA00DD4C85 /* LaunchScreen.storyboard in Resources */,
 				A0C403B6253968C300DD4C85 /* Actions.sks in Resources */,
 				A0E7623925451B2600CDDE29 /* StageCollectionViewCell.xib in Resources */,

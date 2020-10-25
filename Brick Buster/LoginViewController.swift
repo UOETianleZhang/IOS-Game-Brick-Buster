@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVKit
 
 class LoginViewController: UIViewController {
     
@@ -26,6 +27,7 @@ class LoginViewController: UIViewController {
         transition.subtype = CATransitionSubtype.fromBottom
         self.navigationController?.view.layer.add(transition, forKey: kCATransition)
         self.navigationController?.popViewController(animated: false)
+        playSound()
     }
     
     func setBackground() {
@@ -39,6 +41,15 @@ class LoginViewController: UIViewController {
         
         backgroundImageView.image = UIImage(named: "loginbg")
         view.sendSubviewToBack(backgroundImageView)
+    }
+    
+    func playSound() {
+        do {
+            audioPlayer = try AVAudioPlayer(contentsOf: soundFile)
+            audioPlayer.play()
+        } catch {
+            print("sound error")
+        }
     }
     
     /*

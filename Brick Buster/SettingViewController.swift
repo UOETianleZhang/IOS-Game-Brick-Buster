@@ -7,25 +7,41 @@
 //
 
 import UIKit
+import AVKit
 
 class SettingViewController: UIViewController {
     
     let backgroundImageView = UIImageView()
-
+    @IBOutlet weak var musicSlider: UISlider!
+    @IBOutlet weak var soundSlider: UISlider!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         overrideUserInterfaceStyle = .dark
         setBackground()
+        musicSlider.value = music
+        soundSlider.value = sound
         // Do any additional setup after loading the view.
     }
     
-    @IBAction func back(_ sender: Any) {
+    @IBAction func confirm(_ sender: Any) {
         let transition = CATransition()
         transition.duration = 0.5
         transition.type = CATransitionType(rawValue: "cube")
         transition.subtype = CATransitionSubtype.fromLeft
         self.navigationController?.view.layer.add(transition, forKey: kCATransition)
         self.navigationController?.popViewController(animated: false)
+        playSound()
+    }
+    
+    func playSound() {
+        do {
+            audioPlayer = try AVAudioPlayer(contentsOf: soundFile)
+            audioPlayer.volume = sound
+            audioPlayer.play()
+        } catch {
+            print("sound error")
+        }
     }
     
     func setBackground() {
@@ -39,6 +55,15 @@ class SettingViewController: UIViewController {
         
         backgroundImageView.image = UIImage(named: "loginbg")
         view.sendSubviewToBack(backgroundImageView)
+    }
+    
+    @IBAction func musicVolume(_ sender: Any) {
+        music = musicSlider.value
+        musicPlayer.volume = music
+    }
+    
+    @IBAction func soundVolume(_ sender: Any) {
+        sound = soundSlider.value
     }
     
     /*
