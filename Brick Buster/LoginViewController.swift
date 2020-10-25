@@ -14,6 +14,7 @@ class LoginViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        overrideUserInterfaceStyle = .dark
         setBackground()
         // Do any additional setup after loading the view.
     }

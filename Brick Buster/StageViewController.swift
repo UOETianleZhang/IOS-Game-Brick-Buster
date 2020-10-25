@@ -18,6 +18,7 @@ class StageViewController: UIViewController, UICollectionViewDelegate, UICollect
     override func viewDidLoad() {
         super.viewDidLoad()
         setBackground()
+        overrideUserInterfaceStyle = .dark
         progressLabel.text = "\(progress)/9 🏆"
         let layout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
