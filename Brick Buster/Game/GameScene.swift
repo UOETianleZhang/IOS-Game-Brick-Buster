@@ -24,6 +24,7 @@ class GameScene: SKScene {
     private var brickHeight = 20
     private var ballRadius = 5
     private var map: [[Int]]?
+    var isFingerOnPaddle = false
     private var gameWon : Bool = false {
       didSet {
         let gameOver = childNode(withName: GameMessageName) as! SKSpriteNode
@@ -70,6 +71,14 @@ class GameScene: SKScene {
         ball.setShape(radius: self.ballRadius)
         ball.position = position
         
+        //animation
+        let fireNode = SKNode()
+        fireNode.zPosition = 1
+        addChild(fireNode)
+        let fire = SKEmitterNode(fileNamed: "Fire")!
+        fire.targetNode = fireNode
+        ball.addChild(fire)
+        
         //append ball
         balls.append(ball)
         addChild(ball)
@@ -77,6 +86,12 @@ class GameScene: SKScene {
     }
     
     private func createContent() {
+        let background = SKSpriteNode(imageNamed: "bg1")
+        background.zPosition = -1
+        background.position = CGPoint(x: self.size.width / 2, y: self.size.height / 2)
+        background.size = CGSize(width: self.size.width, height: self.size.height)
+        addChild(background)
+        
         //create ground
         let ground = SKSpriteNode(color: .gray, size: CGSize(width: size.width, height: size.height/10))
         ground.position = CGPoint(x: size.width / 2, y: 0)
@@ -221,7 +236,7 @@ extension GameScene {
         if brick.physicsBody?.categoryBitMask == BitMask.Brick {
             if brick.hitRemaining == 0{
                 if !(gameState.currentState is GameOver){
-                    brick.removeFromParent()
+                    self.breakBlock(node: brick)
                     self.remainingBrickNum -= 1
                     if self.remainingBrickNum == 0{
                         gameState.enter(GameOver.self)
@@ -249,6 +264,17 @@ extension GameScene {
             addChild(prop)
         }
     }
+    
+    private func breakBlock(node: SKNode) {
+        let particles = SKEmitterNode(fileNamed: "Break Block")!
+        particles.position = node.position
+        particles.zPosition = 3
+        addChild(particles)
+        particles.run(SKAction.sequence([SKAction.wait(forDuration: 1.0),
+          SKAction.removeFromParent()]))
+        node.removeFromParent()
+      }
+
     
     private func ballHitGround(_ node: SKNode?) {
         guard let ball = node as? Ball else { return }
@@ -295,7 +321,39 @@ extension GameScene {
             default:
                 break
         }
+        isFingerOnPaddle = false
     }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+      let touch = touches.first
+      let touchLocation = touch!.location(in: self)
+        
+      if let body = physicsWorld.body(at: touchLocation) {
+        if body.node!.name == Paddle.name {
+          isFingerOnPaddle = true
+        }
+      }
+    }
+    
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+      if isFingerOnPaddle {
+        let touch = touches.first
+        let touchLocation = touch!.location(in: self)
+        let previousLocation = touch!.previousLocation(in: self)
+        let paddle = childNode(withName: Paddle.name) as! SKSpriteNode
+        var paddleX = paddle.position.x + (touchLocation.x - previousLocation.x)
+        paddleX = max(paddleX, paddle.size.width/2)
+        paddleX = min(paddleX, size.width - paddle.size.width/2)
+        paddle.position = CGPoint(x: paddleX, y: paddle.position.y)
+      }
+    }
+    
+//    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+//        if !(gameState.currentState is WaitingForStart) {
+//            guard let location = touches.first?.location(in: self) else { return }
+//            paddle?.position = CGPoint(x: location.x, y: (paddle?.position.y)!)
+//        }
+//    }
 }
 
 extension GameScene {

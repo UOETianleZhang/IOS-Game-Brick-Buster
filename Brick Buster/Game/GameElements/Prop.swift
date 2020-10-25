@@ -11,8 +11,8 @@ import Foundation
 import SpriteKit
 
 class Prop: SKSpriteNode {
-    var width = 30
-    var height = 30
+    var width = 15
+    var height = 15
     
     init(position: CGPoint, img:UIImage) {
         super.init(texture: SKTexture(image: img) ,color: .clear, size: CGSize(width: width, height: height))

@@ -30,6 +30,9 @@
 		A0C403EA2539F88F00DD4C85 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C403E92539F88F00DD4C85 /* LoginViewController.swift */; };
 		A0C403EC2539FD0F00DD4C85 /* StoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C403EB2539FD0F00DD4C85 /* StoreViewController.swift */; };
 		EB84F7A72540CF6800321F6D /* Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB84F7A62540CF6800321F6D /* Tools.swift */; };
+		EB84F7C525460C5D00321F6D /* Break Block.sks in Resources */ = {isa = PBXBuildFile; fileRef = EB84F7C325460C5D00321F6D /* Break Block.sks */; };
+		EB84F7C625460C5D00321F6D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB84F7C425460C5D00321F6D /* Assets.xcassets */; };
+		EB84F7CE25460EBC00321F6D /* Fire.sks in Resources */ = {isa = PBXBuildFile; fileRef = EB84F7CD25460EBC00321F6D /* Fire.sks */; };
 		EBF3AC2A253CE61D0006C931 /* Prop.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF3AC29253CE61D0006C931 /* Prop.swift */; };
 /* End PBXBuildFile section */
 
@@ -80,6 +83,9 @@
 		A0C403E92539F88F00DD4C85 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		A0C403EB2539FD0F00DD4C85 /* StoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreViewController.swift; sourceTree = "<group>"; };
 		EB84F7A62540CF6800321F6D /* Tools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tools.swift; sourceTree = "<group>"; };
+		EB84F7C325460C5D00321F6D /* Break Block.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = "Break Block.sks"; sourceTree = "<group>"; };
+		EB84F7C425460C5D00321F6D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		EB84F7CD25460EBC00321F6D /* Fire.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Fire.sks; sourceTree = "<group>"; };
 		EBF3AC29253CE61D0006C931 /* Prop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Prop.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -111,6 +117,7 @@
 		0F6EE5BA253A22FF00883121 /* Game */ = {
 			isa = PBXGroup;
 			children = (
+				EB84F7AE25460AAD00321F6D /* SKS */,
 				EB84F7A52540CF5500321F6D /* Tools */,
 				0FC76493254087BD0020B4B8 /* GameStates */,
 				0F7811FD253CBF3E006E96CE /* GameElements */,
@@ -206,6 +213,16 @@
 				EB84F7A62540CF6800321F6D /* Tools.swift */,
 			);
 			path = Tools;
+			sourceTree = "<group>";
+		};
+		EB84F7AE25460AAD00321F6D /* SKS */ = {
+			isa = PBXGroup;
+			children = (
+				EB84F7C325460C5D00321F6D /* Break Block.sks */,
+				EB84F7C425460C5D00321F6D /* Assets.xcassets */,
+				EB84F7CD25460EBC00321F6D /* Fire.sks */,
+			);
+			path = SKS;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -313,10 +330,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				A0C403BD253968C300DD4C85 /* Main.storyboard in Resources */,
+				EB84F7C525460C5D00321F6D /* Break Block.sks in Resources */,
 				A0C403B4253968C300DD4C85 /* GameScene.sks in Resources */,
 				A0C403BF253968CA00DD4C85 /* Assets.xcassets in Resources */,
+				EB84F7C625460C5D00321F6D /* Assets.xcassets in Resources */,
 				A0C403C2253968CA00DD4C85 /* LaunchScreen.storyboard in Resources */,
 				A0C403B6253968C300DD4C85 /* Actions.sks in Resources */,
+				EB84F7CE25460EBC00321F6D /* Fire.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -16,6 +16,7 @@ class Paddle: SKSpriteNode {
     static let img = #imageLiteral(resourceName: "paddle")
     let width : Int = 70
     let height : Int = 20
+    static let name = "paddle"
     
     override private init(texture: SKTexture?, color: UIColor, size: CGSize) {
         super.init(texture: texture, color: color, size: CGSize(width: width, height: height))
@@ -34,6 +35,7 @@ class Paddle: SKSpriteNode {
     }
     
     private func initObject() {
+        self.name = Paddle.name
         self.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: self.width, height: self.height))
         self.physicsBody?.categoryBitMask = BitMask.Paddle
         self.physicsBody?.contactTestBitMask = BitMask.Ball
