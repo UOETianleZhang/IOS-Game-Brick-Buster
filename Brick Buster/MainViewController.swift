@@ -13,6 +13,9 @@ enum equipment {
     case bat
 }
 
+var coins: Int64 = 0
+var progress: Int64 = 0
+
 class MainViewController: UIViewController {
     
     let backgroundImageView = UIImageView()

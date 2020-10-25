@@ -30,6 +30,8 @@
 		A0E762312544CF4700CDDE29 /* RedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E762302544CF4700CDDE29 /* RedButton.swift */; };
 		A0E762332544D1A000CDDE29 /* RankViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E762322544D1A000CDDE29 /* RankViewController.swift */; };
 		A0E762352544D45600CDDE29 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E762342544D45600CDDE29 /* SettingViewController.swift */; };
+		A0E7623825451B2600CDDE29 /* StageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E7623625451B2600CDDE29 /* StageCollectionViewCell.swift */; };
+		A0E7623925451B2600CDDE29 /* StageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A0E7623725451B2600CDDE29 /* StageCollectionViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +81,8 @@
 		A0E762302544CF4700CDDE29 /* RedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedButton.swift; sourceTree = "<group>"; };
 		A0E762322544D1A000CDDE29 /* RankViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankViewController.swift; sourceTree = "<group>"; };
 		A0E762342544D45600CDDE29 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		A0E7623625451B2600CDDE29 /* StageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StageCollectionViewCell.swift; sourceTree = "<group>"; };
+		A0E7623725451B2600CDDE29 /* StageCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StageCollectionViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,6 +155,8 @@
 				A0E7622C2544C2B800CDDE29 /* RankButton.swift */,
 				A0E7622E2544CB9D00CDDE29 /* SettingButton.swift */,
 				A0E762302544CF4700CDDE29 /* RedButton.swift */,
+				A0E7623625451B2600CDDE29 /* StageCollectionViewCell.swift */,
+				A0E7623725451B2600CDDE29 /* StageCollectionViewCell.xib */,
 			);
 			path = "Brick Buster";
 			sourceTree = "<group>";
@@ -282,6 +288,7 @@
 				A0C403BF253968CA00DD4C85 /* Assets.xcassets in Resources */,
 				A0C403C2253968CA00DD4C85 /* LaunchScreen.storyboard in Resources */,
 				A0C403B6253968C300DD4C85 /* Actions.sks in Resources */,
+				A0E7623925451B2600CDDE29 /* StageCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -310,6 +317,7 @@
 				A0C403EA2539F88F00DD4C85 /* LoginViewController.swift in Sources */,
 				A0E7622B2544BECA00CDDE29 /* GreenButton.swift in Sources */,
 				A0E762352544D45600CDDE29 /* SettingViewController.swift in Sources */,
+				A0E7623825451B2600CDDE29 /* StageCollectionViewCell.swift in Sources */,
 				A0E7622D2544C2B800CDDE29 /* RankButton.swift in Sources */,
 				A0E7622F2544CB9D00CDDE29 /* SettingButton.swift in Sources */,
 				A0E762332544D1A000CDDE29 /* RankViewController.swift in Sources */,

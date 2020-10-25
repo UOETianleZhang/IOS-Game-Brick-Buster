@@ -8,13 +8,25 @@
 
 import UIKit
 
-class StageViewController: UIViewController {
+class StageViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+
+    @IBOutlet weak var progressLabel: UILabel!
+    @IBOutlet var collectionView: UICollectionView!
     
     let backgroundImageView = UIImageView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setBackground()
+        progressLabel.text = "\(progress)/9 🏆"
+        let layout = UICollectionViewFlowLayout()
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
+        layout.minimumInteritemSpacing = 5
+        layout.itemSize = CGSize(width: (self.collectionView.frame.size.width-40)/4, height: (self.collectionView.frame.size.width-40)/4)
+        collectionView.collectionViewLayout = layout
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        collectionView.register(StageCollectionViewCell.nib(), forCellWithReuseIdentifier: "StageCollectionViewCell")
         // Do any additional setup after loading the view.
     }
     
@@ -51,14 +63,29 @@ class StageViewController: UIViewController {
         view.sendSubviewToBack(backgroundImageView)
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let cell = collectionView.cellForItem(at: indexPath)!
+        stage = Int64(indexPath.item+1)
+        cell.layer.borderColor = Colors.tropicGreen.cgColor
+        cell.layer.borderWidth = 3
     }
-    */
+    
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        let cell = collectionView.cellForItem(at: indexPath)
+        cell?.layer.borderColor = Colors.tropicGreen.cgColor
+        cell?.layer.borderWidth = 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 9
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "StageCollectionViewCell", for: indexPath) as! StageCollectionViewCell
+        cell.configure(with: UIImage(named: "\(indexPath.item+1)_square")!)
+        cell.layer.borderColor = Colors.tropicGreen.cgColor
+        cell.layer.borderWidth = 0
+        return cell
+    }
 
 }
