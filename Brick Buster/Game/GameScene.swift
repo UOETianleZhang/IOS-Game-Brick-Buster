@@ -13,6 +13,7 @@ let GameMessageName = "gameMessage"
 
 class GameScene: SKScene {
     var contentCreated = false
+    var gameViewController:GameViewController?
     lazy var gameState: GKStateMachine = GKStateMachine(states: [
       WaitingForStart(scene: self), PlayingGame(scene: self), GameOver(scene: self)])
     private var remainingBrickNum = 0
@@ -54,6 +55,15 @@ class GameScene: SKScene {
         physicsWorld.contactDelegate = self
     }
     
+    init(size: CGSize, map: [[Int]], gameViewController: GameViewController){
+        super.init(size: size)
+        
+        self.map = map;
+        self.gameViewController = gameViewController
+        physicsWorld.gravity = CGVector(dx: 0, dy: 0)
+        physicsWorld.contactDelegate = self
+    }
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -75,8 +85,8 @@ class GameScene: SKScene {
         let fireNode = SKNode()
         fireNode.zPosition = 1
         addChild(fireNode)
-        //let fire = SKEmitterNode(fileNamed: "Fire")!
-        let fire = SKEmitterNode(fileNamed: "BallTrail")!
+        let fire = SKEmitterNode(fileNamed: "Fire")!
+        //let fire = SKEmitterNode(fileNamed: "BallTrail")!
         fire.targetNode = fireNode
         ball.addChild(fire)
         
@@ -98,9 +108,9 @@ class GameScene: SKScene {
         ground.position = CGPoint(x: size.width / 2, y: 0)
         ground.physicsBody = SKPhysicsBody(rectangleOf: ground.size)
         ground.physicsBody?.isDynamic = false
-        ground.physicsBody?.collisionBitMask = BitMask.Ball
+        ground.physicsBody?.collisionBitMask = BitMask.Ball | BitMask.Prop
         ground.physicsBody?.categoryBitMask = BitMask.Ground
-        ground.physicsBody?.contactTestBitMask = BitMask.Ball
+        ground.physicsBody?.contactTestBitMask = BitMask.Ball | BitMask.Prop
         ground.physicsBody?.restitution = 1.0
         ground.physicsBody?.friction = 0.0
         addChild(ground)
@@ -222,6 +232,11 @@ extension GameScene: SKPhysicsContactDelegate {
             paddleHitProp(paddle: firstBody.node, prop: secondBody.node)
         }
         
+        // prop hits ground
+        if (firstBody.categoryBitMask == BitMask.Ground) && (secondBody.categoryBitMask == BitMask.Prop) {
+            propHitGround(secondBody.node)
+        }
+        
     }
 
 //    func didEnd(_ contact: SKPhysicsContact) {
@@ -274,7 +289,7 @@ extension GameScene {
         particles.run(SKAction.sequence([SKAction.wait(forDuration: 1.0),
           SKAction.removeFromParent()]))
         node.removeFromParent()
-      }
+    }
 
     
     private func ballHitGround(_ node: SKNode?) {
@@ -289,6 +304,14 @@ extension GameScene {
                     gameWon = false
                 }
             }
+        }
+    }
+    
+    private func propHitGround(_ node: SKNode?) {
+        guard let prop = node as? Prop else { return }
+        
+        if prop.physicsBody?.categoryBitMask == BitMask.Prop {
+            prop.removeFromParent()
         }
     }
     

@@ -18,13 +18,16 @@ class GameViewController: UIViewController {
     var scene:GameScene?
     var moveRightTimer : Timer?
     var moveLeftTimer : Timer?
+    var extraLife: Int?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.extraLife = 1
 
         if let view = self.view as! SKView? {
 
-            self.scene = GameScene(size: view.frame.size, map: map1)
+            self.scene = GameScene(size: view.frame.size, map: map1, gameViewController: self)
             self.scene!.scaleMode = .aspectFill
             view.presentScene(scene)
             view.ignoresSiblingOrder = true

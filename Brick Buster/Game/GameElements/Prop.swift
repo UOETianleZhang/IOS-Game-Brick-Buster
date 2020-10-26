@@ -27,8 +27,8 @@ class Prop: SKSpriteNode {
     private func initObject() {
         self.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: self.width, height: self.height))
         self.physicsBody?.categoryBitMask = BitMask.Prop
-        self.physicsBody?.contactTestBitMask = BitMask.Paddle
-        self.physicsBody?.collisionBitMask = BitMask.Paddle
+        self.physicsBody?.contactTestBitMask = BitMask.Paddle | BitMask.Ground
+        self.physicsBody?.collisionBitMask = BitMask.Paddle | BitMask.Ground
         self.physicsBody?.linearDamping = 0
         self.physicsBody?.restitution = 1.0
         self.physicsBody?.isDynamic = true

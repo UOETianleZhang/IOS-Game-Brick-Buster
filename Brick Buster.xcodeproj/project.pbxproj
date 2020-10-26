@@ -7,12 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0F0AACD825470E2D00C88FC2 /* BallTrail.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0F0AACD725470E2D00C88FC2 /* BallTrail.sks */; };
 		0F5D1E94253CC90E00D35998 /* Paddle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5D1E93253CC90D00D35998 /* Paddle.swift */; };
 		0F5D1E99253CD09D00D35998 /* Maps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5D1E98253CD09D00D35998 /* Maps.swift */; };
 		0F6EE5BF253A239500883121 /* Defination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F6EE5BE253A239500883121 /* Defination.swift */; };
 		0F6EE5C4253A23AF00883121 /* Ball.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F6EE5C3253A23AF00883121 /* Ball.swift */; };
 		0F7811F9253A2B3F006E96CE /* Brick.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7811F8253A2B3F006E96CE /* Brick.swift */; };
+		0FA25F9F25472C010082FDBC /* Fire.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0FA25F9E25472C010082FDBC /* Fire.sks */; };
 		0FC76495254087D70020B4B8 /* WaitingForGameStart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FC76494254087D70020B4B8 /* WaitingForGameStart.swift */; };
 		0FC7649A254088440020B4B8 /* PlayingGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FC76499254088440020B4B8 /* PlayingGame.swift */; };
 		0FC7649F254088800020B4B8 /* GameOver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FC7649E254088800020B4B8 /* GameOver.swift */; };
@@ -54,12 +54,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0F0AACD725470E2D00C88FC2 /* BallTrail.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = BallTrail.sks; sourceTree = "<group>"; };
 		0F5D1E93253CC90D00D35998 /* Paddle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Paddle.swift; sourceTree = "<group>"; };
 		0F5D1E98253CD09D00D35998 /* Maps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Maps.swift; sourceTree = "<group>"; };
 		0F6EE5BE253A239500883121 /* Defination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Defination.swift; sourceTree = "<group>"; };
 		0F6EE5C3253A23AF00883121 /* Ball.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ball.swift; sourceTree = "<group>"; };
 		0F7811F8253A2B3F006E96CE /* Brick.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Brick.swift; sourceTree = "<group>"; };
+		0FA25F9E25472C010082FDBC /* Fire.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Fire.sks; sourceTree = "<group>"; };
 		0FC76494254087D70020B4B8 /* WaitingForGameStart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaitingForGameStart.swift; sourceTree = "<group>"; };
 		0FC76499254088440020B4B8 /* PlayingGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayingGame.swift; sourceTree = "<group>"; };
 		0FC7649E254088800020B4B8 /* GameOver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOver.swift; sourceTree = "<group>"; };
@@ -218,7 +218,7 @@
 		EB84F7AE25460AAD00321F6D /* SKS */ = {
 			isa = PBXGroup;
 			children = (
-				0F0AACD725470E2D00C88FC2 /* BallTrail.sks */,
+				0FA25F9E25472C010082FDBC /* Fire.sks */,
 				EB84F7C325460C5D00321F6D /* Break Block.sks */,
 				EB84F7C425460C5D00321F6D /* Assets.xcassets */,
 			);
@@ -329,10 +329,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0FA25F9F25472C010082FDBC /* Fire.sks in Resources */,
 				A0C403BD253968C300DD4C85 /* Main.storyboard in Resources */,
 				EB84F7C525460C5D00321F6D /* Break Block.sks in Resources */,
 				A0C403B4253968C300DD4C85 /* GameScene.sks in Resources */,
-				0F0AACD825470E2D00C88FC2 /* BallTrail.sks in Resources */,
 				A0C403BF253968CA00DD4C85 /* Assets.xcassets in Resources */,
 				EB84F7C625460C5D00321F6D /* Assets.xcassets in Resources */,
 				A0C403C2253968CA00DD4C85 /* LaunchScreen.storyboard in Resources */,
