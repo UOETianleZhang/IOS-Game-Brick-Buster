@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0F5D1E94253CC90E00D35998 /* Paddle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5D1E93253CC90D00D35998 /* Paddle.swift */; };
+		0F5D1E99253CD09D00D35998 /* Maps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5D1E98253CD09D00D35998 /* Maps.swift */; };
+		0F6EE5BF253A239500883121 /* Defination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F6EE5BE253A239500883121 /* Defination.swift */; };
+		0F6EE5C4253A23AF00883121 /* Ball.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F6EE5C3253A23AF00883121 /* Ball.swift */; };
+		0F7811F9253A2B3F006E96CE /* Brick.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7811F8253A2B3F006E96CE /* Brick.swift */; };
+		0FA25F9F25472C010082FDBC /* Fire.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0FA25F9E25472C010082FDBC /* Fire.sks */; };
+		0FC76495254087D70020B4B8 /* WaitingForGameStart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FC76494254087D70020B4B8 /* WaitingForGameStart.swift */; };
+		0FC7649A254088440020B4B8 /* PlayingGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FC76499254088440020B4B8 /* PlayingGame.swift */; };
+		0FC7649F254088800020B4B8 /* GameOver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FC7649E254088800020B4B8 /* GameOver.swift */; };
 		A0C403B2253968C300DD4C85 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C403B1253968C300DD4C85 /* AppDelegate.swift */; };
 		A0C403B4253968C300DD4C85 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = A0C403B3253968C300DD4C85 /* GameScene.sks */; };
 		A0C403B6253968C300DD4C85 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = A0C403B5253968C300DD4C85 /* Actions.sks */; };
@@ -34,6 +43,10 @@
 		A0E7623925451B2600CDDE29 /* StageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A0E7623725451B2600CDDE29 /* StageCollectionViewCell.xib */; };
 		A0E7623B2545395B00CDDE29 /* btn_click_sound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A0E7623A2545395B00CDDE29 /* btn_click_sound.mp3 */; };
 		A0E7623F25454AEC00CDDE29 /* Astronomia.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A0E7623E25454AEB00CDDE29 /* Astronomia.mp3 */; };
+		EB84F7A72540CF6800321F6D /* Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB84F7A62540CF6800321F6D /* Tools.swift */; };
+		EB84F7C525460C5D00321F6D /* Break Block.sks in Resources */ = {isa = PBXBuildFile; fileRef = EB84F7C325460C5D00321F6D /* Break Block.sks */; };
+		EB84F7C625460C5D00321F6D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB84F7C425460C5D00321F6D /* Assets.xcassets */; };
+		EBF3AC2A253CE61D0006C931 /* Prop.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF3AC29253CE61D0006C931 /* Prop.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +67,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0F5D1E93253CC90D00D35998 /* Paddle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Paddle.swift; sourceTree = "<group>"; };
+		0F5D1E98253CD09D00D35998 /* Maps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Maps.swift; sourceTree = "<group>"; };
+		0F6EE5BE253A239500883121 /* Defination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Defination.swift; sourceTree = "<group>"; };
+		0F6EE5C3253A23AF00883121 /* Ball.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ball.swift; sourceTree = "<group>"; };
+		0F7811F8253A2B3F006E96CE /* Brick.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Brick.swift; sourceTree = "<group>"; };
+		0FA25F9E25472C010082FDBC /* Fire.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Fire.sks; sourceTree = "<group>"; };
+		0FC76494254087D70020B4B8 /* WaitingForGameStart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaitingForGameStart.swift; sourceTree = "<group>"; };
+		0FC76499254088440020B4B8 /* PlayingGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayingGame.swift; sourceTree = "<group>"; };
+		0FC7649E254088800020B4B8 /* GameOver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOver.swift; sourceTree = "<group>"; };
 		A0C403AE253968C300DD4C85 /* Brick Buster.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Brick Buster.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0C403B1253968C300DD4C85 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A0C403B3253968C300DD4C85 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -87,6 +109,10 @@
 		A0E7623725451B2600CDDE29 /* StageCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StageCollectionViewCell.xib; sourceTree = "<group>"; };
 		A0E7623A2545395B00CDDE29 /* btn_click_sound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = btn_click_sound.mp3; sourceTree = "<group>"; };
 		A0E7623E25454AEB00CDDE29 /* Astronomia.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Astronomia.mp3; sourceTree = "<group>"; };
+		EB84F7A62540CF6800321F6D /* Tools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tools.swift; sourceTree = "<group>"; };
+		EB84F7C325460C5D00321F6D /* Break Block.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = "Break Block.sks"; sourceTree = "<group>"; };
+		EB84F7C425460C5D00321F6D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		EBF3AC29253CE61D0006C931 /* Prop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Prop.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +140,42 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0F6EE5BA253A22FF00883121 /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				EB84F7AE25460AAD00321F6D /* SKS */,
+				EB84F7A52540CF5500321F6D /* Tools */,
+				0FC76493254087BD0020B4B8 /* GameStates */,
+				0F7811FD253CBF3E006E96CE /* GameElements */,
+				A0C403B9253968C300DD4C85 /* GameViewController.swift */,
+				A0C403B7253968C300DD4C85 /* GameScene.swift */,
+			);
+			path = Game;
+			sourceTree = "<group>";
+		};
+		0F7811FD253CBF3E006E96CE /* GameElements */ = {
+			isa = PBXGroup;
+			children = (
+				0F6EE5BE253A239500883121 /* Defination.swift */,
+				0F6EE5C3253A23AF00883121 /* Ball.swift */,
+				0F7811F8253A2B3F006E96CE /* Brick.swift */,
+				0F5D1E93253CC90D00D35998 /* Paddle.swift */,
+				0F5D1E98253CD09D00D35998 /* Maps.swift */,
+				EBF3AC29253CE61D0006C931 /* Prop.swift */,
+			);
+			path = GameElements;
+			sourceTree = "<group>";
+		};
+		0FC76493254087BD0020B4B8 /* GameStates */ = {
+			isa = PBXGroup;
+			children = (
+				0FC76494254087D70020B4B8 /* WaitingForGameStart.swift */,
+				0FC76499254088440020B4B8 /* PlayingGame.swift */,
+				0FC7649E254088800020B4B8 /* GameOver.swift */,
+			);
+			path = GameStates;
+			sourceTree = "<group>";
+		};
 		A0C403A5253968C200DD4C85 = {
 			isa = PBXGroup;
 			children = (
@@ -139,11 +201,10 @@
 			children = (
 				A0E7623E25454AEB00CDDE29 /* Astronomia.mp3 */,
 				A0E7623A2545395B00CDDE29 /* btn_click_sound.mp3 */,
+				0F6EE5BA253A22FF00883121 /* Game */,
 				A0C403B1253968C300DD4C85 /* AppDelegate.swift */,
 				A0C403B3253968C300DD4C85 /* GameScene.sks */,
 				A0C403B5253968C300DD4C85 /* Actions.sks */,
-				A0C403B7253968C300DD4C85 /* GameScene.swift */,
-				A0C403B9253968C300DD4C85 /* GameViewController.swift */,
 				A0C403BB253968C300DD4C85 /* Main.storyboard */,
 				A0C403BE253968CA00DD4C85 /* Assets.xcassets */,
 				A0C403C0253968CA00DD4C85 /* LaunchScreen.storyboard */,
@@ -183,6 +244,24 @@
 				A0C403D9253968CA00DD4C85 /* Info.plist */,
 			);
 			path = "Brick BusterUITests";
+			sourceTree = "<group>";
+		};
+		EB84F7A52540CF5500321F6D /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				EB84F7A62540CF6800321F6D /* Tools.swift */,
+			);
+			path = Tools;
+			sourceTree = "<group>";
+		};
+		EB84F7AE25460AAD00321F6D /* SKS */ = {
+			isa = PBXGroup;
+			children = (
+				0FA25F9E25472C010082FDBC /* Fire.sks */,
+				EB84F7C325460C5D00321F6D /* Break Block.sks */,
+				EB84F7C425460C5D00321F6D /* Assets.xcassets */,
+			);
+			path = SKS;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -289,11 +368,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0FA25F9F25472C010082FDBC /* Fire.sks in Resources */,
 				A0C403BD253968C300DD4C85 /* Main.storyboard in Resources */,
 				A0E7623F25454AEC00CDDE29 /* Astronomia.mp3 in Resources */,
 				A0C403B4253968C300DD4C85 /* GameScene.sks in Resources */,
 				A0C403BF253968CA00DD4C85 /* Assets.xcassets in Resources */,
 				A0E7623B2545395B00CDDE29 /* btn_click_sound.mp3 in Resources */,
+				EB84F7C525460C5D00321F6D /* Break Block.sks in Resources */,
+				A0C403B4253968C300DD4C85 /* GameScene.sks in Resources */,
+				A0C403BF253968CA00DD4C85 /* Assets.xcassets in Resources */,
+				EB84F7C625460C5D00321F6D /* Assets.xcassets in Resources */,
 				A0C403C2253968CA00DD4C85 /* LaunchScreen.storyboard in Resources */,
 				A0C403B6253968C300DD4C85 /* Actions.sks in Resources */,
 				A0E7623925451B2600CDDE29 /* StageCollectionViewCell.xib in Resources */,
@@ -330,14 +414,24 @@
 				A0E7622F2544CB9D00CDDE29 /* SettingButton.swift in Sources */,
 				A0E762332544D1A000CDDE29 /* RankViewController.swift in Sources */,
 				A0E762252543F2D000CDDE29 /* BlueButton.swift in Sources */,
+				0F5D1E94253CC90E00D35998 /* Paddle.swift in Sources */,
+				0F5D1E99253CD09D00D35998 /* Maps.swift in Sources */,
+				EBF3AC2A253CE61D0006C931 /* Prop.swift in Sources */,
+				0F7811F9253A2B3F006E96CE /* Brick.swift in Sources */,
 				A0C403B8253968C300DD4C85 /* GameScene.swift in Sources */,
 				A0E762312544CF4700CDDE29 /* RedButton.swift in Sources */,
 				A0C403BA253968C300DD4C85 /* GameViewController.swift in Sources */,
+				0FC7649A254088440020B4B8 /* PlayingGame.swift in Sources */,
+				EB84F7A72540CF6800321F6D /* Tools.swift in Sources */,
 				A0C403E82539734900DD4C85 /* StageViewController.swift in Sources */,
+				0FC76495254087D70020B4B8 /* WaitingForGameStart.swift in Sources */,
+				0F6EE5BF253A239500883121 /* Defination.swift in Sources */,
 				A0C403B2253968C300DD4C85 /* AppDelegate.swift in Sources */,
+				0F6EE5C4253A23AF00883121 /* Ball.swift in Sources */,
 				A0C403E625396F4B00DD4C85 /* MainViewController.swift in Sources */,
 				A0E762292543FA1100CDDE29 /* LoginText.swift in Sources */,
 				A0C403EC2539FD0F00DD4C85 /* StoreViewController.swift in Sources */,
+				0FC7649F254088800020B4B8 /* GameOver.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
