@@ -75,7 +75,8 @@ class GameScene: SKScene {
         let fireNode = SKNode()
         fireNode.zPosition = 1
         addChild(fireNode)
-        let fire = SKEmitterNode(fileNamed: "Fire")!
+        //let fire = SKEmitterNode(fileNamed: "Fire")!
+        let fire = SKEmitterNode(fileNamed: "BallTrail")!
         fire.targetNode = fireNode
         ball.addChild(fire)
         
@@ -146,7 +147,7 @@ class GameScene: SKScene {
         let bricksHeightNum = self.map!.count
         let bricksWidthNum = self.map![0].count
         
-        let leftBoarder = 20
+        let leftBoarder = 50
         let rightBoarder = 20
         let upBoarder = 20
         let downBoarder = 100

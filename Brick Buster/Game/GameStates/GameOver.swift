@@ -21,7 +21,7 @@ class GameOver: GKState {
     if previousState is PlayingGame {
 //      let ball = scene.childNode(withName: BallCategoryName) as! SKSpriteNode
 //      ball.physicsBody!.linearDamping = 1.0
-      scene.physicsWorld.gravity = CGVector(dx: 0, dy: -9.8)
+      scene.physicsWorld.gravity = CGVector(dx: 0, dy: 0)
     }
   }
   
