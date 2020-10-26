@@ -10,6 +10,10 @@ import SpriteKit
 import GameplayKit
 
 let GameMessageName = "gameMessage"
+let exitButtonName = "exitButton"
+let exitImageName = "exitButton"
+let restartButtonName = "restartButton"
+let restartImageName = "restartButton"
 
 class GameScene: SKScene {
     var contentCreated = false
@@ -143,6 +147,20 @@ class GameScene: SKScene {
         gameMessage.position = CGPoint(x: frame.midX, y: frame.midY)
         gameMessage.setScale(0.0)
         addChild(gameMessage)
+        
+        //create exit button
+        let exitButton = SKSpriteNode(imageNamed: exitImageName)
+        exitButton.name = exitButtonName
+        exitButton.position = CGPoint(x: frame.midX, y: frame.midY - 50)
+        exitButton.setScale(0.0)
+        addChild(exitButton)
+        
+        //create restart button
+        let restartButton = SKSpriteNode(imageNamed: restartImageName)
+        restartButton.name = restartButtonName
+        restartButton.position = CGPoint(x: frame.midX, y: frame.midY - 70)
+        restartButton.setScale(0.0)
+        addChild(restartButton)
         
         gameState.enter(WaitingForStart.self)
     }
@@ -370,6 +388,15 @@ extension GameScene {
           isFingerOnPaddle = true
         }
       }
+        
+        for node in self.nodes(at: touchLocation){
+            if(node.name == exitButtonName){
+                print(node.name)
+            }
+            if(node.name == restartButtonName){
+                print(node.name)
+            }
+        }
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -415,5 +442,12 @@ extension GameScene {
         let ball = createBall(position: CGPoint(x: Int(xPosition), y: Int(yPosition)))
         self.remainingBallNum += 1
         ball.shotWithFixedSpeed(angle: 30)
+    }
+    
+    func isRemainingLife() -> Bool{
+        if (self.gameViewController?.extraLife)! > 0 {
+            return true
+        }
+        return false
     }
 }

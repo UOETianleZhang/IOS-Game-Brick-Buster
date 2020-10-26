@@ -11,7 +11,7 @@ import GameplayKit
 
 class PlayingGame: GKState {
   unowned let scene: GameScene
-  
+    
   init(scene: SKScene) {
     self.scene = scene as! GameScene
     super.init()
