@@ -19,11 +19,13 @@ class GameViewController: UIViewController {
     var moveRightTimer : Timer?
     var moveLeftTimer : Timer?
     var extraLife: Int?
+    var coins: Int?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.extraLife = 1
+        self.coins = 0
 
         if let view = self.view as! SKView? {
 

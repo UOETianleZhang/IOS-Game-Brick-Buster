@@ -76,6 +76,7 @@ class ThreeBallsProp : Prop {
         gameScene.createBall(position: pos).shotWithFixedSpeed(angle: 45)
         gameScene.createBall(position: pos).shotWithFixedSpeed(angle: 90)
         gameScene.createBall(position: pos).shotWithFixedSpeed(angle: 135)
+        gameScene.addRemainingBallNum(num: 2)
     }
 }
 

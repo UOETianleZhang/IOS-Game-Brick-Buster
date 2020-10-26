@@ -35,7 +35,6 @@ class GameScene: SKScene {
           SKAction.scale(to: 1.0, duration: 0.25)])
         
         gameOver.run(actionSequence)
-        //run(gameWon ? gameWonSound : gameOverSound)
       }
     }
     
@@ -86,7 +85,6 @@ class GameScene: SKScene {
         fireNode.zPosition = 1
         addChild(fireNode)
         let fire = SKEmitterNode(fileNamed: "Fire")!
-        //let fire = SKEmitterNode(fileNamed: "BallTrail")!
         fire.targetNode = fireNode
         ball.addChild(fire)
         
@@ -297,13 +295,14 @@ extension GameScene {
         
         if ball.physicsBody?.categoryBitMask == BitMask.Ball {
             if !(gameState.currentState is GameOver){
-                ball.removeFromParent()
                 self.remainingBallNum -= 1
                 if self.remainingBallNum == 0{
+                    ball.removeFromParent()
                     gameState.enter(GameOver.self)
                     gameWon = false
                 }
             }
+            ball.removeFromParent()
         }
     }
     
@@ -334,6 +333,10 @@ extension GameScene {
             }
         }
     }
+    
+    func addRemainingBallNum(num: Int){
+        self.remainingBallNum += num
+    }
 }
 
 extension GameScene {
@@ -342,6 +345,13 @@ extension GameScene {
             case is WaitingForStart:
                 gameState.enter(PlayingGame.self)
                 shot()
+            case is GameOver:
+                if self.gameViewController?.extraLife != 0 {
+                    self.restartGame()
+                    gameState.enter(PlayingGame.self)
+                }else{
+                    print("no extra life")
+                }
             default:
                 break
         }
@@ -391,5 +401,16 @@ extension GameScene {
         if paddle!.position.x - CGFloat(paddle!.width)/2.0 > 20{
             paddle?.position = CGPoint(x: (paddle?.position.x)! - 10, y: (paddle?.position.y)!)
         }
+    }
+}
+
+extension GameScene {
+    private func restartGame(){
+        self.gameViewController?.extraLife! -= 1
+        let xPosition = Float((self.paddle?.position.x)!)
+        let yPosition = Float((self.paddle?.position.y)!) + Float(self.paddle!.height)/2
+        let ball = createBall(position: CGPoint(x: Int(xPosition), y: Int(yPosition)))
+        self.remainingBallNum += 1
+        ball.shotWithFixedSpeed(angle: 30)
     }
 }

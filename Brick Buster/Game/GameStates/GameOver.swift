@@ -24,9 +24,16 @@ class GameOver: GKState {
       scene.physicsWorld.gravity = CGVector(dx: 0, dy: 0)
     }
   }
+    
+    override func willExit(to nextState: GKState) {
+      if nextState is PlayingGame {
+          let scale = SKAction.scale(to: 0, duration: 0.4)
+          scene.childNode(withName: GameMessageName)!.run(scale)
+      }
+    }
   
   override func isValidNextState(_ stateClass: AnyClass) -> Bool {
-    return stateClass is WaitingForStart.Type
+    return stateClass is PlayingGame.Type
   }
   
 }
