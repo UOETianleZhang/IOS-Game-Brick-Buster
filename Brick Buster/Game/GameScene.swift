@@ -262,20 +262,23 @@ extension GameScene {
             let pos = CGPoint(x: node!.position.x, y: node!.position.y)
             
             let prop : Prop
-            let rand =  Int.randomIntNumber(lower: 0, upper: 5)
+            let rand =  Int.randomIntNumber(lower: 0, upper: 10)
             switch rand {
-            case 0:
-                prop = ProlongProp(position: pos)
-            case 1:
-                prop = ShortenProp(position: pos)
-            case 2:
-                prop = ThreeBallsProp(position: pos)
-            case 3:
-                prop = ExpandProp(position: pos)
-            default:
-                prop = ProlongProp(position: pos)
+                case 0:
+                    prop = ProlongProp(position: pos)
+                    addChild(prop)
+                case 1:
+                    prop = ShortenProp(position: pos)
+                    addChild(prop)
+                case 2:
+                    prop = ThreeBallsProp(position: pos)
+                    addChild(prop)
+                case 3:
+                    prop = ExpandProp(position: pos)
+                    addChild(prop)
+                default:
+                    break
             }
-            addChild(prop)
         }
     }
     
