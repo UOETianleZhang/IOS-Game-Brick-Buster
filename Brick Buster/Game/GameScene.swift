@@ -21,9 +21,8 @@ class GameScene: SKScene {
     lazy var gameState: GKStateMachine = GKStateMachine(states: [
       WaitingForStart(scene: self), PlayingGame(scene: self), GameOver(scene: self)])
     private var remainingBrickNum = 0
-    private var remainingBallNum = 1
+    private var initBallNum = 1
     private var paddle:Paddle?
-    private var balls = [Ball]()
     private var bricks = [Brick]()
     private var brickWidth = 100
     private var brickHeight = 20
@@ -94,7 +93,6 @@ class GameScene: SKScene {
         ball.addChild(fire)
         
         //append ball
-        balls.append(ball)
         addChild(ball)
         return ball
     }
@@ -130,7 +128,7 @@ class GameScene: SKScene {
         addChild(wall)
         
         //create ball
-        for _ in 0..<remainingBallNum {
+        for _ in 0..<self.initBallNum {
             createBall(position: CGPoint(x: 100, y: 105))
         }
         
@@ -322,9 +320,8 @@ extension GameScene {
         
         if ball.physicsBody?.categoryBitMask == BitMask.Ball {
             if !(gameState.currentState is GameOver){
-                self.remainingBallNum -= 1
-                if self.remainingBallNum == 0{
-                    ball.removeFromParent()
+                let balls = self.children.filter({ $0.name == "ball" })
+                if balls.count == 1{
                     gameState.enter(GameOver.self)
                     gameWon = false
                 }
@@ -354,15 +351,12 @@ extension GameScene {
 
 extension GameScene {
     private func shot() {
+        let balls = self.children.filter({ $0.name == "ball" })
         for (index, ball) in balls.enumerated() {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.1 * Double(index)) {
                 ball.physicsBody?.applyForce(CGVector(dx: 200 + CGFloat(index) * 0.1, dy: 300))
             }
         }
-    }
-    
-    func addRemainingBallNum(num: Int){
-        self.remainingBallNum += num
     }
 }
 
@@ -446,7 +440,6 @@ extension GameScene {
         let xPosition = Float((self.paddle?.position.x)!)
         let yPosition = Float((self.paddle?.position.y)!) + Float(self.paddle!.height)/2
         let ball = createBall(position: CGPoint(x: Int(xPosition), y: Int(yPosition)))
-        self.remainingBallNum += 1
         ball.shotWithFixedSpeed(angle: 30)
     }
     
