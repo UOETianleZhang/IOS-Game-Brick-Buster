@@ -21,6 +21,8 @@ class GameViewController: UIViewController {
     var extraLife: Int64?
     var coin: Int64?
     @IBOutlet weak var scoreLabel: UILabel!
+    @IBOutlet weak var lifeLabel: UILabel!
+    @IBOutlet weak var coinLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +30,8 @@ class GameViewController: UIViewController {
         self.extraLife = lives
         self.coin = coins
         self.scoreLabel.text = String(0)
+        self.lifeLabel.text = String(self.extraLife!)
+        self.coinLabel.text = String(self.coin!)
 
         if let view = self.view as! SKView? {
 
@@ -55,6 +59,16 @@ class GameViewController: UIViewController {
     
     func updateScore(score: Int){
         self.scoreLabel.text = String(score)
+    }
+    
+    func updateLife(life: Int64){
+        self.extraLife = life
+        self.lifeLabel.text = String(life)
+    }
+    
+    func updateCoin(coin: Int64){
+        self.coin = coin
+        self.coinLabel.text = String(coin)
     }
     
     func backToMainVC(){

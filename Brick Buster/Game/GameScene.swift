@@ -327,7 +327,6 @@ extension GameScene {
                     ball.removeFromParent()
                     gameState.enter(GameOver.self)
                     gameWon = false
-                    print(self.score)
                 }
             }
             ball.removeFromParent()
@@ -374,6 +373,8 @@ extension GameScene {
         
         for node in self.nodes(at: touchLocation){
             if(node.name == exitButtonName){
+                let coin = self.gameViewController?.coin
+                self.gameViewController?.updateCoin(coin: coin! + Int64(self.score))
                 self.gameViewController!.backToMainVC()
             }
             if(node.name == restartButtonName){
@@ -440,7 +441,8 @@ extension GameScene {
 
 extension GameScene {
     private func restartGame(){
-        self.gameViewController?.extraLife! -= 1
+        let life = self.gameViewController?.extraLife
+        self.gameViewController?.updateLife(life: life! - 1)
         let xPosition = Float((self.paddle?.position.x)!)
         let yPosition = Float((self.paddle?.position.y)!) + Float(self.paddle!.height)/2
         let ball = createBall(position: CGPoint(x: Int(xPosition), y: Int(yPosition)))
