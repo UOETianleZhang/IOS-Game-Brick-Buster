@@ -19,8 +19,8 @@ class SettingViewController: UIViewController {
         super.viewDidLoad()
         overrideUserInterfaceStyle = .dark
         setBackground()
-        musicSlider.value = music
-        soundSlider.value = sound
+        musicSlider.value = data.music
+        soundSlider.value = data.sound
         // Do any additional setup after loading the view.
     }
     
@@ -37,7 +37,7 @@ class SettingViewController: UIViewController {
     func playSound() {
         do {
             audioPlayer = try AVAudioPlayer(contentsOf: soundFile)
-            audioPlayer.volume = sound
+            audioPlayer.volume = data.sound
             audioPlayer.play()
         } catch {
             print("sound error")
@@ -58,12 +58,12 @@ class SettingViewController: UIViewController {
     }
     
     @IBAction func musicVolume(_ sender: Any) {
-        music = musicSlider.value
-        musicPlayer.volume = music
+        data.music = musicSlider.value
+        musicPlayer.volume = data.music
     }
     
     @IBAction func soundVolume(_ sender: Any) {
-        sound = soundSlider.value
+        data.sound = soundSlider.value
     }
     
     /*

@@ -14,12 +14,22 @@ enum equipment {
     case bat
 }
 
-var coins: Int64 = 10
-var lives: Int64 = 1
-var bats: Int64 = 0
-var progress: Int64 = 0
-var music: Float = 0.1
-var sound: Float = 1.0
+struct DataModel {
+    var first: String
+    var last: String
+    var score: Int64 = 0
+    var coins: Int64 = 10
+    var lives: Int64 = 1
+    var bats: Int64 = 0
+    var progress: Int64 = 0
+    var music: Float = 0.1
+    var sound: Float = 1.0
+    var paddleSkin: Int64 = 0
+    var background: Int64 = 0
+}
+
+var data = DataModel(first: "", last: "", score: 0, coins: 10, lives: 1, bats: 0, progress: 0, music: 0.1, sound: 1, paddleSkin: 0, background: 0)
+
 let soundFile = URL(fileURLWithPath: Bundle.main.path(forResource: "btn_click_sound", ofType: "mp3")!)
 let musicFile = URL(fileURLWithPath: Bundle.main.path(forResource: "Astronomia", ofType: "mp3")!)
 var musicPlayer = AVAudioPlayer()
@@ -42,7 +52,7 @@ class MainViewController: UIViewController {
     func playSound() {
         do {
             audioPlayer = try AVAudioPlayer(contentsOf: soundFile)
-            audioPlayer.volume = sound
+            audioPlayer.volume = data.sound
             audioPlayer.play()
         } catch {
             print("sound error")
@@ -52,7 +62,7 @@ class MainViewController: UIViewController {
     func playMusic() {
         do {
             musicPlayer = try AVAudioPlayer(contentsOf: musicFile)
-            musicPlayer.volume = music
+            musicPlayer.volume = data.music
             musicPlayer.play()
         } catch {
             print("music error")

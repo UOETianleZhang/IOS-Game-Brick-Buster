@@ -27,8 +27,8 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.extraLife = lives
-        self.coin = coins
+        self.extraLife = data.lives
+        self.coin = data.coins
         self.scoreLabel.text = String(0)
         self.lifeLabel.text = String(self.extraLife!)
         self.coinLabel.text = String(self.coin!)
@@ -83,8 +83,8 @@ class GameViewController: UIViewController {
         self.navigationController?.view.layer.add(transition, forKey: kCATransition)
         
         //pass parameters
-        lives = self.extraLife!
-        coins = self.coin!
+        data.lives = self.extraLife!
+        data.coins = self.coin!
         
         //pop to main vc
         self.navigationController!.popToViewController(viewControllers[viewControllers.count - 3], animated: true)

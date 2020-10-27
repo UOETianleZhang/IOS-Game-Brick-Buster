@@ -72,9 +72,9 @@ class ThreeBallsProp : Prop {
         fatalError("init(coder:) has not been implemented")
     }
     override func conduct(gameScene : GameScene, paddle: Paddle, prop: Prop) {
-        let pos = CGPoint(x: paddle.position.x + CGFloat(paddle.width / 2), y: paddle.position.y)
+        let pos = CGPoint(x: paddle.position.x, y: paddle.position.y + CGFloat(paddle.height / 2))
         gameScene.createBall(position: pos).shotWithFixedSpeed(angle: 45)
-        gameScene.createBall(position: pos).shotWithFixedSpeed(angle: 90)
+        gameScene.createBall(position: pos).shotWithFixedSpeed(angle: 91)
         gameScene.createBall(position: pos).shotWithFixedSpeed(angle: 135)
     }
 }

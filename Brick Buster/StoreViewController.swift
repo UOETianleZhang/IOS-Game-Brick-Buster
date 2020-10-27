@@ -29,9 +29,9 @@ class StoreViewController: UIViewController {
         super.viewDidLoad()
         overrideUserInterfaceStyle = .dark
         setBackground()
-        currLife.text = "\(lives)"
-        currBat.text = "\(bats)"
-        wallet.text = "\(coins)"
+        currLife.text = "\(data.lives)"
+        currBat.text = "\(data.bats)"
+        wallet.text = "\(data.coins)"
         // Do any additional setup after loading the view.
     }
     
@@ -72,14 +72,14 @@ class StoreViewController: UIViewController {
     }
     
     @IBAction func checkout(_ sender: Any) {
-        if coins < totalPrice {
+        if data.coins < totalPrice {
             playSound()
             popup()
             return
         }
-        coins -= totalPrice
-        lives += newLives
-        bats += newBats
+        data.coins -= totalPrice
+        data.lives += newLives
+        data.bats += newBats
         let transition = CATransition()
         transition.duration = 0.5
         transition.type = CATransitionType(rawValue: "cube")
@@ -92,7 +92,7 @@ class StoreViewController: UIViewController {
     func playSound() {
         do {
             audioPlayer = try AVAudioPlayer(contentsOf: soundFile)
-            audioPlayer.volume = sound
+            audioPlayer.volume = data.sound
             audioPlayer.play()
         } catch {
             print("sound error")
