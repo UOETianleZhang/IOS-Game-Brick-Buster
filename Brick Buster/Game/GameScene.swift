@@ -29,6 +29,7 @@ class GameScene: SKScene {
     private var brickHeight = 20
     private var ballRadius = 5
     private var map: [[Int]]?
+    private var score = 0
     var isFingerOnPaddle = false
     private var gameWon : Bool = false {
       didSet {
@@ -173,9 +174,9 @@ class GameScene: SKScene {
         let bricksHeightNum = self.map!.count
         let bricksWidthNum = self.map![0].count
         
-        let leftBoarder = 50
+        let leftBoarder = 70
         let rightBoarder = 20
-        let upBoarder = 20
+        let upBoarder = 40
         let downBoarder = 100
         
         
@@ -263,39 +264,44 @@ extension GameScene: SKPhysicsContactDelegate {
 
 extension GameScene {
     private func ballHitBrick(_ node: SKNode?) {        
-        guard let brick = node as? Brick else { return }
-        
-        if brick.physicsBody?.categoryBitMask == BitMask.Brick {
-            if brick.hitRemaining == 0{
-                if !(gameState.currentState is GameOver){
-                    self.breakBlock(node: brick)
-                    self.remainingBrickNum -= 1
-                    if self.remainingBrickNum == 0{
-                        gameState.enter(GameOver.self)
-                        gameWon = true
+        if self.gameState.currentState is PlayingGame{
+            guard let brick = node as? Brick else { return }
+            
+            if brick.physicsBody?.categoryBitMask == BitMask.Brick {
+                self.score += 1
+                self.gameViewController?.updateScore(score: self.score)
+                if brick.hitRemaining == 0{
+                    if !(gameState.currentState is GameOver){
+                        self.breakBlock(node: brick)
+                        self.remainingBrickNum -= 1
+                        if self.remainingBrickNum == 0{
+                            gameState.enter(GameOver.self)
+                            gameWon = true
+                        }
                     }
                 }
-            }
-            // generate a prop and make it drop down in a const speed. This prop can make the paddle longer
-            let pos = CGPoint(x: node!.position.x, y: node!.position.y)
-            
-            let prop : Prop
-            let rand =  Int.randomIntNumber(lower: 0, upper: 10)
-            switch rand {
-                case 0:
-                    prop = ProlongProp(position: pos)
-                    addChild(prop)
-                case 1:
-                    prop = ShortenProp(position: pos)
-                    addChild(prop)
-                case 2:
-                    prop = ThreeBallsProp(position: pos)
-                    addChild(prop)
-                case 3:
-                    prop = ExpandProp(position: pos)
-                    addChild(prop)
-                default:
-                    break
+                
+                // generate a prop and make it drop down in a const speed. This prop can make the paddle longer
+                let pos = CGPoint(x: node!.position.x, y: node!.position.y)
+                
+                let prop : Prop
+                let rand =  Int.randomIntNumber(lower: 0, upper: 10)
+                switch rand {
+                    case 0:
+                        prop = ProlongProp(position: pos)
+                        addChild(prop)
+                    case 1:
+                        prop = ShortenProp(position: pos)
+                        addChild(prop)
+                    case 2:
+                        prop = ThreeBallsProp(position: pos)
+                        addChild(prop)
+                    case 3:
+                        prop = ExpandProp(position: pos)
+                        addChild(prop)
+                    default:
+                        break
+                }
             }
         }
     }
@@ -321,6 +327,7 @@ extension GameScene {
                     ball.removeFromParent()
                     gameState.enter(GameOver.self)
                     gameWon = false
+                    print(self.score)
                 }
             }
             ball.removeFromParent()
@@ -367,8 +374,7 @@ extension GameScene {
         
         for node in self.nodes(at: touchLocation){
             if(node.name == exitButtonName){
-                print(node.name)
-                self.gameViewController!.backToStageVC()
+                self.gameViewController!.backToMainVC()
             }
             if(node.name == restartButtonName){
                 self.restartGame()

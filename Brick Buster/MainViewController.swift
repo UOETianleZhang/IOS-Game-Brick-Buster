@@ -15,7 +15,7 @@ enum equipment {
 }
 
 var coins: Int64 = 10
-var lives: Int64 = 0
+var lives: Int64 = 1
 var bats: Int64 = 0
 var progress: Int64 = 0
 var music: Float = 0.1

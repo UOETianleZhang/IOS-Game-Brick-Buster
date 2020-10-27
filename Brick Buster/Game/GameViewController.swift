@@ -18,14 +18,16 @@ class GameViewController: UIViewController {
     var scene:GameScene?
     var moveRightTimer : Timer?
     var moveLeftTimer : Timer?
-    var extraLife: Int?
-    var coins: Int?
-
+    var extraLife: Int64?
+    var coin: Int64?
+    @IBOutlet weak var scoreLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.extraLife = 1
-        self.coins = 0
+        self.extraLife = lives
+        self.coin = coins
+        self.scoreLabel.text = String(0)
 
         if let view = self.view as! SKView? {
 
@@ -51,7 +53,11 @@ class GameViewController: UIViewController {
         self.scene?.paddleMoveLeft()
     }
     
-    func backToStageVC(){
+    func updateScore(score: Int){
+        self.scoreLabel.text = String(score)
+    }
+    
+    func backToMainVC(){
         //get all VC
         let viewControllers: [UIViewController] = self.navigationController!.viewControllers as [UIViewController]
         
@@ -61,6 +67,10 @@ class GameViewController: UIViewController {
         transition.type = CATransitionType(rawValue: "cube")
         transition.subtype = CATransitionSubtype.fromLeft
         self.navigationController?.view.layer.add(transition, forKey: kCATransition)
+        
+        //pass parameters
+        lives = self.extraLife!
+        coins = self.coin!
         
         //pop to main vc
         self.navigationController!.popToViewController(viewControllers[viewControllers.count - 3], animated: true)
