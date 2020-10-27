@@ -50,4 +50,19 @@ class GameViewController: UIViewController {
     @objc func paddleMoveLeft(){
         self.scene?.paddleMoveLeft()
     }
+    
+    func backToStageVC(){
+        //get all VC
+        let viewControllers: [UIViewController] = self.navigationController!.viewControllers as [UIViewController]
+        
+        //set transition
+        let transition = CATransition()
+        transition.duration = 0.5
+        transition.type = CATransitionType(rawValue: "cube")
+        transition.subtype = CATransitionSubtype.fromLeft
+        self.navigationController?.view.layer.add(transition, forKey: kCATransition)
+        
+        //pop to main vc
+        self.navigationController!.popToViewController(viewControllers[viewControllers.count - 3], animated: true)
+    }
 }

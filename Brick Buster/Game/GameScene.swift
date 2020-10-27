@@ -158,7 +158,7 @@ class GameScene: SKScene {
         //create restart button
         let restartButton = SKSpriteNode(imageNamed: restartImageName)
         restartButton.name = restartButtonName
-        restartButton.position = CGPoint(x: frame.midX, y: frame.midY - 150)
+        restartButton.position = CGPoint(x: frame.midX, y: frame.midY - 80)
         restartButton.setScale(0.0)
         addChild(restartButton)
         
@@ -368,9 +368,9 @@ extension GameScene {
         for node in self.nodes(at: touchLocation){
             if(node.name == exitButtonName){
                 print(node.name)
+                self.gameViewController!.backToStageVC()
             }
             if(node.name == restartButtonName){
-                print(node.name)
                 self.restartGame()
                 gameState.enter(PlayingGame.self)
             }

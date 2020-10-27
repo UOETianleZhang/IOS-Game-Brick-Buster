@@ -106,7 +106,7 @@
         <!--Main View Controller-->
         <scene sceneID="AZc-2O-xRg">
             <objects>
-                <viewController id="0fj-Ur-VOj" customClass="MainViewController" customModule="Brick_Buster" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="mainVC" id="0fj-Ur-VOj" customClass="MainViewController" customModule="Brick_Buster" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rSb-Zl-vBz">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -233,7 +233,7 @@
         <!--Stage View Controller-->
         <scene sceneID="7VO-s6-KOc">
             <objects>
-                <viewController storyboardIdentifier="stageVC" id="b6b-sg-MSW" customClass="StageViewController" customModule="Brick_Buster" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="stageVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="b6b-sg-MSW" customClass="StageViewController" customModule="Brick_Buster" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5yr-zx-7AI">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
