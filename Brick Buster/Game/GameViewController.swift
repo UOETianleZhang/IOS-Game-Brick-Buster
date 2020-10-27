@@ -43,28 +43,6 @@ class GameViewController: UIViewController {
         return true
     }
     
-    
-//    @IBAction func moveLeftHolding(_ sender: Any) {
-//        guard moveLeftTimer == nil else { return }
-//        moveLeftTimer = Timer.scheduledTimer(timeInterval: 0.04, target: self, selector: #selector(paddleMoveLeft), userInfo: nil, repeats: true)
-//    }
-//
-//    
-//    @IBAction func moveLeftReleased(_ sender: Any) {
-//        moveLeftTimer?.invalidate()
-//        moveLeftTimer = nil
-//    }
-//
-//    @IBAction func moveRightReleased(_ sender: Any) {
-//        moveRightTimer?.invalidate()
-//        moveRightTimer = nil
-//    }
-//
-//    @IBAction func moveRightHolding(_ sender: Any) {
-//        guard moveRightTimer == nil else { return }
-//        moveRightTimer = Timer.scheduledTimer(timeInterval: 0.04, target: self, selector: #selector(paddleMoveRight), userInfo: nil, repeats: true)
-//    }
-    
     @objc func paddleMoveRight(){
         self.scene?.paddleMoveRight()
     }

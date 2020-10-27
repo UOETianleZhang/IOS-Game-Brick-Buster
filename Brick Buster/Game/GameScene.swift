@@ -158,7 +158,7 @@ class GameScene: SKScene {
         //create restart button
         let restartButton = SKSpriteNode(imageNamed: restartImageName)
         restartButton.name = restartButtonName
-        restartButton.position = CGPoint(x: frame.midX, y: frame.midY - 70)
+        restartButton.position = CGPoint(x: frame.midX, y: frame.midY - 150)
         restartButton.setScale(0.0)
         addChild(restartButton)
         
@@ -362,17 +362,24 @@ extension GameScene {
 
 extension GameScene {
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        let touch = touches.first
+        let touchLocation = touch!.location(in: self)
+        
+        for node in self.nodes(at: touchLocation){
+            if(node.name == exitButtonName){
+                print(node.name)
+            }
+            if(node.name == restartButtonName){
+                print(node.name)
+                self.restartGame()
+                gameState.enter(PlayingGame.self)
+            }
+        }
+        
         switch gameState.currentState {
             case is WaitingForStart:
                 gameState.enter(PlayingGame.self)
                 shot()
-            case is GameOver:
-                if self.gameViewController?.extraLife != 0 {
-                    self.restartGame()
-                    gameState.enter(PlayingGame.self)
-                }else{
-                    print("no extra life")
-                }
             default:
                 break
         }
@@ -388,15 +395,6 @@ extension GameScene {
           isFingerOnPaddle = true
         }
       }
-        
-        for node in self.nodes(at: touchLocation){
-            if(node.name == exitButtonName){
-                print(node.name)
-            }
-            if(node.name == restartButtonName){
-                print(node.name)
-            }
-        }
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
