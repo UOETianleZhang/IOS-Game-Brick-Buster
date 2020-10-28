@@ -52,7 +52,7 @@ class StageViewController: UIViewController, UICollectionViewDelegate, UICollect
     }
     
     @IBAction func play(_ sender: Any) {
-        startGame(s: 1, equips: [.life, .bat])
+        startGame(s: 3, equips: [.life, .bat])
         playSound()
     }
     

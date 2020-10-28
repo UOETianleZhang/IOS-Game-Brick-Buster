@@ -20,6 +20,7 @@ class GameViewController: UIViewController {
     var moveLeftTimer : Timer?
     var extraLife: Int64?
     var coin: Int64?
+    private var targetMap = map1
     @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var lifeLabel: UILabel!
     @IBOutlet weak var coinLabel: UILabel!
@@ -34,9 +35,14 @@ class GameViewController: UIViewController {
         self.coinLabel.text = String(self.coin!)
 
         if let view = self.view as! SKView? {
-
-            self.scene = GameScene(size: view.frame.size, map: map9, gameViewController: self)
+            //get target map
+            self.getTargetMap()
+            
+            //create game scene
+            self.scene = GameScene(size: view.frame.size, map: self.targetMap, gameViewController: self)
             self.scene!.scaleMode = .aspectFill
+            
+            //display game scene
             view.presentScene(scene)
             view.ignoresSiblingOrder = true
             view.showsFPS = true
@@ -88,5 +94,31 @@ class GameViewController: UIViewController {
         
         //pop to main vc
         self.navigationController!.popToViewController(viewControllers[viewControllers.count - 3], animated: true)
+    }
+    
+    private func getTargetMap(){
+        switch stage{
+            case 1:
+                self.targetMap = map1
+            case 2:
+                self.targetMap = map2
+            case 3:
+                self.targetMap = map3
+            case 4:
+                self.targetMap = map4
+            case 5:
+                self.targetMap = map5
+            case 6:
+                self.targetMap = map6
+            case 7:
+                self.targetMap = map7
+            case 8:
+                self.targetMap = map8
+            case 9:
+                self.targetMap = map9
+            default:
+                self.targetMap = map1
+                break
+        }
     }
 }
