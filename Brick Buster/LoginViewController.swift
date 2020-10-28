@@ -13,6 +13,9 @@ class LoginViewController: UIViewController {
     
     let backgroundImageView = UIImageView()
 
+    @IBOutlet weak var firstNameInput: LoginText!
+    @IBOutlet weak var lastNameInput: LoginText!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         overrideUserInterfaceStyle = .dark
@@ -21,6 +24,20 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func login(_ sender: Any) {
+        data.first = firstNameInput.text ?? "Spider"
+        if data.first.isEmpty {
+            data.first = "Spider"
+        }
+        data.last = lastNameInput.text ?? "Man"
+        if data.last.isEmpty {
+            data.last = "Man"
+        }
+        if let fetchedData = DB.getData(first: data.first, last: data.last) {
+            data = fetchedData
+        } else {
+            DB.addOrUpdate(data: data)
+        }
+
         let transition = CATransition()
         transition.duration = 0.5
         transition.type = CATransitionType(rawValue: "cube")
