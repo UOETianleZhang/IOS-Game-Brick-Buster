@@ -97,3 +97,45 @@ class ExpandProp : Prop {
         }
     }
 }
+
+class StoneProtectionProp : Prop {
+    init(position: CGPoint) {
+        super.init(position: position, img: #imageLiteral(resourceName: "stone"))
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func conduct(gameScene : GameScene, paddle: Paddle, prop: Prop) {
+        //get width & height & yposition
+        let width = gameScene.getBrickWidth()
+        let height = gameScene.getBrickHeight()
+        var stoneList: [Stone] = []
+        
+        //create wall
+        let stoneNum = Int(gameScene.frame.width) / width + 1
+        for i in 0..<stoneNum{
+            let stone = Stone(rectOf: CGSize(width: width, height: height))
+            stone.position = CGPoint(x: i * width, y: Int(paddle.position.y) - 30)
+            
+            //add stone
+            stoneList.append(stone)
+            gameScene.addChild(stone)
+        }
+        
+        //dissmiss after 5 seconds
+        DispatchAfter(after: 5) {
+            for (_, stone) in stoneList.enumerated() {
+                stone.removeFromParent()
+            }
+        }
+    }
+    
+    private func DispatchAfter(after: Double, handler:@escaping ()->())
+    {
+        DispatchQueue.main.asyncAfter(deadline: .now() + after) {
+            handler()
+        }
+    }
+}
