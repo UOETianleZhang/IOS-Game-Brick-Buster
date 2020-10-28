@@ -15,4 +15,5 @@ struct BitMask {
     static let Ground = UInt32(0x00001 << 3)
     static let Paddle = UInt32(0x00001 << 4)
     static let Prop = UInt32(0x00001 << 5)
+    static let Stone = UInt32(0x00001 << 6)
 }

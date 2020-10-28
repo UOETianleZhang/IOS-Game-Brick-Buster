@@ -133,7 +133,7 @@ class GameScene: SKScene {
         }
         
         //create brick
-        self.createBricks()
+        self.createMap()
         
         //create paddle
         self.paddle = Paddle()
@@ -164,7 +164,7 @@ class GameScene: SKScene {
         gameState.enter(WaitingForStart.self)
     }
     
-    private func createBricks(){
+    private func createMap(){
         if self.map!.count == 0 || self.map![0].count == 0{
             return
         }
@@ -194,14 +194,23 @@ class GameScene: SKScene {
                 if brickList[j] != 0{
                     let xPosition = Float(leftBoarder) + (Float(j) - 0.5)*Float(self.brickWidth)
                                         
-                    //create brick
-                    let brick = Brick(rectOf: CGSize(width: self.brickWidth, height: self.brickHeight))
-                    brick.position = CGPoint(x: Int(xPosition), y: Int(yPosition))
+                    if(brickList[j] == 1){//create brick
+                        //create brick
+                        let brick = Brick(rectOf: CGSize(width: self.brickWidth, height: self.brickHeight))
+                        brick.position = CGPoint(x: Int(xPosition), y: Int(yPosition))
 
-                    //append brick
-                    bricks.append(brick)
-                    addChild(brick)
-                    self.remainingBrickNum += 1
+                        //append brick
+                        bricks.append(brick)
+                        addChild(brick)
+                        self.remainingBrickNum += 1
+                    }else if(brickList[j] == 2){//create stone
+                        //create stone
+                        let stone = Stone(rectOf: CGSize(width: self.brickWidth, height: self.brickHeight))
+                        stone.position = CGPoint(x: Int(xPosition), y: Int(yPosition))
+                        
+                        //add stone
+                        addChild(stone)
+                    }
                 }
             }
         }
