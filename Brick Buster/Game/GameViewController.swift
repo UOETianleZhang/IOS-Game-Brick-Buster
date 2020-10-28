@@ -20,6 +20,7 @@ class GameViewController: UIViewController {
     var moveLeftTimer : Timer?
     var extraLife: Int64?
     var coin: Int64?
+    var score: Int64?
     private var targetMap = map1
     @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var lifeLabel: UILabel!
@@ -30,7 +31,8 @@ class GameViewController: UIViewController {
         
         self.extraLife = data.lives
         self.coin = data.coins
-        self.scoreLabel.text = String(0)
+        self.score = 0
+        self.scoreLabel.text = String(self.score!)
         self.lifeLabel.text = String(self.extraLife!)
         self.coinLabel.text = String(self.coin!)
 
@@ -64,7 +66,8 @@ class GameViewController: UIViewController {
     }
     
     func updateScore(score: Int){
-        self.scoreLabel.text = String(score)
+        self.score = Int64(score)
+        self.scoreLabel.text = String(self.score!)
     }
     
     func updateLife(life: Int64){
@@ -91,6 +94,7 @@ class GameViewController: UIViewController {
         //pass parameters
         data.lives = self.extraLife!
         data.coins = self.coin!
+        data.score += self.score!
         
         //pop to main vc
         self.navigationController!.popToViewController(viewControllers[viewControllers.count - 3], animated: true)
