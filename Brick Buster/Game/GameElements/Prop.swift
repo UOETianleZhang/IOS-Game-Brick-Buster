@@ -100,7 +100,7 @@ class ExpandProp : Prop {
 
 class StoneProtectionProp : Prop {
     init(position: CGPoint) {
-        super.init(position: position, img: #imageLiteral(resourceName: "stone"))
+        super.init(position: position, img: #imageLiteral(resourceName: "wall"))
     }
     
     required init?(coder aDecoder: NSCoder) {

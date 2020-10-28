@@ -415,6 +415,12 @@ extension GameScene {
         paddleX = max(paddleX, paddle.size.width/2)
         paddleX = min(paddleX, size.width - paddle.size.width/2)
         paddle.position = CGPoint(x: paddleX, y: paddle.position.y)
+        
+        if gameState.currentState is WaitingForStart {
+            for ball in self.children.filter({ $0.name == "ball" }) {
+                ball.position.x = paddle.position.x
+            }
+        }
       }
     }
     

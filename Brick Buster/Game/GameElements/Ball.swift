@@ -10,7 +10,7 @@ import SpriteKit
 
 class Ball: SKShapeNode {
     var isShot = false
-    var radius = 8
+    var radius = 5
     let img = #imageLiteral(resourceName: "ball")
     
     
