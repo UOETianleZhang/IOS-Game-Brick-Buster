@@ -11,9 +11,15 @@ import UIKit
 class RankViewController: UIViewController {
     
     let backgroundImageView = UIImageView()
+    let players : [DataModel] = DB.getAllUserData()
+    @IBOutlet weak var tableView: UITableView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
+        
         overrideUserInterfaceStyle = .dark
         setBackground()
         // Do any additional setup after loading the view.
@@ -51,4 +57,24 @@ class RankViewController: UIViewController {
     }
     */
 
+}
+
+extension RankViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return players.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        // create a new cell if needed or reuse an old one
+        let cell = self.tableView.dequeueReusableCell(withIdentifier: "cell") as UITableViewCell?
+        
+        // set the text from the data model
+        let player = players[indexPath.row]
+        cell?.textLabel?.text = "\(indexPath.row + 1).\t\(player.first) \(player.last) -- \(player.score)"
+        cell?.textLabel?.textColor = .white
+        cell?.textLabel?.font = UIFont(name: Fonts.avenirNextCondensedDemiBold, size: 18)
+        return cell!
+    }
+    
+    
 }

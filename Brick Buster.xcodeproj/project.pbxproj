@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -46,6 +46,8 @@
 		EB84F7A72540CF6800321F6D /* Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB84F7A62540CF6800321F6D /* Tools.swift */; };
 		EB84F7C525460C5D00321F6D /* Break Block.sks in Resources */ = {isa = PBXBuildFile; fileRef = EB84F7C325460C5D00321F6D /* Break Block.sks */; };
 		EB84F7C625460C5D00321F6D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB84F7C425460C5D00321F6D /* Assets.xcassets */; };
+		EB84F7EF2548901400321F6D /* DynamoDB in Frameworks */ = {isa = PBXBuildFile; productRef = EB84F7EE2548901400321F6D /* DynamoDB */; };
+		EB84F7F42548905800321F6D /* DDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB84F7F32548905800321F6D /* DDB.swift */; };
 		EBF3AC2A253CE61D0006C931 /* Prop.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF3AC29253CE61D0006C931 /* Prop.swift */; };
 /* End PBXBuildFile section */
 
@@ -112,6 +114,7 @@
 		EB84F7A62540CF6800321F6D /* Tools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tools.swift; sourceTree = "<group>"; };
 		EB84F7C325460C5D00321F6D /* Break Block.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = "Break Block.sks"; sourceTree = "<group>"; };
 		EB84F7C425460C5D00321F6D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		EB84F7F32548905800321F6D /* DDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDB.swift; sourceTree = "<group>"; };
 		EBF3AC29253CE61D0006C931 /* Prop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Prop.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -120,6 +123,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EB84F7EF2548901400321F6D /* DynamoDB in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -144,7 +148,6 @@
 			isa = PBXGroup;
 			children = (
 				EB84F7AE25460AAD00321F6D /* SKS */,
-				EB84F7A52540CF5500321F6D /* Tools */,
 				0FC76493254087BD0020B4B8 /* GameStates */,
 				0F7811FD253CBF3E006E96CE /* GameElements */,
 				A0C403B9253968C300DD4C85 /* GameViewController.swift */,
@@ -199,6 +202,8 @@
 		A0C403B0253968C300DD4C85 /* Brick Buster */ = {
 			isa = PBXGroup;
 			children = (
+				EB84F7A52540CF5500321F6D /* Tools */,
+				EB84F7E125488C9A00321F6D /* DB */,
 				A0E7623E25454AEB00CDDE29 /* Astronomia.mp3 */,
 				A0E7623A2545395B00CDDE29 /* btn_click_sound.mp3 */,
 				0F6EE5BA253A22FF00883121 /* Game */,
@@ -264,6 +269,14 @@
 			path = SKS;
 			sourceTree = "<group>";
 		};
+		EB84F7E125488C9A00321F6D /* DB */ = {
+			isa = PBXGroup;
+			children = (
+				EB84F7F32548905800321F6D /* DDB.swift */,
+			);
+			path = DB;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -280,6 +293,9 @@
 			dependencies = (
 			);
 			name = "Brick Buster";
+			packageProductDependencies = (
+				EB84F7EE2548901400321F6D /* DynamoDB */,
+			);
 			productName = "Brick Buster";
 			productReference = A0C403AE253968C300DD4C85 /* Brick Buster.app */;
 			productType = "com.apple.product-type.application";
@@ -352,6 +368,9 @@
 				Base,
 			);
 			mainGroup = A0C403A5253968C200DD4C85;
+			packageReferences = (
+				EB84F7ED2548901400321F6D /* XCRemoteSwiftPackageReference "soto" */,
+			);
 			productRefGroup = A0C403AF253968C300DD4C85 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -415,6 +434,7 @@
 				A0E762332544D1A000CDDE29 /* RankViewController.swift in Sources */,
 				A0E762252543F2D000CDDE29 /* BlueButton.swift in Sources */,
 				0F5D1E94253CC90E00D35998 /* Paddle.swift in Sources */,
+				EB84F7F42548905800321F6D /* DDB.swift in Sources */,
 				0F5D1E99253CD09D00D35998 /* Maps.swift in Sources */,
 				EBF3AC2A253CE61D0006C931 /* Prop.swift in Sources */,
 				0F7811F9253A2B3F006E96CE /* Brick.swift in Sources */,
@@ -754,6 +774,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		EB84F7ED2548901400321F6D /* XCRemoteSwiftPackageReference "soto" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/soto-project/soto.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.9.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		EB84F7EE2548901400321F6D /* DynamoDB */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EB84F7ED2548901400321F6D /* XCRemoteSwiftPackageReference "soto" */;
+			productName = DynamoDB;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = A0C403A6253968C200DD4C85 /* Project object */;
 }
