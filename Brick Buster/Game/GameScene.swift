@@ -306,6 +306,9 @@ extension GameScene {
                     case 3:
                         prop = ExpandProp(position: pos)
                         addChild(prop)
+                    case 4:
+                        prop = StoneProtectionProp(position: pos)
+                        addChild(prop)
                     default:
                         break
                 }
@@ -439,6 +442,16 @@ extension GameScene {
         if paddle!.position.x - CGFloat(paddle!.width)/2.0 > 20{
             paddle?.position = CGPoint(x: (paddle?.position.x)! - 10, y: (paddle?.position.y)!)
         }
+    }
+}
+
+extension GameScene {
+    func getBrickWidth() -> Int{
+        return self.brickWidth
+    }
+    
+    func getBrickHeight() -> Int{
+        return self.brickHeight
     }
 }
 
