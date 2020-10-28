@@ -262,11 +262,6 @@ extension GameScene: SKPhysicsContactDelegate {
         }
         
     }
-
-//    func didEnd(_ contact: SKPhysicsContact) {
-//        print(contact.bodyA.contactTestBitMask)
-//        print(contact.bodyB.contactTestBitMask)
-//    }
 }
 
 extension GameScene {
