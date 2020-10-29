@@ -55,7 +55,7 @@ struct DB {
         }
     }
     
-    static func getAllUserData() -> [DataModel] {
+    static func getSortedUserData() -> [DataModel] {
         let input = DynamoDB.ScanInput(tableName: tableName)
         let group = DispatchGroup()
         var ret : [DataModel] = []
@@ -66,6 +66,7 @@ struct DB {
             for item in result.items! {
                 ret.append(itemToDataModel(item: item))
             }
+            ret.sort{ (player1, player2) in return player1.score > player2.score }
             group.leave()
         }
         response.whenFailure{_ in group.leave() }

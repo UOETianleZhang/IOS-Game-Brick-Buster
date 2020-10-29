@@ -11,7 +11,7 @@ import UIKit
 class RankViewController: UIViewController {
     
     let backgroundImageView = UIImageView()
-    let players : [DataModel] = DB.getAllUserData()
+    let players : [DataModel] = DB.getSortedUserData()
     @IBOutlet weak var tableView: UITableView!
 
     override func viewDidLoad() {
