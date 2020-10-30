@@ -14,6 +14,7 @@ let exitButtonName = "exitButton"
 let exitImageName = "exitButton"
 let restartButtonName = "restartButton"
 let restartImageName = "restartButton"
+let traceName = "trace"
 
 class GameScene: SKScene {
     var contentCreated = false
@@ -95,6 +96,15 @@ class GameScene: SKScene {
         //append ball
         addChild(ball)
         return ball
+    }
+    
+    func createTrace(pos : CGPoint) -> SKSpriteNode {
+        var trace = SKSpriteNode(imageNamed: "trace")
+        trace.position = pos
+        trace.name = traceName
+        trace.setScale(CGFloat(0.3))
+        addChild(trace)
+        return trace
     }
     
     private func createContent() {
@@ -329,6 +339,9 @@ extension GameScene {
             if !(gameState.currentState is GameOver){
                 let balls = self.children.filter({ $0.name == "ball" })
                 if balls.count == 1{
+                    for prop in self.children.filter({ $0.name == Prop.name }) {
+                        prop.removeFromParent()
+                    }
                     gameState.enter(GameOver.self)
                     gameWon = false
                 }
@@ -387,11 +400,15 @@ extension GameScene {
         switch gameState.currentState {
             case is WaitingForStart:
                 gameState.enter(PlayingGame.self)
-                shot()
+                let ball = childNode(withName: "ball") as! Ball
+                let angle = atan((touchLocation.y - ball.position.y)/(touchLocation.x - ball.position.x))
+                ball.shotWithFixedSpeed(angle: Double(angle) / Double.pi * Double(180))
             default:
                 break
         }
         isFingerOnPaddle = false
+        
+        childNode(withName: traceName)?.removeFromParent()
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -403,13 +420,19 @@ extension GameScene {
           isFingerOnPaddle = true
         }
       }
+      if gameState.currentState is WaitingForStart {
+          var trace = createTrace(pos: childNode(withName: Paddle.name)!.position)
+          let radians = atan2(touchLocation.x - trace.position.x, touchLocation.y - trace.position.y)
+          trace.zRotation = -radians
+      }
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-      if isFingerOnPaddle {
         let touch = touches.first
         let touchLocation = touch!.location(in: self)
         let previousLocation = touch!.previousLocation(in: self)
+        
+      if isFingerOnPaddle {
         let paddle = childNode(withName: Paddle.name) as! SKSpriteNode
         var paddleX = paddle.position.x + (touchLocation.x - previousLocation.x)
         paddleX = max(paddleX, paddle.size.width/2)
@@ -422,14 +445,14 @@ extension GameScene {
             }
         }
       }
+        
+      if gameState.currentState is WaitingForStart {
+        let trace = childNode(withName: traceName) as! SKSpriteNode
+        let radians = atan2(touchLocation.x - trace.position.x, touchLocation.y - trace.position.y)
+        trace.zRotation = -radians
+      }
     }
-    
-//    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        if !(gameState.currentState is WaitingForStart) {
-//            guard let location = touches.first?.location(in: self) else { return }
-//            paddle?.position = CGPoint(x: location.x, y: (paddle?.position.y)!)
-//        }
-//    }
+
 }
 
 extension GameScene {
