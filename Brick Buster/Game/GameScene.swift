@@ -14,6 +14,7 @@ let exitButtonName = "exitButton"
 let exitImageName = "exitButton"
 let restartButtonName = "restartButton"
 let restartImageName = "restartButton"
+let traceName = "trace"
 
 class GameScene: SKScene {
     var contentCreated = false
@@ -97,6 +98,15 @@ class GameScene: SKScene {
         return ball
     }
     
+    func createTrace(pos : CGPoint) -> SKSpriteNode {
+        var trace = SKSpriteNode(imageNamed: "trace")
+        trace.position = pos
+        trace.name = traceName
+        trace.setScale(CGFloat(0.3))
+        addChild(trace)
+        return trace
+    }
+    
     private func createContent() {
         let background = SKSpriteNode(imageNamed: "bg1")
         background.zPosition = -1
@@ -133,7 +143,7 @@ class GameScene: SKScene {
         }
         
         //create brick
-        self.createBricks()
+        self.createMap()
         
         //create paddle
         self.paddle = Paddle()
@@ -164,7 +174,7 @@ class GameScene: SKScene {
         gameState.enter(WaitingForStart.self)
     }
     
-    private func createBricks(){
+    private func createMap(){
         if self.map!.count == 0 || self.map![0].count == 0{
             return
         }
@@ -194,14 +204,23 @@ class GameScene: SKScene {
                 if brickList[j] != 0{
                     let xPosition = Float(leftBoarder) + (Float(j) - 0.5)*Float(self.brickWidth)
                                         
-                    //create brick
-                    let brick = Brick(rectOf: CGSize(width: self.brickWidth, height: self.brickHeight))
-                    brick.position = CGPoint(x: Int(xPosition), y: Int(yPosition))
+                    if(brickList[j] == 1){//create brick
+                        //create brick
+                        let brick = Brick(rectOf: CGSize(width: self.brickWidth, height: self.brickHeight))
+                        brick.position = CGPoint(x: Int(xPosition), y: Int(yPosition))
 
-                    //append brick
-                    bricks.append(brick)
-                    addChild(brick)
-                    self.remainingBrickNum += 1
+                        //append brick
+                        bricks.append(brick)
+                        addChild(brick)
+                        self.remainingBrickNum += 1
+                    }else if(brickList[j] == 2){//create stone
+                        //create stone
+                        let stone = Stone(rectOf: CGSize(width: self.brickWidth, height: self.brickHeight))
+                        stone.position = CGPoint(x: Int(xPosition), y: Int(yPosition))
+                        
+                        //add stone
+                        addChild(stone)
+                    }
                 }
             }
         }
@@ -253,11 +272,6 @@ extension GameScene: SKPhysicsContactDelegate {
         }
         
     }
-
-//    func didEnd(_ contact: SKPhysicsContact) {
-//        print(contact.bodyA.contactTestBitMask)
-//        print(contact.bodyB.contactTestBitMask)
-//    }
 }
 
 extension GameScene {
@@ -297,6 +311,9 @@ extension GameScene {
                     case 3:
                         prop = ExpandProp(position: pos)
                         addChild(prop)
+                    case 4:
+                        prop = StoneProtectionProp(position: pos)
+                        addChild(prop)
                     default:
                         break
                 }
@@ -322,6 +339,9 @@ extension GameScene {
             if !(gameState.currentState is GameOver){
                 let balls = self.children.filter({ $0.name == "ball" })
                 if balls.count == 1{
+                    for prop in self.children.filter({ $0.name == Prop.name }) {
+                        prop.removeFromParent()
+                    }
                     gameState.enter(GameOver.self)
                     gameWon = false
                 }
@@ -380,11 +400,15 @@ extension GameScene {
         switch gameState.currentState {
             case is WaitingForStart:
                 gameState.enter(PlayingGame.self)
-                shot()
+                let ball = childNode(withName: "ball") as! Ball
+                let angle = atan((touchLocation.y - ball.position.y)/(touchLocation.x - ball.position.x))
+                ball.shotWithFixedSpeed(angle: Double(angle) / Double.pi * Double(180))
             default:
                 break
         }
         isFingerOnPaddle = false
+        
+        childNode(withName: traceName)?.removeFromParent()
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -396,27 +420,39 @@ extension GameScene {
           isFingerOnPaddle = true
         }
       }
+      if gameState.currentState is WaitingForStart {
+          var trace = createTrace(pos: childNode(withName: Paddle.name)!.position)
+          let radians = atan2(touchLocation.x - trace.position.x, touchLocation.y - trace.position.y)
+          trace.zRotation = -radians
+      }
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-      if isFingerOnPaddle {
         let touch = touches.first
         let touchLocation = touch!.location(in: self)
         let previousLocation = touch!.previousLocation(in: self)
+        
+      if isFingerOnPaddle {
         let paddle = childNode(withName: Paddle.name) as! SKSpriteNode
         var paddleX = paddle.position.x + (touchLocation.x - previousLocation.x)
         paddleX = max(paddleX, paddle.size.width/2)
         paddleX = min(paddleX, size.width - paddle.size.width/2)
         paddle.position = CGPoint(x: paddleX, y: paddle.position.y)
+        
+        if gameState.currentState is WaitingForStart {
+            for ball in self.children.filter({ $0.name == "ball" }) {
+                ball.position.x = paddle.position.x
+            }
+        }
+      }
+        
+      if gameState.currentState is WaitingForStart {
+        let trace = childNode(withName: traceName) as! SKSpriteNode
+        let radians = atan2(touchLocation.x - trace.position.x, touchLocation.y - trace.position.y)
+        trace.zRotation = -radians
       }
     }
-    
-//    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        if !(gameState.currentState is WaitingForStart) {
-//            guard let location = touches.first?.location(in: self) else { return }
-//            paddle?.position = CGPoint(x: location.x, y: (paddle?.position.y)!)
-//        }
-//    }
+
 }
 
 extension GameScene {
@@ -430,6 +466,16 @@ extension GameScene {
         if paddle!.position.x - CGFloat(paddle!.width)/2.0 > 20{
             paddle?.position = CGPoint(x: (paddle?.position.x)! - 10, y: (paddle?.position.y)!)
         }
+    }
+}
+
+extension GameScene {
+    func getBrickWidth() -> Int{
+        return self.brickWidth
+    }
+    
+    func getBrickHeight() -> Int{
+        return self.brickHeight
     }
 }
 

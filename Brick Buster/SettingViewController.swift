@@ -32,6 +32,9 @@ class SettingViewController: UIViewController {
         self.navigationController?.view.layer.add(transition, forKey: kCATransition)
         self.navigationController?.popViewController(animated: false)
         playSound()
+        data.music = musicSlider.value
+        data.sound = soundSlider.value
+        DB.addOrUpdate(data: data)
     }
     
     func playSound() {

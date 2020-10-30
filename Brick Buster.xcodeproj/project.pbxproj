@@ -13,6 +13,7 @@
 		0F6EE5C4253A23AF00883121 /* Ball.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F6EE5C3253A23AF00883121 /* Ball.swift */; };
 		0F7811F9253A2B3F006E96CE /* Brick.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7811F8253A2B3F006E96CE /* Brick.swift */; };
 		0FA25F9F25472C010082FDBC /* Fire.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0FA25F9E25472C010082FDBC /* Fire.sks */; };
+		0FB00B8B2549D9DE0032EBD8 /* Stone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB00B8A2549D9DE0032EBD8 /* Stone.swift */; };
 		0FC76495254087D70020B4B8 /* WaitingForGameStart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FC76494254087D70020B4B8 /* WaitingForGameStart.swift */; };
 		0FC7649A254088440020B4B8 /* PlayingGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FC76499254088440020B4B8 /* PlayingGame.swift */; };
 		0FC7649F254088800020B4B8 /* GameOver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FC7649E254088800020B4B8 /* GameOver.swift */; };
@@ -75,6 +76,7 @@
 		0F6EE5C3253A23AF00883121 /* Ball.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ball.swift; sourceTree = "<group>"; };
 		0F7811F8253A2B3F006E96CE /* Brick.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Brick.swift; sourceTree = "<group>"; };
 		0FA25F9E25472C010082FDBC /* Fire.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Fire.sks; sourceTree = "<group>"; };
+		0FB00B8A2549D9DE0032EBD8 /* Stone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stone.swift; sourceTree = "<group>"; };
 		0FC76494254087D70020B4B8 /* WaitingForGameStart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaitingForGameStart.swift; sourceTree = "<group>"; };
 		0FC76499254088440020B4B8 /* PlayingGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayingGame.swift; sourceTree = "<group>"; };
 		0FC7649E254088800020B4B8 /* GameOver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOver.swift; sourceTree = "<group>"; };
@@ -165,6 +167,7 @@
 				0F5D1E93253CC90D00D35998 /* Paddle.swift */,
 				0F5D1E98253CD09D00D35998 /* Maps.swift */,
 				EBF3AC29253CE61D0006C931 /* Prop.swift */,
+				0FB00B8A2549D9DE0032EBD8 /* Stone.swift */,
 			);
 			path = GameElements;
 			sourceTree = "<group>";
@@ -394,8 +397,6 @@
 				A0C403BF253968CA00DD4C85 /* Assets.xcassets in Resources */,
 				A0E7623B2545395B00CDDE29 /* btn_click_sound.mp3 in Resources */,
 				EB84F7C525460C5D00321F6D /* Break Block.sks in Resources */,
-				A0C403B4253968C300DD4C85 /* GameScene.sks in Resources */,
-				A0C403BF253968CA00DD4C85 /* Assets.xcassets in Resources */,
 				EB84F7C625460C5D00321F6D /* Assets.xcassets in Resources */,
 				A0C403C2253968CA00DD4C85 /* LaunchScreen.storyboard in Resources */,
 				A0C403B6253968C300DD4C85 /* Actions.sks in Resources */,
@@ -445,6 +446,7 @@
 				EB84F7A72540CF6800321F6D /* Tools.swift in Sources */,
 				A0C403E82539734900DD4C85 /* StageViewController.swift in Sources */,
 				0FC76495254087D70020B4B8 /* WaitingForGameStart.swift in Sources */,
+				0FB00B8B2549D9DE0032EBD8 /* Stone.swift in Sources */,
 				0F6EE5BF253A239500883121 /* Defination.swift in Sources */,
 				A0C403B2253968C300DD4C85 /* AppDelegate.swift in Sources */,
 				0F6EE5C4253A23AF00883121 /* Ball.swift in Sources */,
@@ -532,6 +534,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -592,6 +595,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
