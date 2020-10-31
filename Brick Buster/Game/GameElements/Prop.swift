@@ -13,6 +13,7 @@ import SpriteKit
 class Prop: SKSpriteNode {
     var width = 15
     var height = 15
+    static let name = "prop"
     
     init(position: CGPoint, img:UIImage) {
         super.init(texture: SKTexture(image: img) ,color: .clear, size: CGSize(width: width, height: height))
@@ -94,6 +95,48 @@ class ExpandProp : Prop {
             gameScene.createBall(position: pos).shotWithFixedSpeed(angle: 90)
             gameScene.createBall(position: pos).shotWithFixedSpeed(angle: 210)
             gameScene.createBall(position: pos).shotWithFixedSpeed(angle: 330)
+        }
+    }
+}
+
+class StoneProtectionProp : Prop {
+    init(position: CGPoint) {
+        super.init(position: position, img: #imageLiteral(resourceName: "wall"))
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func conduct(gameScene : GameScene, paddle: Paddle, prop: Prop) {
+        //get width & height & yposition
+        let width = gameScene.getBrickWidth()
+        let height = gameScene.getBrickHeight()
+        var stoneList: [Stone] = []
+        
+        //create wall
+        let stoneNum = Int(gameScene.frame.width) / width + 1
+        for i in 0..<stoneNum{
+            let stone = Stone(rectOf: CGSize(width: width, height: height))
+            stone.position = CGPoint(x: i * width, y: Int(paddle.position.y) - 30)
+            
+            //add stone
+            stoneList.append(stone)
+            gameScene.addChild(stone)
+        }
+        
+        //dissmiss after 5 seconds
+        DispatchAfter(after: 5) {
+            for (_, stone) in stoneList.enumerated() {
+                stone.removeFromParent()
+            }
+        }
+    }
+    
+    private func DispatchAfter(after: Double, handler:@escaping ()->())
+    {
+        DispatchQueue.main.asyncAfter(deadline: .now() + after) {
+            handler()
         }
     }
 }

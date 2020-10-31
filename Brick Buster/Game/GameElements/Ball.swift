@@ -10,7 +10,7 @@ import SpriteKit
 
 class Ball: SKShapeNode {
     var isShot = false
-    var radius = 8
+    var radius = 5
     let img = #imageLiteral(resourceName: "ball")
     
     
@@ -29,8 +29,8 @@ class Ball: SKShapeNode {
         self.name = "ball"
         self.physicsBody = SKPhysicsBody(circleOfRadius: CGFloat(self.radius))
         self.physicsBody?.categoryBitMask = BitMask.Ball
-        self.physicsBody?.contactTestBitMask = BitMask.Brick | BitMask.Ground | BitMask.Paddle | BitMask.Wall
-        self.physicsBody?.collisionBitMask = BitMask.Brick | BitMask.Ground | BitMask.Paddle | BitMask.Wall
+        self.physicsBody?.contactTestBitMask = BitMask.Brick | BitMask.Ground | BitMask.Paddle | BitMask.Wall | BitMask.Stone
+        self.physicsBody?.collisionBitMask = BitMask.Brick | BitMask.Ground | BitMask.Paddle | BitMask.Wall | BitMask.Stone
         self.physicsBody?.usesPreciseCollisionDetection = true;
         self.physicsBody?.linearDamping = 0
         self.physicsBody?.restitution = 1.0
