@@ -53,7 +53,7 @@ class SettingViewController: UIViewController {
         backgroundImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         backgroundImageView.contentMode = .scaleAspectFill;
         
-        backgroundImageView.image = UIImage(named: "loginbg")
+        backgroundImageView.image = UIImage(named: "bg1")
         view.sendSubviewToBack(backgroundImageView)
     }
     

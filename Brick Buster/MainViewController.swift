@@ -21,14 +21,14 @@ struct DataModel {
     var coins: Int64 = 10
     var lives: Int64 = 1
     var bats: Int64 = 0
-    var progress: Int64 = 0
+    var progress: Int64 = 1
     var music: Float = 0.1
     var sound: Float = 1.0
     var paddleSkin: Int64 = 0
     var background: Int64 = 0
 }
 
-var data = DataModel(first: "", last: "", score: 0, coins: 10, lives: 1, bats: 0, progress: 0, music: 0.1, sound: 1, paddleSkin: 0, background: 0)
+var data = DataModel(first: "", last: "", score: 0, coins: 10, lives: 1, bats: 0, progress: 1, music: 0.1, sound: 1, paddleSkin: 0, background: 0)
 
 let soundFile = URL(fileURLWithPath: Bundle.main.path(forResource: "btn_click_sound", ofType: "mp3")!)
 let musicFile = URL(fileURLWithPath: Bundle.main.path(forResource: "Astronomia", ofType: "mp3")!)
@@ -119,7 +119,7 @@ class MainViewController: UIViewController {
         backgroundImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         backgroundImageView.contentMode = .scaleAspectFill;
         
-        backgroundImageView.image = UIImage(named: "loginbg")
+        backgroundImageView.image = UIImage(named: "bg1")
         view.sendSubviewToBack(backgroundImageView)
     }
     /*

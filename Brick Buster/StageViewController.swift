@@ -13,6 +13,8 @@ class StageViewController: UIViewController, UICollectionViewDelegate, UICollect
 
     @IBOutlet weak var progressLabel: UILabel!
     @IBOutlet var collectionView: UICollectionView!
+    @IBOutlet weak var lifeSwitch: UISwitch!
+    @IBOutlet weak var longSwitch: UISwitch!
     
     let backgroundImageView = UIImageView()
 
@@ -52,13 +54,19 @@ class StageViewController: UIViewController, UICollectionViewDelegate, UICollect
     }
     
     @IBAction func play(_ sender: Any) {
-        startGame(s: 1, equips: [.life, .bat])
+        var equip: [equipment] = []
+        if lifeSwitch.isOn {
+            equip.append(.life)
+        }
+        if longSwitch.isOn {
+            equip.append(.bat)
+        }
+        startGame(equips: equip)
         playSound()
     }
     
-    func startGame(s: Int64, equips: [equipment]) {
+    func startGame(equips: [equipment]) {
         let gameVC = self.storyboard?.instantiateViewController(withIdentifier: "gameVC") as! GameViewController
-        stage = s
         equipments = equips
         self.navigationController?.pushViewController(gameVC, animated: true)
     }
@@ -72,7 +80,7 @@ class StageViewController: UIViewController, UICollectionViewDelegate, UICollect
         backgroundImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         backgroundImageView.contentMode = .scaleAspectFill;
         
-        backgroundImageView.image = UIImage(named: "loginbg")
+        backgroundImageView.image = UIImage(named: "bg1")
         view.sendSubviewToBack(backgroundImageView)
     }
     
@@ -96,6 +104,7 @@ class StageViewController: UIViewController, UICollectionViewDelegate, UICollect
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "StageCollectionViewCell", for: indexPath) as! StageCollectionViewCell
         cell.configure(with: UIImage(named: "\(indexPath.item+1)_square")!)
+        stage = Int64(indexPath.item+1)
         cell.layer.borderColor = Colors.tropicGreen.cgColor
         cell.layer.borderWidth = 0
         return cell
