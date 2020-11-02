@@ -470,16 +470,12 @@ extension GameScene {
         let previousLocation = touch!.previousLocation(in: self)
         
       if isFingerOnPaddle {
-        let paddle = childNode(withName: Paddle.name) as! SKSpriteNode
-        var paddleX = paddle.position.x + (touchLocation.x - previousLocation.x)
-        paddleX = max(paddleX, paddle.size.width/2)
-        paddleX = min(paddleX, size.width - paddle.size.width/2)
-        paddle.position = CGPoint(x: paddleX, y: paddle.position.y)
-        
-        if gameState.currentState is WaitingForStart {
-            for ball in self.children.filter({ $0.name == "ball" }) {
-                ball.position.x = paddle.position.x
-            }
+        if gameState.currentState is PlayingGame {
+            let paddle = childNode(withName: Paddle.name) as! SKSpriteNode
+            var paddleX = paddle.position.x + (touchLocation.x - previousLocation.x)
+            paddleX = max(paddleX, paddle.size.width/2)
+            paddleX = min(paddleX, size.width - paddle.size.width/2)
+            paddle.position = CGPoint(x: paddleX, y: paddle.position.y)
         }
       }
         
