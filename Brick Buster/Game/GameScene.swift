@@ -289,11 +289,12 @@ extension GameScene {
                     if !(gameState.currentState is GameOver){
                         self.breakBlock(node: brick)
                         if self.children.filter({ $0.name == Brick.name }).count == 0 {
-                            gameState.enter(GameOver.self)
                             gameWon = true
                             for prop in self.children.filter({ $0.name == Prop.name }) {
                                 prop.removeFromParent()
                             }
+                            gameState.enter(GameOver.self)
+                            
                         }
                     }
                 }

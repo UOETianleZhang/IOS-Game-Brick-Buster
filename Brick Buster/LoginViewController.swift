@@ -37,6 +37,7 @@ class LoginViewController: UIViewController {
         } else {
             DB.addOrUpdate(data: data)
         }
+        playMusic()
 
         let transition = CATransition()
         transition.duration = 0.5

@@ -35,6 +35,16 @@ let musicFile = URL(fileURLWithPath: Bundle.main.path(forResource: "Astronomia",
 var musicPlayer = AVAudioPlayer()
 var audioPlayer = AVAudioPlayer()
 
+func playMusic() {
+    do {
+        musicPlayer = try AVAudioPlayer(contentsOf: musicFile)
+        musicPlayer.volume = data.music
+        musicPlayer.play()
+    } catch {
+        print("music error")
+    }
+}
+
 class MainViewController: UIViewController {
     
     let backgroundImageView = UIImageView()
@@ -45,7 +55,6 @@ class MainViewController: UIViewController {
         let loginVC = self.storyboard?.instantiateViewController(withIdentifier: "loginVC") as! LoginViewController
         self.navigationController?.pushViewController(loginVC, animated: false)
         setBackground()
-        playMusic()
         // Do any additional setup after loading the view.
     }
     
@@ -56,16 +65,6 @@ class MainViewController: UIViewController {
             audioPlayer.play()
         } catch {
             print("sound error")
-        }
-    }
-    
-    func playMusic() {
-        do {
-            musicPlayer = try AVAudioPlayer(contentsOf: musicFile)
-            musicPlayer.volume = data.music
-            musicPlayer.play()
-        } catch {
-            print("music error")
         }
     }
     
