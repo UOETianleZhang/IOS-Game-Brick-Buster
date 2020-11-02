@@ -95,6 +95,7 @@ class GameViewController: UIViewController {
         data.lives = self.extraLife!
         data.coins = self.coin!
         data.score += self.score!
+        DB.addOrUpdate(data:data)
         
         //pop to main vc
         self.navigationController!.popToViewController(viewControllers[viewControllers.count - 3], animated: true)
