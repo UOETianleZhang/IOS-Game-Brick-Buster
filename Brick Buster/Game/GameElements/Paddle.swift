@@ -14,7 +14,7 @@ class Paddle: SKSpriteNode {
     var isHit = false
     var hitRemaining = 0
     static let img = #imageLiteral(resourceName: "paddle")
-    let width : Int = 70
+    var width : Int = 70
     let height : Int = 20
     static let name = "paddle"
     
@@ -44,5 +44,9 @@ class Paddle: SKSpriteNode {
         self.physicsBody?.restitution = 1.0
         self.physicsBody?.isDynamic = false
         self.physicsBody?.friction = 0.0
+    }
+    
+    func setWidth(width: Int){
+        self.width = width
     }
 }

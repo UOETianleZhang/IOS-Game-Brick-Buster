@@ -150,6 +150,9 @@ class GameScene: SKScene {
         //create paddle
         self.paddle = Paddle()
         self.paddle!.position = CGPoint(x: 100, y: 100)
+        if(self.isPaddleLengthUsed){
+            self.useExtraPaddleWidth()
+        }
         addChild(paddle!)
         
         //create game message
@@ -522,6 +525,10 @@ extension GameScene {
         let yPosition = Float((self.paddle?.position.y)!) + Float(self.paddle!.height)/2
         let ball = createBall(position: CGPoint(x: Int(xPosition), y: Int(yPosition)))
         ball.shotWithFixedSpeed(angle: 30)
+    }
+    
+    private func useExtraPaddleWidth(){
+        self.paddle!.xScale *= 1.5
     }
     
     func isRemainingLife() -> Bool{
