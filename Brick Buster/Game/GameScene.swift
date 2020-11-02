@@ -18,6 +18,8 @@ let traceName = "trace"
 
 class GameScene: SKScene {
     var contentCreated = false
+    var isExtraLifeUsed = false
+    var isPaddleLengthUsed = false
     var gameViewController:GameViewController?
     lazy var gameState: GKStateMachine = GKStateMachine(states: [
       WaitingForStart(scene: self), PlayingGame(scene: self), GameOver(scene: self)])

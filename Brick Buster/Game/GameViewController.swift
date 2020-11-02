@@ -22,6 +22,8 @@ class GameViewController: UIViewController {
     var coin: Int64?
     var score: Int64?
     private var targetMap = map1
+    private var isExtraLifeUsed = false
+    private var isExtraPaddleLengthUsed = false
     @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var lifeLabel: UILabel!
     @IBOutlet weak var coinLabel: UILabel!
@@ -29,7 +31,15 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.extraLife = data.lives
+        self.getEquipments()
+        
+        if(self.isExtraLifeUsed){
+            self.extraLife = 1
+        }else{
+            self.extraLife = 0
+        }
+        
+        
         self.coin = data.coins
         self.score = 0
         self.scoreLabel.text = String(self.score!)
@@ -42,6 +52,8 @@ class GameViewController: UIViewController {
             
             //create game scene
             self.scene = GameScene(size: view.frame.size, map: self.targetMap, gameViewController: self)
+            self.scene?.isExtraLifeUsed = self.isExtraLifeUsed
+            self.scene?.isPaddleLengthUsed = self.isExtraPaddleLengthUsed
             self.scene!.scaleMode = .aspectFill
             
             //display game scene
@@ -92,13 +104,28 @@ class GameViewController: UIViewController {
         self.navigationController?.view.layer.add(transition, forKey: kCATransition)
         
         //pass parameters
-        data.lives = self.extraLife!
+        data.lives += self.extraLife!
         data.coins = self.coin!
         data.score += self.score!
         DB.addOrUpdate(data:data)
         
         //pop to main vc
         self.navigationController!.popToViewController(viewControllers[viewControllers.count - 3], animated: true)
+    }
+    
+    private func getEquipments(){
+        for element in equipments{
+            //check if extra life is used
+            if element == equipment.life && data.lives > 0{
+                data.lives -= 1
+                self.isExtraLifeUsed = true
+            }
+            //check if extra paddle length is used
+            if element == equipment.bat && data.bats > 0{
+                data.bats -= 1
+                self.isExtraPaddleLengthUsed = true
+            }
+        }
     }
     
     private func getTargetMap(){
