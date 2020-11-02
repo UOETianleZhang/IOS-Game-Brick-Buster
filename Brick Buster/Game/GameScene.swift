@@ -453,10 +453,12 @@ extension GameScene {
         
         for node in self.nodes(at: touchLocation){
             if(node.name == exitButtonName){
-                
+                let testTexture: SKTexture = SKTexture.init(imageNamed: "hit_exit")
+                let changeTextures = SKAction.animate(with: [testTexture], timePerFrame: 0.1)
+                node.run(changeTextures)
             }
             if(node.name == restartButtonName){
-                let testTexture: SKTexture = SKTexture.init(imageNamed: exitButtonName)
+                let testTexture: SKTexture = SKTexture.init(imageNamed: "hit_restart")
                 let changeTextures = SKAction.animate(with: [testTexture], timePerFrame: 0.1)
                 node.run(changeTextures)
             }
