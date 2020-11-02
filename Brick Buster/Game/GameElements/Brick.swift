@@ -16,6 +16,7 @@ class Brick: SKSpriteNode {
     var img = #imageLiteral(resourceName: "block")
     var width = 100
     var height = 20
+    static let name = "brick"
     
     override private init(texture: SKTexture?, color: UIColor, size: CGSize) {
         super.init(texture: SKTexture(image: img), color: color, size: size)
@@ -33,6 +34,7 @@ class Brick: SKSpriteNode {
     }
     
     private func initObject() {
+        self.name = Brick.name
         self.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: self.width, height: self.height))
         self.physicsBody?.categoryBitMask = BitMask.Brick
         self.physicsBody?.contactTestBitMask = BitMask.Ball

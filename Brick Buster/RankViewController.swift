@@ -70,7 +70,16 @@ extension RankViewController: UITableViewDelegate, UITableViewDataSource {
         
         // set the text from the data model
         let player = players[indexPath.row]
-        cell?.textLabel?.text = "\(indexPath.row + 1).\t\(player.first) \(player.last) -- \(player.score)"
+        switch indexPath.row {
+        case 0:
+            cell?.textLabel?.text = "🥇\t\(player.first) \(player.last) -- \(player.score)"
+        case 1:
+            cell?.textLabel?.text = "🥈\t\(player.first) \(player.last) -- \(player.score)"
+        case 2:
+            cell?.textLabel?.text = "🥉\t\(player.first) \(player.last) -- \(player.score)"
+        default:
+            cell?.textLabel?.text = " \(indexPath.row + 1).\t\(player.first) \(player.last) -- \(player.score)"
+        }
         cell?.textLabel?.textColor = .white
         cell?.textLabel?.font = UIFont(name: Fonts.avenirNextCondensedDemiBold, size: 18)
         return cell!
