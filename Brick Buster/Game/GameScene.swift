@@ -444,8 +444,20 @@ extension GameScene {
           isFingerOnPaddle = true
         }
       }
+        
+        for node in self.nodes(at: touchLocation){
+            if(node.name == exitButtonName){
+                
+            }
+            if(node.name == restartButtonName){
+                let testTexture: SKTexture = SKTexture.init(imageNamed: exitButtonName)
+                let changeTextures = SKAction.animate(with: [testTexture], timePerFrame: 0.1)
+                node.run(changeTextures)
+            }
+        }
+        
       if gameState.currentState is WaitingForStart {
-          var trace = createTrace(pos: childNode(withName: Paddle.name)!.position)
+          let trace = createTrace(pos: childNode(withName: Paddle.name)!.position)
           let radians = atan2(touchLocation.x - trace.position.x, touchLocation.y - trace.position.y)
           trace.zRotation = -radians
       }
