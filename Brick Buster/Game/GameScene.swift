@@ -21,7 +21,6 @@ class GameScene: SKScene {
     var gameViewController:GameViewController?
     lazy var gameState: GKStateMachine = GKStateMachine(states: [
       WaitingForStart(scene: self), PlayingGame(scene: self), GameOver(scene: self)])
-    private var remainingBrickNum = 0
     private var initBallNum = 1
     private var paddle:Paddle?
     private var bricks = [Brick]()
@@ -30,6 +29,7 @@ class GameScene: SKScene {
     private var ballRadius = 5
     private var map: [[Int]]?
     private var score = 0
+    private let lock = NSLock()
     var isFingerOnPaddle = false
     private var gameWon : Bool = false {
       didSet {
@@ -212,7 +212,6 @@ class GameScene: SKScene {
                         //append brick
                         bricks.append(brick)
                         addChild(brick)
-                        self.remainingBrickNum += 1
                     }else if(brickList[j] == 2){//create stone
                         //create stone
                         let stone = Stone(rectOf: CGSize(width: self.brickWidth, height: self.brickHeight))
@@ -271,24 +270,30 @@ extension GameScene: SKPhysicsContactDelegate {
             propHitGround(secondBody.node)
         }
         
+        if (firstBody.categoryBitMask == BitMask.Ball) && (secondBody.categoryBitMask == BitMask.Paddle) {
+            ballHitPaddle(ball: firstBody.node, paddle: secondBody.node)
+        }
     }
 }
 
 extension GameScene {
-    private func ballHitBrick(_ node: SKNode?) {        
+    private func ballHitBrick(_ node: SKNode?) {
         if self.gameState.currentState is PlayingGame{
             guard let brick = node as? Brick else { return }
             
             if brick.physicsBody?.categoryBitMask == BitMask.Brick {
+                lock.lock()
                 self.score += 1
                 self.gameViewController?.updateScore(score: self.score)
-                if brick.hitRemaining == 0{
+                if brick.hitRemaining == 0 {
                     if !(gameState.currentState is GameOver){
                         self.breakBlock(node: brick)
-                        self.remainingBrickNum -= 1
-                        if self.remainingBrickNum == 0{
+                        if self.children.filter({ $0.name == Brick.name }).count == 0 {
                             gameState.enter(GameOver.self)
                             gameWon = true
+                            for prop in self.children.filter({ $0.name == Prop.name }) {
+                                prop.removeFromParent()
+                            }
                         }
                     }
                 }
@@ -317,6 +322,7 @@ extension GameScene {
                     default:
                         break
                 }
+                lock.unlock()
             }
         }
     }
@@ -367,18 +373,32 @@ extension GameScene {
             prop.removeFromParent()
         }
     }
-}
-
-extension GameScene {
-    private func shot() {
-        let balls = self.children.filter({ $0.name == "ball" })
-        for (index, ball) in balls.enumerated() {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1 * Double(index)) {
-                ball.physicsBody?.applyForce(CGVector(dx: 200 + CGFloat(index) * 0.1, dy: 300))
+    
+    private func ballHitPaddle(ball: SKNode?, paddle: SKNode?) {
+        guard let paddle = paddle as? Paddle else { return }
+        guard let ball = ball as? Ball else { return }
+        if gameState.currentState is PlayingGame {
+            ball.physicsBody?.velocity = .zero
+            var arc = Double(atan((ball.position.y - paddle.position.y + 50)/(ball.position.x - paddle.position.x)))
+            var angle = arc * Double(180) / Double.pi
+            if angle < 0 {
+                angle += 180
             }
+            ball.shotWithFixedSpeed(angle: angle)
         }
     }
 }
+
+//extension GameScene {
+//    private func shot() {
+//        let balls = self.children.filter({ $0.name == "ball" })
+//        for (index, ball) in balls.enumerated() {
+//            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1 * Double(index)) {
+//                ball.physicsBody?.applyImpulse(CGVector(dx: 20 + CGFloat(index) * 0.1, dy: 30))
+//            }
+//        }
+//    }
+//}
 
 extension GameScene {
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -401,8 +421,12 @@ extension GameScene {
             case is WaitingForStart:
                 gameState.enter(PlayingGame.self)
                 let ball = childNode(withName: "ball") as! Ball
-                let angle = atan((touchLocation.y - ball.position.y)/(touchLocation.x - ball.position.x))
-                ball.shotWithFixedSpeed(angle: Double(angle) / Double.pi * Double(180))
+                var arc = Double(atan((touchLocation.y - ball.position.y)/(touchLocation.x - ball.position.x)))
+                var angle = arc * Double(180) / Double.pi
+                if angle < 0 {
+                    angle += 180
+                }
+                ball.shotWithFixedSpeed(angle: angle)
             default:
                 break
         }
@@ -420,8 +444,20 @@ extension GameScene {
           isFingerOnPaddle = true
         }
       }
+        
+        for node in self.nodes(at: touchLocation){
+            if(node.name == exitButtonName){
+                
+            }
+            if(node.name == restartButtonName){
+                let testTexture: SKTexture = SKTexture.init(imageNamed: exitButtonName)
+                let changeTextures = SKAction.animate(with: [testTexture], timePerFrame: 0.1)
+                node.run(changeTextures)
+            }
+        }
+        
       if gameState.currentState is WaitingForStart {
-          var trace = createTrace(pos: childNode(withName: Paddle.name)!.position)
+          let trace = createTrace(pos: childNode(withName: Paddle.name)!.position)
           let radians = atan2(touchLocation.x - trace.position.x, touchLocation.y - trace.position.y)
           trace.zRotation = -radians
       }

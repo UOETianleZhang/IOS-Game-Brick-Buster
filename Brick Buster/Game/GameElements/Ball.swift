@@ -42,11 +42,11 @@ class Ball: SKShapeNode {
     }
     
     func shotWithFixedSpeed(angle : Double) {
-        let v : Double = 350
+        let v : Double = 1
         let dx = v * cos(angle * Double.pi / 180)
         let dy = v * sin(angle * Double.pi / 180)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-            self.physicsBody?.applyForce(CGVector(dx: dx, dy: dy))
+        DispatchQueue.main.async {
+            self.physicsBody?.applyImpulse(CGVector(dx: dx, dy: dy))
         }
     }
 }

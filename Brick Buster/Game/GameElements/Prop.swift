@@ -49,7 +49,9 @@ class ProlongProp : Prop {
         fatalError("init(coder:) has not been implemented")
     }
     override func conduct(gameScene : GameScene, paddle: Paddle, prop: Prop) {
-        paddle.xScale *= 1.5
+        if paddle.xScale < 3.5 {
+            paddle.xScale *= 1.5
+        }
     }
 }
 
@@ -61,7 +63,9 @@ class ShortenProp : Prop {
         fatalError("init(coder:) has not been implemented")
     }
     override func conduct(gameScene : GameScene, paddle: Paddle, prop: Prop) {
-        paddle.xScale /= 1.5
+        if paddle.xScale >= 1/4 {
+            paddle.xScale /= 1.5
+        }
     }
 }
 
@@ -73,7 +77,7 @@ class ThreeBallsProp : Prop {
         fatalError("init(coder:) has not been implemented")
     }
     override func conduct(gameScene : GameScene, paddle: Paddle, prop: Prop) {
-        let pos = CGPoint(x: paddle.position.x, y: paddle.position.y + CGFloat(paddle.height / 2))
+        let pos = CGPoint(x: paddle.position.x, y: paddle.position.y + CGFloat(paddle.height))
         gameScene.createBall(position: pos).shotWithFixedSpeed(angle: 45)
         gameScene.createBall(position: pos).shotWithFixedSpeed(angle: 91)
         gameScene.createBall(position: pos).shotWithFixedSpeed(angle: 135)
@@ -91,7 +95,6 @@ class ExpandProp : Prop {
         for ball in gameScene.children.filter({ $0.name == "ball" }) {
             let ball = ball as! Ball
             let pos = ball.position
-            ball.removeFromParent()
             gameScene.createBall(position: pos).shotWithFixedSpeed(angle: 90)
             gameScene.createBall(position: pos).shotWithFixedSpeed(angle: 210)
             gameScene.createBall(position: pos).shotWithFixedSpeed(angle: 330)
