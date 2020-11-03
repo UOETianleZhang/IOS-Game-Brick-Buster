@@ -31,6 +31,13 @@ class GameOver: GKState {
             }
             
             scene.physicsWorld.gravity = CGVector(dx: 0, dy: 0)
+            
+            for prop in scene.children.filter({ $0.name == Prop.name }) {
+                prop.removeFromParent()
+            }
+            for ball in scene.children.filter({ $0.name == Ball.name }) {
+                ball.removeFromParent()
+            }
         }
     }
 

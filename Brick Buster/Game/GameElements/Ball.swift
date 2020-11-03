@@ -12,7 +12,7 @@ class Ball: SKShapeNode {
     var isShot = false
     var radius = 5
     let img = #imageLiteral(resourceName: "ball")
-    
+    static let name = "ball"
     
     override init() {
         super.init()
@@ -26,7 +26,7 @@ class Ball: SKShapeNode {
     private func initObject() {
         self.fillTexture = SKTexture(image: img)
         self.fillColor = .white
-        self.name = "ball"
+        self.name = Ball.name
         self.physicsBody = SKPhysicsBody(circleOfRadius: CGFloat(self.radius))
         self.physicsBody?.categoryBitMask = BitMask.Ball
         self.physicsBody?.contactTestBitMask = BitMask.Brick | BitMask.Ground | BitMask.Paddle | BitMask.Wall | BitMask.Stone

@@ -37,16 +37,6 @@ class SettingViewController: UIViewController {
         DB.addOrUpdate(data: data)
     }
     
-    func playSound() {
-        do {
-            audioPlayer = try AVAudioPlayer(contentsOf: soundFile)
-            audioPlayer.volume = data.sound
-            audioPlayer.play()
-        } catch {
-            print("sound error")
-        }
-    }
-    
     func setBackground() {
         view.addSubview(backgroundImageView)
         backgroundImageView.translatesAutoresizingMaskIntoConstraints = false

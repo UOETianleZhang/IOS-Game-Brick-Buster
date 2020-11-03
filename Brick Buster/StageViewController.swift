@@ -34,16 +34,6 @@ class StageViewController: UIViewController, UICollectionViewDelegate, UICollect
         // Do any additional setup after loading the view.
     }
     
-    func playSound() {
-        do {
-            audioPlayer = try AVAudioPlayer(contentsOf: soundFile)
-            audioPlayer.volume = data.sound
-            audioPlayer.play()
-        } catch {
-            print("sound error")
-        }
-    }
-    
     @IBAction func back(_ sender: Any) {
         let transition = CATransition()
         transition.duration = 0.5

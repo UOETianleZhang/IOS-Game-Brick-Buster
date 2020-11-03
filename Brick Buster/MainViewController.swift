@@ -30,19 +30,17 @@ struct DataModel {
 
 var data = DataModel(first: "", last: "", score: 0, coins: 10, lives: 1, bats: 0, progress: 1, music: 0.1, sound: 1, paddleSkin: 0, background: 0)
 
-let soundFile = URL(fileURLWithPath: Bundle.main.path(forResource: "btn_click_sound", ofType: "mp3")!)
-let musicFile = URL(fileURLWithPath: Bundle.main.path(forResource: "Astronomia", ofType: "mp3")!)
 var musicPlayer = AVAudioPlayer()
 var audioPlayer = AVAudioPlayer()
 
 func playMusic() {
-    do {
-        musicPlayer = try AVAudioPlayer(contentsOf: musicFile)
-        musicPlayer.volume = data.music
-        musicPlayer.play()
-    } catch {
-        print("music error")
-    }
+    musicPlayer.volume = data.music
+    musicPlayer.play()
+    musicPlayer.numberOfLoops = -1
+}
+func playSound() {
+    audioPlayer.volume = data.sound
+    audioPlayer.play()
 }
 
 class MainViewController: UIViewController {
@@ -56,16 +54,16 @@ class MainViewController: UIViewController {
         self.navigationController?.pushViewController(loginVC, animated: false)
         setBackground()
         // Do any additional setup after loading the view.
-    }
-    
-    func playSound() {
+        let soundFile = URL(fileURLWithPath: Bundle.main.path(forResource: "btn_click_sound", ofType: "mp3")!)
+        //let musicFile = URL(fileURLWithPath: Bundle.main.path(forResource: "Astronomia", ofType: "mp3")!)
+        let musicFile = URL(fileURLWithPath: Bundle.main.path(forResource: "back2", ofType: "mp3")!)
         do {
+            musicPlayer = try AVAudioPlayer(contentsOf: musicFile)
             audioPlayer = try AVAudioPlayer(contentsOf: soundFile)
-            audioPlayer.volume = data.sound
-            audioPlayer.play()
         } catch {
             print("sound error")
         }
+        playMusic()
     }
     
     @IBAction func stages(_ sender: Any) {

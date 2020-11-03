@@ -8,6 +8,7 @@
 
 import UIKit
 import AVKit
+import MBProgressHUD
 
 class LoginViewController: UIViewController {
     
@@ -15,6 +16,7 @@ class LoginViewController: UIViewController {
 
     @IBOutlet weak var firstNameInput: LoginText!
     @IBOutlet weak var lastNameInput: LoginText!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,28 +26,39 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func login(_ sender: Any) {
-        data.first = firstNameInput.text ?? "Spider"
+        playSound()
+        showHUD(progressLabel: "loading")
+        data.first = self.firstNameInput.text ?? "Spider"
         if data.first.isEmpty {
             data.first = "Spider"
         }
-        data.last = lastNameInput.text ?? "Man"
+        data.last = self.lastNameInput.text ?? "Man"
         if data.last.isEmpty {
             data.last = "Man"
         }
-        if let fetchedData = DB.getData(first: data.first, last: data.last) {
-            data = fetchedData
-        } else {
-            DB.addOrUpdate(data: data)
-        }
-        playMusic()
+        
+        DispatchQueue.global().async() {
+            if let fetchedData = DB.getData(first: data.first, last: data.last) {
+                data = fetchedData
+            } else {
+                DB.addOrUpdate(data: data)
+            }
 
-        let transition = CATransition()
-        transition.duration = 0.5
-        transition.type = CATransitionType(rawValue: "cube")
-        transition.subtype = CATransitionSubtype.fromBottom
-        self.navigationController?.view.layer.add(transition, forKey: kCATransition)
-        self.navigationController?.popViewController(animated: false)
-        playSound()
+            DispatchQueue.main.async {
+                self.dismissHUD(isAnimated: true)
+                Alert.fancyAlert(with: "Login Success!", message: "\tWelcome, \(data.first) \(data.last)!") {
+                    DispatchQueue.main.async {
+                        playSound()
+                        let transition = CATransition()
+                        transition.duration = 0.5
+                        transition.type = CATransitionType(rawValue: "cube")
+                        transition.subtype = CATransitionSubtype.fromBottom
+                        self.navigationController?.view.layer.add(transition, forKey: kCATransition)
+                        self.navigationController?.popViewController(animated: false)
+                    }
+                }
+            }
+        }
     }
     
     func setBackground() {
@@ -59,15 +72,6 @@ class LoginViewController: UIViewController {
         
         backgroundImageView.image = UIImage(named: "loginbg")
         view.sendSubviewToBack(backgroundImageView)
-    }
-    
-    func playSound() {
-        do {
-            audioPlayer = try AVAudioPlayer(contentsOf: soundFile)
-            audioPlayer.play()
-        } catch {
-            print("sound error")
-        }
     }
     
     /*

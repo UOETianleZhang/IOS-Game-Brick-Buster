@@ -49,6 +49,18 @@
 		EB84F7C625460C5D00321F6D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB84F7C425460C5D00321F6D /* Assets.xcassets */; };
 		EB84F7EF2548901400321F6D /* DynamoDB in Frameworks */ = {isa = PBXBuildFile; productRef = EB84F7EE2548901400321F6D /* DynamoDB */; };
 		EB84F7F42548905800321F6D /* DDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB84F7F32548905800321F6D /* DDB.swift */; };
+		EBAE47242550D16100279F87 /* hit_paddle.wav in Resources */ = {isa = PBXBuildFile; fileRef = EBAE47232550D16100279F87 /* hit_paddle.wav */; };
+		EBAE47292550D21500279F87 /* bird2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = EBAE47282550D21500279F87 /* bird2.mp3 */; };
+		EBAE472E2551AF9E00279F87 /* eat_prop.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = EBAE472D2551AF9E00279F87 /* eat_prop.mp3 */; };
+		EBAE47332551BA4B00279F87 /* back2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = EBAE47322551BA4B00279F87 /* back2.mp3 */; };
+		EBCC830D2550B0070058DBCD /* MBProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = EBCC830C2550B0070058DBCD /* MBProgressHUD */; };
+		EBCC83152550C2300058DBCD /* PokerCard in Frameworks */ = {isa = PBXBuildFile; productRef = EBCC83142550C2300058DBCD /* PokerCard */; };
+		EBCC831F2550C7B00058DBCD /* game-won.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = EBCC831A2550C7AE0058DBCD /* game-won.mp3 */; };
+		EBCC83202550C7B00058DBCD /* paddleBlip.wav in Resources */ = {isa = PBXBuildFile; fileRef = EBCC831B2550C7AF0058DBCD /* paddleBlip.wav */; };
+		EBCC83212550C7B00058DBCD /* game-over.wav in Resources */ = {isa = PBXBuildFile; fileRef = EBCC831C2550C7AF0058DBCD /* game-over.wav */; };
+		EBCC83222550C7B00058DBCD /* BambooBreak.wav in Resources */ = {isa = PBXBuildFile; fileRef = EBCC831D2550C7AF0058DBCD /* BambooBreak.wav */; };
+		EBCC83232550C7B00058DBCD /* pongblip.wav in Resources */ = {isa = PBXBuildFile; fileRef = EBCC831E2550C7AF0058DBCD /* pongblip.wav */; };
+		EBCC83282550CC0E0058DBCD /* bird.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = EBCC83272550CC0D0058DBCD /* bird.mp3 */; };
 		EBF3AC2A253CE61D0006C931 /* Prop.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF3AC29253CE61D0006C931 /* Prop.swift */; };
 /* End PBXBuildFile section */
 
@@ -117,6 +129,16 @@
 		EB84F7C325460C5D00321F6D /* Break Block.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = "Break Block.sks"; sourceTree = "<group>"; };
 		EB84F7C425460C5D00321F6D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EB84F7F32548905800321F6D /* DDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDB.swift; sourceTree = "<group>"; };
+		EBAE47232550D16100279F87 /* hit_paddle.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = hit_paddle.wav; path = ../../../../../Downloads/hit_paddle.wav; sourceTree = "<group>"; };
+		EBAE47282550D21500279F87 /* bird2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = bird2.mp3; path = ../../../../../Downloads/bird2.mp3; sourceTree = "<group>"; };
+		EBAE472D2551AF9E00279F87 /* eat_prop.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = eat_prop.mp3; path = ../../../../../Downloads/eat_prop.mp3; sourceTree = "<group>"; };
+		EBAE47322551BA4B00279F87 /* back2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = back2.mp3; path = ../../../../../Downloads/back2.mp3; sourceTree = "<group>"; };
+		EBCC831A2550C7AE0058DBCD /* game-won.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "game-won.mp3"; path = "../../../../../Downloads/Bamboo Breakout Final 2/Bamboo Breakout/Sounds/game-won.mp3"; sourceTree = "<group>"; };
+		EBCC831B2550C7AF0058DBCD /* paddleBlip.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = paddleBlip.wav; path = "../../../../../Downloads/Bamboo Breakout Final 2/Bamboo Breakout/Sounds/paddleBlip.wav"; sourceTree = "<group>"; };
+		EBCC831C2550C7AF0058DBCD /* game-over.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "game-over.wav"; path = "../../../../../Downloads/Bamboo Breakout Final 2/Bamboo Breakout/Sounds/game-over.wav"; sourceTree = "<group>"; };
+		EBCC831D2550C7AF0058DBCD /* BambooBreak.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = BambooBreak.wav; path = "../../../../../Downloads/Bamboo Breakout Final 2/Bamboo Breakout/Sounds/BambooBreak.wav"; sourceTree = "<group>"; };
+		EBCC831E2550C7AF0058DBCD /* pongblip.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = pongblip.wav; path = "../../../../../Downloads/Bamboo Breakout Final 2/Bamboo Breakout/Sounds/pongblip.wav"; sourceTree = "<group>"; };
+		EBCC83272550CC0D0058DBCD /* bird.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = bird.mp3; path = ../../../../../Downloads/bird.mp3; sourceTree = "<group>"; };
 		EBF3AC29253CE61D0006C931 /* Prop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Prop.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -125,6 +147,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EBCC83152550C2300058DBCD /* PokerCard in Frameworks */,
+				EBCC830D2550B0070058DBCD /* MBProgressHUD in Frameworks */,
 				EB84F7EF2548901400321F6D /* DynamoDB in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -205,10 +229,9 @@
 		A0C403B0253968C300DD4C85 /* Brick Buster */ = {
 			isa = PBXGroup;
 			children = (
+				EBCC83192550C7420058DBCD /* Music */,
 				EB84F7A52540CF5500321F6D /* Tools */,
 				EB84F7E125488C9A00321F6D /* DB */,
-				A0E7623E25454AEB00CDDE29 /* Astronomia.mp3 */,
-				A0E7623A2545395B00CDDE29 /* btn_click_sound.mp3 */,
 				0F6EE5BA253A22FF00883121 /* Game */,
 				A0C403B1253968C300DD4C85 /* AppDelegate.swift */,
 				A0C403B3253968C300DD4C85 /* GameScene.sks */,
@@ -280,6 +303,25 @@
 			path = DB;
 			sourceTree = "<group>";
 		};
+		EBCC83192550C7420058DBCD /* Music */ = {
+			isa = PBXGroup;
+			children = (
+				EBAE47322551BA4B00279F87 /* back2.mp3 */,
+				EBAE47282550D21500279F87 /* bird2.mp3 */,
+				EBAE47232550D16100279F87 /* hit_paddle.wav */,
+				EBCC83272550CC0D0058DBCD /* bird.mp3 */,
+				EBAE472D2551AF9E00279F87 /* eat_prop.mp3 */,
+				EBCC831D2550C7AF0058DBCD /* BambooBreak.wav */,
+				EBCC831C2550C7AF0058DBCD /* game-over.wav */,
+				EBCC831A2550C7AE0058DBCD /* game-won.mp3 */,
+				EBCC831B2550C7AF0058DBCD /* paddleBlip.wav */,
+				EBCC831E2550C7AF0058DBCD /* pongblip.wav */,
+				A0E7623E25454AEB00CDDE29 /* Astronomia.mp3 */,
+				A0E7623A2545395B00CDDE29 /* btn_click_sound.mp3 */,
+			);
+			path = Music;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -298,6 +340,8 @@
 			name = "Brick Buster";
 			packageProductDependencies = (
 				EB84F7EE2548901400321F6D /* DynamoDB */,
+				EBCC830C2550B0070058DBCD /* MBProgressHUD */,
+				EBCC83142550C2300058DBCD /* PokerCard */,
 			);
 			productName = "Brick Buster";
 			productReference = A0C403AE253968C300DD4C85 /* Brick Buster.app */;
@@ -373,6 +417,8 @@
 			mainGroup = A0C403A5253968C200DD4C85;
 			packageReferences = (
 				EB84F7ED2548901400321F6D /* XCRemoteSwiftPackageReference "soto" */,
+				EBCC830B2550B0060058DBCD /* XCRemoteSwiftPackageReference "MBProgressHUD" */,
+				EBCC83132550C22F0058DBCD /* XCRemoteSwiftPackageReference "PokerCard" */,
 			);
 			productRefGroup = A0C403AF253968C300DD4C85 /* Products */;
 			projectDirPath = "";
@@ -391,11 +437,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				0FA25F9F25472C010082FDBC /* Fire.sks in Resources */,
+				EBCC83202550C7B00058DBCD /* paddleBlip.wav in Resources */,
+				EBCC83282550CC0E0058DBCD /* bird.mp3 in Resources */,
+				EBCC83212550C7B00058DBCD /* game-over.wav in Resources */,
+				EBAE472E2551AF9E00279F87 /* eat_prop.mp3 in Resources */,
+				EBCC83232550C7B00058DBCD /* pongblip.wav in Resources */,
+				EBCC831F2550C7B00058DBCD /* game-won.mp3 in Resources */,
 				A0C403BD253968C300DD4C85 /* Main.storyboard in Resources */,
 				A0E7623F25454AEC00CDDE29 /* Astronomia.mp3 in Resources */,
+				EBAE47242550D16100279F87 /* hit_paddle.wav in Resources */,
 				A0C403B4253968C300DD4C85 /* GameScene.sks in Resources */,
 				A0C403BF253968CA00DD4C85 /* Assets.xcassets in Resources */,
+				EBAE47332551BA4B00279F87 /* back2.mp3 in Resources */,
+				EBCC83222550C7B00058DBCD /* BambooBreak.wav in Resources */,
 				A0E7623B2545395B00CDDE29 /* btn_click_sound.mp3 in Resources */,
+				EBAE47292550D21500279F87 /* bird2.mp3 in Resources */,
 				EB84F7C525460C5D00321F6D /* Break Block.sks in Resources */,
 				EB84F7C625460C5D00321F6D /* Assets.xcassets in Resources */,
 				A0C403C2253968CA00DD4C85 /* LaunchScreen.storyboard in Resources */,
@@ -788,6 +844,22 @@
 				minimumVersion = 4.9.0;
 			};
 		};
+		EBCC830B2550B0060058DBCD /* XCRemoteSwiftPackageReference "MBProgressHUD" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/jdg/MBProgressHUD.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.2.0;
+			};
+		};
+		EBCC83132550C22F0058DBCD /* XCRemoteSwiftPackageReference "PokerCard" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/iWeslie/PokerCard";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.1.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -795,6 +867,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = EB84F7ED2548901400321F6D /* XCRemoteSwiftPackageReference "soto" */;
 			productName = DynamoDB;
+		};
+		EBCC830C2550B0070058DBCD /* MBProgressHUD */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EBCC830B2550B0060058DBCD /* XCRemoteSwiftPackageReference "MBProgressHUD" */;
+			productName = MBProgressHUD;
+		};
+		EBCC83142550C2300058DBCD /* PokerCard */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EBCC83132550C22F0058DBCD /* XCRemoteSwiftPackageReference "PokerCard" */;
+			productName = PokerCard;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

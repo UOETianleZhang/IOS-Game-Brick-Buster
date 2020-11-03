@@ -26,6 +26,7 @@ class Prop: SKSpriteNode {
     }
     
     private func initObject() {
+        self.name = Prop.name
         self.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: self.width, height: self.height))
         self.physicsBody?.categoryBitMask = BitMask.Prop
         self.physicsBody?.contactTestBitMask = BitMask.Paddle | BitMask.Ground
@@ -34,6 +35,7 @@ class Prop: SKSpriteNode {
         self.physicsBody?.restitution = 1.0
         self.physicsBody?.isDynamic = true
         self.physicsBody?.velocity = CGVector(dx: 0, dy: -30)
+        self.zPosition = 2
     }
     
     func conduct(gameScene : GameScene, paddle: Paddle, prop: Prop) {

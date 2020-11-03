@@ -89,16 +89,6 @@ class StoreViewController: UIViewController {
         playSound()
     }
     
-    func playSound() {
-        do {
-            audioPlayer = try AVAudioPlayer(contentsOf: soundFile)
-            audioPlayer.volume = data.sound
-            audioPlayer.play()
-        } catch {
-            print("sound error")
-        }
-    }
-    
     func popup() {
         let alert = UIAlertController(title: "Alert", message: "You don't have enough coins", preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))

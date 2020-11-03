@@ -33,8 +33,20 @@ class GameScene: SKScene {
     private var score = 0
     private let lock = NSLock()
     var isFingerOnPaddle = false
+    
+    let blipSound = SKAction.playSoundFileNamed("pongblip", waitForCompletion: false)
+    let blipPaddleSound = SKAction.playSoundFileNamed("hit_paddle", waitForCompletion: false)
+    let bambooBreakSound = SKAction.playSoundFileNamed("BambooBreak", waitForCompletion: false)
+    let gameWonSound = SKAction.playSoundFileNamed("game-won", waitForCompletion: false)
+    let gameOverSound = SKAction.playSoundFileNamed("game-over", waitForCompletion: false)
+    let eatPropSound = SKAction.playSoundFileNamed("eat_prop", waitForCompletion: false)
+    
+    
     private var gameWon : Bool = false {
       didSet {
+        if !(gameState.currentState is WaitingForStart) {
+            gameWon ? run(self.gameWonSound) : run(self.gameOverSound)
+        }
         let gameOver = childNode(withName: GameMessageName) as! SKSpriteNode
         let textureName = gameWon ? "YouWon" : "GameOver"
         let texture = SKTexture(imageNamed: textureName)
@@ -295,9 +307,7 @@ extension GameScene {
                         self.breakBlock(node: brick)
                         if self.children.filter({ $0.name == Brick.name }).count == 0 {
                             gameWon = true
-                            for prop in self.children.filter({ $0.name == Prop.name }) {
-                                prop.removeFromParent()
-                            }
+                            lock.unlock()
                             gameState.enter(GameOver.self)
                             
                         }
@@ -307,26 +317,28 @@ extension GameScene {
                 // generate a prop and make it drop down in a const speed. This prop can make the paddle longer
                 let pos = CGPoint(x: node!.position.x, y: node!.position.y)
                 
-                let prop : Prop
-                let rand =  Int.randomIntNumber(lower: 0, upper: 10)
-                switch rand {
-                    case 0:
-                        prop = ProlongProp(position: pos)
-                        addChild(prop)
-                    case 1:
-                        prop = ShortenProp(position: pos)
-                        addChild(prop)
-                    case 2:
-                        prop = ThreeBallsProp(position: pos)
-                        addChild(prop)
-                    case 3:
-                        prop = ExpandProp(position: pos)
-                        addChild(prop)
-                    case 4:
-                        prop = StoneProtectionProp(position: pos)
-                        addChild(prop)
-                    default:
-                        break
+                if gameState.currentState is PlayingGame {
+                    let prop : Prop
+                    let rand =  Int.randomIntNumber(lower: 0, upper: 10)
+                    switch rand {
+                        case 0:
+                            prop = ProlongProp(position: pos)
+                            addChild(prop)
+                        case 1:
+                            prop = ShortenProp(position: pos)
+                            addChild(prop)
+                        case 2:
+                            prop = ThreeBallsProp(position: pos)
+                            addChild(prop)
+                        case 3:
+                            prop = ExpandProp(position: pos)
+                            addChild(prop)
+                        case 4:
+                            prop = StoneProtectionProp(position: pos)
+                            addChild(prop)
+                        default:
+                            break
+                    }
                 }
                 lock.unlock()
             }
@@ -334,6 +346,7 @@ extension GameScene {
     }
     
     private func breakBlock(node: SKNode) {
+        run(bambooBreakSound)
         let particles = SKEmitterNode(fileNamed: "Break Block")!
         particles.position = node.position
         particles.zPosition = 3
@@ -375,6 +388,7 @@ extension GameScene {
         guard let prop = prop as? Prop else { return }
         
         if prop.physicsBody?.categoryBitMask == BitMask.Prop {
+            run(eatPropSound)
             prop.conduct(gameScene: self, paddle: paddle, prop: prop)
             prop.removeFromParent()
         }
@@ -383,6 +397,7 @@ extension GameScene {
     private func ballHitPaddle(ball: SKNode?, paddle: SKNode?) {
         guard let paddle = paddle as? Paddle else { return }
         guard let ball = ball as? Ball else { return }
+        run(blipPaddleSound)
         if gameState.currentState is PlayingGame {
             ball.physicsBody?.velocity = .zero
             var arc = Double(atan((ball.position.y - paddle.position.y + 50)/(ball.position.x - paddle.position.x)))
