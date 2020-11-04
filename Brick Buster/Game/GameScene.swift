@@ -554,4 +554,8 @@ extension GameScene {
         }
         return false
     }
+    
+    func isGameEnded() -> Bool{
+        return self.gameState.currentState is GameOver
+    }
 }

@@ -111,6 +111,9 @@ class GameViewController: UIViewController {
         }
         DB.addOrUpdate(data:data)
         
+        //remove all children
+        self.scene?.removeAllChildren()
+        
         //pop to main vc
         self.navigationController!.popToViewController(viewControllers[viewControllers.count - 3], animated: true)
     }
@@ -157,7 +160,13 @@ class GameViewController: UIViewController {
     }
     
     @IBAction func exitButtonPressed(_ sender: Any) {
-        self.backToMainVC(isGameEnded:false)
+        let isGameEnded = self.scene?.isGameEnded()
+        
+        if isGameEnded!{
+            self.updateCoin(coin: self.coin! + Int64(self.score!))
+        }
+        
+        self.backToMainVC(isGameEnded: isGameEnded!)
     }
     
 }
