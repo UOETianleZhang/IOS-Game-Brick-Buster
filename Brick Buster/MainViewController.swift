@@ -8,6 +8,7 @@
 
 import UIKit
 import AVKit
+import SpriteKit
 
 enum equipment {
     case life
@@ -64,7 +65,9 @@ class MainViewController: UIViewController {
             print("sound error")
         }
         playMusic()
+        
     }
+    
     
     @IBAction func stages(_ sender: Any) {
         let stageVC = self.storyboard?.instantiateViewController(withIdentifier: "stageVC") as! StageViewController
@@ -116,8 +119,43 @@ class MainViewController: UIViewController {
         backgroundImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         backgroundImageView.contentMode = .scaleAspectFill;
         
+        setupEmitter()
         backgroundImageView.image = UIImage(named: "bg1")
         view.sendSubviewToBack(backgroundImageView)
+        
+        
+    }
+    
+    private func setupEmitter() {
+
+
+        let size = backgroundImageView.bounds.size
+
+        let emitter             = CAEmitterLayer()
+        emitter.emitterSize     = CGSize(width: size.width, height: 1)
+        emitter.emitterPosition = CGPoint(x: 150, y: -100)
+        emitter.emitterShape    = CAEmitterLayerEmitterShape.line
+        backgroundImageView.layer.addSublayer(emitter)
+
+        //SHAPE 1
+        let shape1 = CAEmitterCell()
+        shape1.birthRate = 3
+        shape1.lifetime = 30
+        shape1.lifetimeRange = 2
+        shape1.velocity = 50
+        shape1.velocityRange = 30
+        shape1.emissionLongitude = CGFloat(M_PI)
+        shape1.emissionRange = CGFloat(M_PI)
+        shape1.spin = 0.05
+        shape1.spinRange = 0.05
+        shape1.scaleSpeed = 0
+        shape1.scale  = 0.15
+        shape1.scaleRange = 0.1
+        shape1.contents = UIImage(named: "bamboo2")?.cgImage
+
+        emitter.emitterCells = [shape1]
+
+
     }
     /*
     // MARK: - Navigation
