@@ -129,7 +129,7 @@ class GameScene: SKScene {
         addChild(background)
         
         //create ground
-        let ground = SKSpriteNode(color: .gray, size: CGSize(width: size.width, height: size.height/10))
+        let ground = SKSpriteNode(color: .gray, size: CGSize(width: size.width, height: size.height/30))
         ground.position = CGPoint(x: size.width / 2, y: 0)
         ground.physicsBody = SKPhysicsBody(rectangleOf: ground.size)
         ground.physicsBody?.isDynamic = false
