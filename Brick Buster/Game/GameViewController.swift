@@ -92,7 +92,7 @@ class GameViewController: UIViewController {
         self.coinLabel.text = String(coin)
     }
     
-    func backToMainVC(){
+    func backToMainVC(isGameEnded: Bool){
         //get all VC
         let viewControllers: [UIViewController] = self.navigationController!.viewControllers as [UIViewController]
         
@@ -105,8 +105,10 @@ class GameViewController: UIViewController {
         
         //pass parameters
         data.lives += self.extraLife!
-        data.coins = self.coin!
-        data.score += self.score!
+        if(isGameEnded){//do not add score and coins if user quit half way
+            data.coins = self.coin!
+            data.score += self.score!
+        }
         DB.addOrUpdate(data:data)
         
         //pop to main vc
@@ -153,4 +155,9 @@ class GameViewController: UIViewController {
                 break
         }
     }
+    
+    @IBAction func exitButtonPressed(_ sender: Any) {
+        self.backToMainVC(isGameEnded:false)
+    }
+    
 }

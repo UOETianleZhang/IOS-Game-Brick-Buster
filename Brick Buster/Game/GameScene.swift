@@ -430,7 +430,7 @@ extension GameScene {
             if(node.name == exitButtonName){
                 let coin = self.gameViewController?.coin
                 self.gameViewController?.updateCoin(coin: coin! + Int64(self.score))
-                self.gameViewController!.backToMainVC()
+                self.gameViewController!.backToMainVC(isGameEnded: true)
             }
             if(node.name == restartButtonName){
                 self.restartGame()
