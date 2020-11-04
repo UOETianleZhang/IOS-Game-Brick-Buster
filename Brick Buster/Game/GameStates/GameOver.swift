@@ -25,7 +25,7 @@ class GameOver: GKState {
             scene.childNode(withName: exitButtonName)!.run(scale)
             
             //display restart button
-            if(self.scene.isRemainingLife()){
+            if(self.scene.isRemainingLife() && !self.scene.gameWon){
                 self.isRemainingLife = true
                 scene.childNode(withName: restartButtonName)!.run(scale)
             }

@@ -42,7 +42,7 @@ class GameScene: SKScene {
     let eatPropSound = SKAction.playSoundFileNamed("eat_prop", waitForCompletion: false)
     
     
-    private var gameWon : Bool = false {
+    var gameWon : Bool = false {
       didSet {
         if !(gameState.currentState is WaitingForStart) {
             gameWon ? run(self.gameWonSound) : run(self.gameOverSound)
