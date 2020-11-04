@@ -10,10 +10,27 @@ import Foundation
 
 import SpriteKit
 
+var paddleImg = #imageLiteral(resourceName: "pig")
+
+func setPadlleImg(){
+    switch data.paddleSkin{
+        case 1:
+            paddleImg = #imageLiteral(resourceName: "pig")
+        case 2:
+            paddleImg = #imageLiteral(resourceName: "dog")
+        case 3:
+            paddleImg = #imageLiteral(resourceName: "duck")
+        case 4:
+            paddleImg = #imageLiteral(resourceName: "panda")
+        default:
+            paddleImg = #imageLiteral(resourceName: "panda")
+            break
+    }
+}
+
 class Paddle: SKSpriteNode {
     var isHit = false
     var hitRemaining = 0
-    static let img = #imageLiteral(resourceName: "paddle")
     var width : Int = 70
     let height : Int = 20
     static let name = "paddle"
@@ -25,7 +42,8 @@ class Paddle: SKSpriteNode {
     }
     
     convenience init() {
-        self.init(texture: SKTexture(image: Paddle.img), color: .clear, size: CGSize())
+        setPadlleImg()
+        self.init(texture: SKTexture(image: paddleImg), color: .clear, size: CGSize())
     }
     
     
