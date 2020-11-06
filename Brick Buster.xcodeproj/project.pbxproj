@@ -59,7 +59,6 @@
 		EBA5B3C62553195B00D55F0C /* game-won.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = EBA5B3BA2553195B00D55F0C /* game-won.mp3 */; };
 		EBA5B3C72553195B00D55F0C /* Astronomia.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = EBA5B3BB2553195B00D55F0C /* Astronomia.mp3 */; };
 		EBA5B3C82553195B00D55F0C /* bird.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = EBA5B3BC2553195B00D55F0C /* bird.mp3 */; };
-		EBA5B3D1255343F100D55F0C /* Leaf.sks in Resources */ = {isa = PBXBuildFile; fileRef = EBA5B3D0255343F100D55F0C /* Leaf.sks */; };
 		EBCC830D2550B0070058DBCD /* MBProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = EBCC830C2550B0070058DBCD /* MBProgressHUD */; };
 		EBCC83152550C2300058DBCD /* PokerCard in Frameworks */ = {isa = PBXBuildFile; productRef = EBCC83142550C2300058DBCD /* PokerCard */; };
 		EBF3AC2A253CE61D0006C931 /* Prop.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF3AC29253CE61D0006C931 /* Prop.swift */; };
@@ -140,7 +139,6 @@
 		EBA5B3BA2553195B00D55F0C /* game-won.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "game-won.mp3"; sourceTree = "<group>"; };
 		EBA5B3BB2553195B00D55F0C /* Astronomia.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Astronomia.mp3; sourceTree = "<group>"; };
 		EBA5B3BC2553195B00D55F0C /* bird.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bird.mp3; sourceTree = "<group>"; };
-		EBA5B3D0255343F100D55F0C /* Leaf.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = Leaf.sks; path = ../../04_drawingandanimation/Leaf.sks; sourceTree = "<group>"; };
 		EBF3AC29253CE61D0006C931 /* Prop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Prop.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -231,7 +229,6 @@
 		A0C403B0253968C300DD4C85 /* Brick Buster */ = {
 			isa = PBXGroup;
 			children = (
-				EBA5B3D0255343F100D55F0C /* Leaf.sks */,
 				EBCC83192550C7420058DBCD /* Music */,
 				EB84F7A52540CF5500321F6D /* Tools */,
 				EB84F7E125488C9A00321F6D /* DB */,
@@ -453,7 +450,6 @@
 				EBA5B3BF2553195B00D55F0C /* eat_prop.mp3 in Resources */,
 				A0C403C2253968CA00DD4C85 /* LaunchScreen.storyboard in Resources */,
 				EBA5B3C02553195B00D55F0C /* game-over.wav in Resources */,
-				EBA5B3D1255343F100D55F0C /* Leaf.sks in Resources */,
 				EBA5B3C32553195B00D55F0C /* paddleBlip.wav in Resources */,
 				EBA5B3C22553195B00D55F0C /* hit_paddle.wav in Resources */,
 				A0C403B6253968C300DD4C85 /* Actions.sks in Resources */,
