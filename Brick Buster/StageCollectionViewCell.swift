@@ -17,8 +17,15 @@ class StageCollectionViewCell: UICollectionViewCell {
         // Initialization code
     }
     
-    public func configure(with image: UIImage) {
+    public func configure(image: UIImage, frontimg: UIImage) {
         imageView.image = image
+        imageView.contentMode = .scaleToFill
+        
+        let frontimgview = UIImageView(image: frontimg)
+        frontimgview.frame = CGRect(x: -15, y: -15, width: self.frame.size.width+30, height: self.frame.size.height+30)
+        frontimgview.contentMode = .scaleToFill
+        frontimgview.alpha = 0.5
+        imageView.addSubview(frontimgview)
     }
     
     static func nib() -> UINib {
