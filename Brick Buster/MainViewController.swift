@@ -25,7 +25,7 @@ struct DataModel {
     var progress: Int64 = 1
     var music: Float = 0.1
     var sound: Float = 1.0
-    var paddleSkin: Int64 = 0
+    var paddleSkin: Int64 = 4
     var background: Int64 = 0
 }
 

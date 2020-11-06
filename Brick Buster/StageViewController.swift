@@ -93,7 +93,7 @@ class StageViewController: UIViewController, UICollectionViewDelegate, UICollect
         let cell = collectionView.cellForItem(at: indexPath)!
         stage = Int64(indexPath.item+1)
         cell.layer.borderColor = Colors.tropicGreen.cgColor
-        cell.layer.borderWidth = 3
+        cell.layer.borderWidth = 5
     }
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
