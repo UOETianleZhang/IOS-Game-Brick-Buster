@@ -24,9 +24,9 @@ class StageViewController: UIViewController, UICollectionViewDelegate, UICollect
         overrideUserInterfaceStyle = .dark
         progressLabel.text = "\(data.progress)/9 🏆"
         let layout = UICollectionViewFlowLayout()
-        layout.sectionInset = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
-        layout.minimumInteritemSpacing = 5
-        layout.itemSize = CGSize(width: (self.collectionView.frame.size.width-40)/4, height: (self.collectionView.frame.size.width-40)/4)
+        layout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+        layout.minimumInteritemSpacing = 10
+        layout.itemSize = CGSize(width: (self.collectionView.frame.size.width-60)/3, height: (self.collectionView.frame.size.width-60)/3)
         collectionView.collectionViewLayout = layout
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -46,13 +46,25 @@ class StageViewController: UIViewController, UICollectionViewDelegate, UICollect
     @IBAction func play(_ sender: Any) {
         var equip: [equipment] = []
         if lifeSwitch.isOn {
+            if data.lives < 1 {
+                popup()
+            }
             equip.append(.life)
         }
         if longSwitch.isOn {
+            if data.bats < 1 {
+                popup()
+            }
             equip.append(.bat)
         }
         startGame(equips: equip)
         playSound()
+    }
+    
+    func popup() {
+        let alert = UIAlertController(title: "Alert", message: "You don't have enough props", preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
     
     func startGame(equips: [equipment]) {
@@ -75,6 +87,9 @@ class StageViewController: UIViewController, UICollectionViewDelegate, UICollect
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if indexPath.item >= data.progress {
+            return
+        }
         let cell = collectionView.cellForItem(at: indexPath)!
         stage = Int64(indexPath.item+1)
         cell.layer.borderColor = Colors.tropicGreen.cgColor
@@ -82,6 +97,9 @@ class StageViewController: UIViewController, UICollectionViewDelegate, UICollect
     }
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        if indexPath.item >= data.progress {
+            return
+        }
         let cell = collectionView.cellForItem(at: indexPath)
         cell?.layer.borderColor = Colors.tropicGreen.cgColor
         cell?.layer.borderWidth = 0
@@ -93,7 +111,11 @@ class StageViewController: UIViewController, UICollectionViewDelegate, UICollect
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "StageCollectionViewCell", for: indexPath) as! StageCollectionViewCell
-        cell.configure(with: UIImage(named: "\(indexPath.item+1)_square")!)
+        if indexPath.item >= data.progress {
+            cell.configure(image: UIImage(named: "stage_\(indexPath.item+1)")!, frontimg: UIImage(named: "lock")!)
+        } else {
+            cell.configure(image: UIImage(named: "stage_\(indexPath.item+1)")!, frontimg: UIImage(named: "\(indexPath.item+1)_square")!)
+        }
         stage = Int64(indexPath.item+1)
         cell.layer.borderColor = Colors.tropicGreen.cgColor
         cell.layer.borderWidth = 0
