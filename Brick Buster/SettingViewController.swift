@@ -9,11 +9,16 @@
 import UIKit
 import AVKit
 
-class SettingViewController: UIViewController {
+class SettingViewController: UIViewController, UIScrollViewDelegate {
     
     let backgroundImageView = UIImageView()
     @IBOutlet weak var musicSlider: UISlider!
     @IBOutlet weak var soundSlider: UISlider!
+    @IBOutlet weak var pageControll: UIPageControl!
+    @IBOutlet weak var scrollView: UIScrollView!
+    
+    var images: [String] = ["pig", "dog", "duck", "panda"]
+    var frame = CGRect(x: 0, y: 0, width: 0, height: 0)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,7 +26,25 @@ class SettingViewController: UIViewController {
         setBackground()
         musicSlider.value = data.music
         soundSlider.value = data.sound
+        pageControll.numberOfPages = images.count
+        for index in 0..<images.count {
+            frame.origin.x = scrollView.frame.size.width * CGFloat(index)
+            frame.size = scrollView.frame.size
+            let imageView = UIImageView(frame: frame)
+            imageView.image = UIImage(named: images[index])
+            self.scrollView.addSubview(imageView)
+        }
+        scrollView.contentSize = CGSize(width: scrollView.frame.size.width * CGFloat(images.count), height: scrollView.frame.size.height)
+        scrollView.delegate = self
+        self.scrollView.contentOffset.x = self.scrollView.frame.width * CGFloat(data.paddleSkin - 1)
+        pageControll.currentPage = Int(data.paddleSkin - 1)
         // Do any additional setup after loading the view.
+    }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        let pageNum = scrollView.contentOffset.x / scrollView.frame.size.width
+        pageControll.currentPage = Int(pageNum)
+        data.paddleSkin = Int64(pageNum + 1)
     }
     
     @IBAction func confirm(_ sender: Any) {

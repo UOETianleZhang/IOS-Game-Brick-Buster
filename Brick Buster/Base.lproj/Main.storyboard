@@ -573,7 +573,7 @@
                                 </connections>
                             </slider>
                             <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="hvi-Ro-eGV">
-                                <rect key="frame" x="172" y="213" width="118" height="30"/>
+                                <rect key="frame" x="174" y="212" width="118" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
                                     <action selector="soundVolume:" destination="aGd-Vf-HkK" eventType="valueChanged" id="k39-yV-Tcf"/>
@@ -593,6 +593,23 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="SKIN" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a6v-xf-1Uy">
+                                <rect key="frame" x="93" y="294" width="37" height="28"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="AvenirNextCondensed-DemiBold" family="Avenir Next Condensed" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eov-1w-mbd">
+                                <rect key="frame" x="160" y="282" width="146" height="52"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <viewLayoutGuide key="contentLayoutGuide" id="HOM-ac-laP"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="vw8-mn-cZi"/>
+                            </scrollView>
+                            <pageControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="4" currentPage="3" translatesAutoresizingMaskIntoConstraints="NO" id="TiW-rT-Ul7">
+                                <rect key="frame" x="196" y="342" width="75" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </pageControl>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -603,12 +620,14 @@
                     </view>
                     <connections>
                         <outlet property="musicSlider" destination="2sv-cS-784" id="aaq-2J-pZq"/>
+                        <outlet property="pageControll" destination="TiW-rT-Ul7" id="JHj-f7-U7o"/>
+                        <outlet property="scrollView" destination="eov-1w-mbd" id="lbe-Do-uVU"/>
                         <outlet property="soundSlider" destination="hvi-Ro-eGV" id="b8h-fn-3np"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XCN-bC-q6j" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-708" y="2180"/>
+            <point key="canvasLocation" x="-708" y="2179.1604197901052"/>
         </scene>
         <!--Game View Controller-->
         <scene sceneID="tXr-a1-R10">
