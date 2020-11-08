@@ -53,6 +53,9 @@ class GameScene: SKScene {
         let actionSequence = SKAction.sequence([SKAction.setTexture(texture),
           SKAction.scale(to: 1.0, duration: 0.25)])
         
+        if gameWon == true && data.progress < 9 && stage == data.progress {
+            data.progress += 1
+        }
         gameOver.run(actionSequence)
       }
     }
