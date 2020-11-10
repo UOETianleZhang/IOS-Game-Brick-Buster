@@ -47,24 +47,20 @@ class StageViewController: UIViewController, UICollectionViewDelegate, UICollect
         var equip: [equipment] = []
         if lifeSwitch.isOn {
             if data.lives < 1 {
-                popup()
+                Alert.fancyAlert(with: "Alert", message: "  You don't have enough props")
+                return
             }
             equip.append(.life)
         }
         if longSwitch.isOn {
             if data.bats < 1 {
-                popup()
+                Alert.fancyAlert(with: "Alert", message: "  You don't have enough props")
+                return
             }
             equip.append(.bat)
         }
         startGame(equips: equip)
         playSound()
-    }
-    
-    func popup() {
-        let alert = UIAlertController(title: "Alert", message: "You don't have enough props", preferredStyle: UIAlertController.Style.alert)
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
-        self.present(alert, animated: true, completion: nil)
     }
     
     func startGame(equips: [equipment]) {

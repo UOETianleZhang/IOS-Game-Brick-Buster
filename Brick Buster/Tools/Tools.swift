@@ -12,11 +12,11 @@ import PokerCard
 import AVKit
 
 public extension Int {
-    public static func randomIntNumber(lower: Int = 0,upper: Int = Int(UInt32.max)) -> Int {
+    static func randomIntNumber(lower: Int = 0,upper: Int = Int(UInt32.max)) -> Int {
         return lower + Int(arc4random_uniform(UInt32(upper - lower)))
     }
 
-    public static func randomIntNumber(range: Range<Int>) -> Int {
+    static func randomIntNumber(range: Range<Int>) -> Int {
         return randomIntNumber(lower: range.lowerBound, upper: range.upperBound)
     }
 }

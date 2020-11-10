@@ -49,7 +49,7 @@ struct DB {
         }
         
         let input = DynamoDB.PutItemInput(item: item, tableName: tableName)
-        dynamoDB.putItem(input).always{
+        let _ = dynamoDB.putItem(input).always{
             response in
             print(response)
         }

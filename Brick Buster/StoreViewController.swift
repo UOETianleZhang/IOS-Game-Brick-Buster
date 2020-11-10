@@ -74,7 +74,7 @@ class StoreViewController: UIViewController {
     @IBAction func checkout(_ sender: Any) {
         if data.coins < totalPrice {
             playSound()
-            popup()
+            Alert.fancyAlert(with: "Alert", message: "  You don't have enough coins")
             return
         }
         data.coins -= totalPrice
@@ -88,12 +88,12 @@ class StoreViewController: UIViewController {
         self.navigationController?.popViewController(animated: false)
         playSound()
     }
-    
-    func popup() {
-        let alert = UIAlertController(title: "Alert", message: "You don't have enough coins", preferredStyle: UIAlertController.Style.alert)
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
-        self.present(alert, animated: true, completion: nil)
-    }
+//
+//    func popup() {
+//        let alert = UIAlertController(title: "Alert", message: "You don't have enough coins", preferredStyle: UIAlertController.Style.alert)
+//        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+//        self.present(alert, animated: true, completion: nil)
+//    }
     
     /*
     // MARK: - Navigation

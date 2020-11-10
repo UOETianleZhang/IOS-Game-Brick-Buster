@@ -144,8 +144,8 @@ class MainViewController: UIViewController {
         shape1.lifetimeRange = 2
         shape1.velocity = 50
         shape1.velocityRange = 30
-        shape1.emissionLongitude = CGFloat(M_PI)
-        shape1.emissionRange = CGFloat(M_PI)
+        shape1.emissionLongitude = CGFloat(Double.pi)
+        shape1.emissionRange = CGFloat(Double.pi)
         shape1.spin = 0.05
         shape1.spinRange = 0.05
         shape1.scaleSpeed = 0

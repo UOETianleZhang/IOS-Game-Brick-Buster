@@ -23,7 +23,6 @@ class GameScene: SKScene {
     var gameViewController:GameViewController?
     lazy var gameState: GKStateMachine = GKStateMachine(states: [
       WaitingForStart(scene: self), PlayingGame(scene: self), GameOver(scene: self)])
-    private var initBallNum = 1
     private var paddle:Paddle?
     private var bricks = [Brick]()
     private var brickWidth = 100
@@ -116,7 +115,7 @@ class GameScene: SKScene {
     }
     
     func createTrace(pos : CGPoint) -> SKSpriteNode {
-        var trace = SKSpriteNode(imageNamed: "trace")
+        let trace = SKSpriteNode(imageNamed: "trace")
         trace.position = pos
         trace.name = traceName
         trace.setScale(CGFloat(0.3))
@@ -155,9 +154,7 @@ class GameScene: SKScene {
         addChild(wall)
         
         //create ball
-        for _ in 0..<self.initBallNum {
-            createBall(position: CGPoint(x: 100, y: 105))
-        }
+        let _ = createBall(position: CGPoint(x: 100, y: 105))
         
         //create brick
         self.createMap()
@@ -403,7 +400,7 @@ extension GameScene {
         run(blipPaddleSound)
         if gameState.currentState is PlayingGame {
             ball.physicsBody?.velocity = .zero
-            var arc = Double(atan((ball.position.y - paddle.position.y + 50)/(ball.position.x - paddle.position.x)))
+            let arc = Double(atan((ball.position.y - paddle.position.y + 50)/(ball.position.x - paddle.position.x)))
             var angle = arc * Double(180) / Double.pi
             if angle < 0 {
                 angle += 180
@@ -412,17 +409,6 @@ extension GameScene {
         }
     }
 }
-
-//extension GameScene {
-//    private func shot() {
-//        let balls = self.children.filter({ $0.name == "ball" })
-//        for (index, ball) in balls.enumerated() {
-//            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1 * Double(index)) {
-//                ball.physicsBody?.applyImpulse(CGVector(dx: 20 + CGFloat(index) * 0.1, dy: 30))
-//            }
-//        }
-//    }
-//}
 
 extension GameScene {
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -445,7 +431,7 @@ extension GameScene {
             case is WaitingForStart:
                 gameState.enter(PlayingGame.self)
                 let ball = childNode(withName: "ball") as! Ball
-                var arc = Double(atan((touchLocation.y - ball.position.y)/(touchLocation.x - ball.position.x)))
+                let arc = Double(atan((touchLocation.y - ball.position.y)/(touchLocation.x - ball.position.x)))
                 var angle = arc * Double(180) / Double.pi
                 if angle < 0 {
                     angle += 180
