@@ -25,6 +25,9 @@ class StoreViewController: UIViewController {
     
     let backgroundImageView = UIImageView()
     
+    @IBOutlet weak var lifeImageView: UIImageView!
+    @IBOutlet weak var batImageView: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         overrideUserInterfaceStyle = .dark
@@ -32,6 +35,10 @@ class StoreViewController: UIViewController {
         currLife.text = "\(data.lives)"
         currBat.text = "\(data.bats)"
         wallet.text = "\(data.coins)"
+        let lifeRecognizer = UITapGestureRecognizer(target: self, action: #selector(lifeImageTapped))
+        lifeImageView.addGestureRecognizer(lifeRecognizer)
+        let batRecognizer = UITapGestureRecognizer(target: self, action: #selector(batImageTapped))
+        batImageView.addGestureRecognizer(batRecognizer)
         // Do any additional setup after loading the view.
     }
     
@@ -47,6 +54,14 @@ class StoreViewController: UIViewController {
         bat.text = "\(Int(newBats))"
         totalPrice = 5*newLives+10*newBats
         total.text = "\(totalPrice)"
+    }
+    
+    @objc func lifeImageTapped(gestureRecognizer: UITapGestureRecognizer) {
+        Alert.fancyAlert(with: "Extra Life", message: "Gives you an extra life in one round")
+    }
+    
+    @objc func batImageTapped(gestureRecognizer: UITapGestureRecognizer) {
+        Alert.fancyAlert(with: "Extend Bat", message: "Gives you a longer bat at game start")
     }
     
     @IBAction func back(_ sender: Any) {
