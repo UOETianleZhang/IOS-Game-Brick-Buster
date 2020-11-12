@@ -27,14 +27,39 @@ We use AWS DynamoDB to store our data. Database authentication has been already 
 
 ## Key Features
 
-#### Before the Game
+#### Scenes & Pages
 
-Before starting the game, a user can choose 
+1. Main page
 
-- which level she wants to play;
-- whether she wants to use extra life or extend the paddle length.
+   After logging in, the user will be brought to our main menu with an animated background. On this page, the user will see several buttons to click on. 
 
-If a user wins the highest level he/she locked, then a new level will be unlocked for her.
+   - The first button is PLAY, which will bring the user to the `stages page`, where he/she will be able to choose which stage to play and what props to use. 
+   - The second button is STORE, which will let users enter our prop store to purchase props. 
+   - The next button is RANKINGS, where the user will see his/her own ranking among other players. 
+   - The last button is SETTINGS, enabling the user to adjust volumes and choose his/her skin.
+
+2. Store page
+
+   In our prop store, the user will see how many coins and props he/she has. **By clicking on the prop items, the user will see a popup menu showing what the prop can do.** Then the user can choose how many props he/she wants and checkout. If the user does not have enough coins, a warning will show, otherwise, the purchase is complete.
+
+3. Settings page
+
+   In the settings page, there are three things a user can adjust:
+
+   - The **music volume** controls the background music that is always on
+
+   - The **sound controls** the feedback when a button is clicked. 
+   - The skin scroller controls the **skin of the paddle** to use for the game. There are four skins to choose from (but panda is our favorite!).
+
+4. Ranking page
+
+   In the ranking page, the user can see all the players and their scores in this game. He/she can scroll to see his own position in this ranking.
+
+5. Stage page
+
+   In the stages page, there are 9 stages to choose from. Stages which the user has unlocked will be shown with its stage number and be able to be selected, and **stages yet to be unlocked will be shown with a lock** and the user will not be able to select it. Besides selecting a stage, the user can also choose whether they want to use the props they have. After that the user is ready to click on the PLAY button and start the game.
+
+
 
 ####Inside the Game
 
@@ -42,7 +67,7 @@ If a user wins the highest level he/she locked, then a new level will be unlocke
 
    We applied the SpriteKit framework to help us build this 2D game. With SpriteKit, we can easily build the physical world and use all physics effects. For the basic game logic, we use SKSpriteNode to create all of the elements in this game, including balls, bricks, props and stones. Also, we create physicsBodys for all of the nodes, so that we can implement the physics effect, especially the collision effect. We set categoryBitMask for each node, such that when a collision happens, we can tell it happens on which two elements and then apply the proper effects.
    
-2. Slide and hold your finger to shoot the first ball. The shooting angle depends on the position you release your finger.
+2. **Slide and hold your finger to shoot the first ball.** The shooting angle depends on the position you release your finger.
 
 
 3. Props
