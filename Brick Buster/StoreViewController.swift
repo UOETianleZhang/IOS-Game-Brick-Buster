@@ -102,6 +102,7 @@ class StoreViewController: UIViewController {
         self.navigationController?.view.layer.add(transition, forKey: kCATransition)
         self.navigationController?.popViewController(animated: false)
         playSound()
+        DB.addOrUpdate(data:data)
     }
 //
 //    func popup() {
