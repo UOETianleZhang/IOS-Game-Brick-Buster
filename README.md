@@ -6,8 +6,6 @@ Made by:Cheng Peng(cp286), Zhihao Qin(zq33), Tianle Zhang(tz94).
 
 ## Configuration
 
-## Configuration
-
 #### Setup
 
 All setup is done inside the code. Just clone the repo and build in Xcode and you should be good to go! 😊 (Preparing package dependency could take about two minutes.)
