@@ -6,7 +6,7 @@ Cheng Peng(cp286), Zhihao Qin(zq33), Tianle Zhang(tz94)
 
 ## Config
 
-####Setup
+#### Setup
 
 All setup is done inside the code. Just clone the repo and build in Xcode and you should be good to go! 😊 (Preparing package dependency could take about two minutes.)
 
@@ -61,7 +61,7 @@ We use AWS DynamoDB to store our data. Database authentication has been already 
 
 
 
-####Inside the Game
+#### Inside the Game
 
 1. **SpriteKit** for physical effects
 
@@ -108,7 +108,7 @@ This app used three external packages.
 - MBProgressHUD: a fancy progress bar. Will appear when waiting for logging in.
 - PokerCard: a fancy alert. Will appear when logging in successfully, or buying goods in the store without enough coins.
 
-####Resource
+#### Resource
 
 - We read [a Tutorial](https://www.raywenderlich.com/1160-how-to-make-a-breakout-game-with-spritekit-and-swift-part-2) for reference. Some pictures are from here. It contains very fundamental logic of SpriteKit and state machine. The functionality from this resources is not written in the "Key Feature" part in this README.
 
