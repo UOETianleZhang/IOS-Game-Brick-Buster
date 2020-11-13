@@ -1,10 +1,12 @@
 # **Brick** Buster -- ECE564 Project
 
-Cheng Peng(cp286), Zhihao Qin(zq33), Tianle Zhang(tz94)
+Brick Buster is a 2D cartoon-style Breakout game developed based on SpriteKit.
+
+Made by:Cheng Peng(cp286), Zhihao Qin(zq33), Tianle Zhang(tz94).
 
 
 
-## Config
+## Configuration
 
 #### Setup
 
@@ -12,13 +14,13 @@ All setup is done inside the code. Just clone the repo and build in Xcode and yo
 
 #### Logging in
 
-When starting the game, you need to input you name. **Password is not required.** Brick Buster will fetch your information based on the name you input if you logged before, otherwise a new account will be created for you.
+When starting the game, you need to input you name. **Password is not required.** Brick Buster will fetch your information based on the name you input if you logged before, otherwise a new account will be created for you. If no name is inputed, **the default name is "Spider Man"**.
 
 #### Database Access
 
 We use AWS DynamoDB to store our data. Database authentication has been already completed inside the code so **you don't need to config it to play the game**. But if you are curious what it looks like, you can login by the following instructions:
 
-1. Click the website https://407727436354.signin.aws.amazon.com/console
+1. Click the website https://407727436354.signin.aws.amazon.com/console to log in AWS.
 2. Username: `tianleFull`, password `ece564`
 
 3. Access [DynamoDB](https://console.aws.amazon.com/dynamodb/home?region=us-east-1#tables:selected=GameUserData;tab=items).
@@ -36,7 +38,7 @@ We use AWS DynamoDB to store our data. Database authentication has been already 
    - The first button is PLAY, which will bring the user to the `stages page`, where he/she will be able to choose which stage to play and what props to use. 
    - The second button is STORE, which will let users enter our prop store to purchase props. 
    - The next button is RANKINGS, where the user will see his/her own ranking among other players. 
-   - The last button is SETTINGS, enabling the user to adjust volumes and choose his/her skin.
+   - The last button is SETTINGS, enabling the user to adjust volumes and choose his/her paddle skin.
 
 2. Store page
 
@@ -110,5 +112,5 @@ This app used three external packages.
 
 #### Resource
 
-- We read [a Tutorial](https://www.raywenderlich.com/1160-how-to-make-a-breakout-game-with-spritekit-and-swift-part-2) for reference. Some pictures are from here. It contains very fundamental logic of SpriteKit and state machine. The functionality from this resources is not written in the "Key Feature" part in this README.
+- We read [a Tutorial](https://www.raywenderlich.com/1160-how-to-make-a-breakout-game-with-spritekit-and-swift-part-2) for reference. Some pictures are from here. It contains very fundamental logic of SpriteKit and state machine. The functionality from this resources is not written in the "Key Features" part in this README.
 
