@@ -4,7 +4,7 @@ Brick Buster is a 2D cartoon-style Breakout game developed based on SpriteKit.
 
 Made by:Cheng Peng(cp286), Zhihao Qin(zq33), Tianle Zhang(tz94).
 
-
+## Configuration
 
 ## Configuration
 
@@ -22,7 +22,6 @@ We use AWS DynamoDB to store our data. Database authentication has been already 
 
 1. Click the website https://407727436354.signin.aws.amazon.com/console to log in AWS.
 2. Username: `tianleFull`, password `ece564`
-
 3. Access [DynamoDB](https://console.aws.amazon.com/dynamodb/home?region=us-east-1#tables:selected=GameUserData;tab=items).
 
 

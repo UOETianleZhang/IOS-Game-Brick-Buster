@@ -18,8 +18,6 @@
 		0FC7649A254088440020B4B8 /* PlayingGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FC76499254088440020B4B8 /* PlayingGame.swift */; };
 		0FC7649F254088800020B4B8 /* GameOver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FC7649E254088800020B4B8 /* GameOver.swift */; };
 		A0C403B2253968C300DD4C85 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C403B1253968C300DD4C85 /* AppDelegate.swift */; };
-		A0C403B4253968C300DD4C85 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = A0C403B3253968C300DD4C85 /* GameScene.sks */; };
-		A0C403B6253968C300DD4C85 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = A0C403B5253968C300DD4C85 /* Actions.sks */; };
 		A0C403B8253968C300DD4C85 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C403B7253968C300DD4C85 /* GameScene.swift */; };
 		A0C403BA253968C300DD4C85 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C403B9253968C300DD4C85 /* GameViewController.swift */; };
 		A0C403BD253968C300DD4C85 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0C403BB253968C300DD4C85 /* Main.storyboard */; };
@@ -94,8 +92,6 @@
 		0FC7649E254088800020B4B8 /* GameOver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOver.swift; sourceTree = "<group>"; };
 		A0C403AE253968C300DD4C85 /* Brick Buster.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Brick Buster.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0C403B1253968C300DD4C85 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A0C403B3253968C300DD4C85 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
-		A0C403B5253968C300DD4C85 /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
 		A0C403B7253968C300DD4C85 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		A0C403B9253968C300DD4C85 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		A0C403BC253968C300DD4C85 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -229,32 +225,17 @@
 		A0C403B0253968C300DD4C85 /* Brick Buster */ = {
 			isa = PBXGroup;
 			children = (
+				EB72F45B255E165D009DBB83 /* UIViewControllers */,
+				EB72F44E255E1619009DBB83 /* UIElements */,
 				EBCC83192550C7420058DBCD /* Music */,
 				EB84F7A52540CF5500321F6D /* Tools */,
 				EB84F7E125488C9A00321F6D /* DB */,
 				0F6EE5BA253A22FF00883121 /* Game */,
 				A0C403B1253968C300DD4C85 /* AppDelegate.swift */,
-				A0C403B3253968C300DD4C85 /* GameScene.sks */,
-				A0C403B5253968C300DD4C85 /* Actions.sks */,
 				A0C403BB253968C300DD4C85 /* Main.storyboard */,
 				A0C403BE253968CA00DD4C85 /* Assets.xcassets */,
 				A0C403C0253968CA00DD4C85 /* LaunchScreen.storyboard */,
 				A0C403C3253968CA00DD4C85 /* Info.plist */,
-				A0C403E525396F4B00DD4C85 /* MainViewController.swift */,
-				A0C403E92539F88F00DD4C85 /* LoginViewController.swift */,
-				A0C403E72539734900DD4C85 /* StageViewController.swift */,
-				A0C403EB2539FD0F00DD4C85 /* StoreViewController.swift */,
-				A0E762322544D1A000CDDE29 /* RankViewController.swift */,
-				A0E762342544D45600CDDE29 /* SettingViewController.swift */,
-				A0E762262543F54900CDDE29 /* Styles.swift */,
-				A0E762282543FA1100CDDE29 /* LoginText.swift */,
-				A0E762242543F2D000CDDE29 /* BlueButton.swift */,
-				A0E7622A2544BECA00CDDE29 /* GreenButton.swift */,
-				A0E7622C2544C2B800CDDE29 /* RankButton.swift */,
-				A0E7622E2544CB9D00CDDE29 /* SettingButton.swift */,
-				A0E762302544CF4700CDDE29 /* RedButton.swift */,
-				A0E7623625451B2600CDDE29 /* StageCollectionViewCell.swift */,
-				A0E7623725451B2600CDDE29 /* StageCollectionViewCell.xib */,
 			);
 			path = "Brick Buster";
 			sourceTree = "<group>";
@@ -277,9 +258,38 @@
 			path = "Brick BusterUITests";
 			sourceTree = "<group>";
 		};
+		EB72F44E255E1619009DBB83 /* UIElements */ = {
+			isa = PBXGroup;
+			children = (
+				A0E762282543FA1100CDDE29 /* LoginText.swift */,
+				A0E762242543F2D000CDDE29 /* BlueButton.swift */,
+				A0E7622A2544BECA00CDDE29 /* GreenButton.swift */,
+				A0E7622C2544C2B800CDDE29 /* RankButton.swift */,
+				A0E7622E2544CB9D00CDDE29 /* SettingButton.swift */,
+				A0E762302544CF4700CDDE29 /* RedButton.swift */,
+				A0E7623625451B2600CDDE29 /* StageCollectionViewCell.swift */,
+				A0E7623725451B2600CDDE29 /* StageCollectionViewCell.xib */,
+			);
+			path = UIElements;
+			sourceTree = "<group>";
+		};
+		EB72F45B255E165D009DBB83 /* UIViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				A0C403E525396F4B00DD4C85 /* MainViewController.swift */,
+				A0C403E92539F88F00DD4C85 /* LoginViewController.swift */,
+				A0C403E72539734900DD4C85 /* StageViewController.swift */,
+				A0C403EB2539FD0F00DD4C85 /* StoreViewController.swift */,
+				A0E762322544D1A000CDDE29 /* RankViewController.swift */,
+				A0E762342544D45600CDDE29 /* SettingViewController.swift */,
+			);
+			path = UIViewControllers;
+			sourceTree = "<group>";
+		};
 		EB84F7A52540CF5500321F6D /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				A0E762262543F54900CDDE29 /* Styles.swift */,
 				EB84F7A62540CF6800321F6D /* Tools.swift */,
 			);
 			path = Tools;
@@ -442,7 +452,6 @@
 				A0C403BD253968C300DD4C85 /* Main.storyboard in Resources */,
 				EBA5B3BD2553195B00D55F0C /* btn_click_sound.mp3 in Resources */,
 				EBA5B3C72553195B00D55F0C /* Astronomia.mp3 in Resources */,
-				A0C403B4253968C300DD4C85 /* GameScene.sks in Resources */,
 				A0C403BF253968CA00DD4C85 /* Assets.xcassets in Resources */,
 				EBA5B3C82553195B00D55F0C /* bird.mp3 in Resources */,
 				EB84F7C525460C5D00321F6D /* Break Block.sks in Resources */,
@@ -452,7 +461,6 @@
 				EBA5B3C02553195B00D55F0C /* game-over.wav in Resources */,
 				EBA5B3C32553195B00D55F0C /* paddleBlip.wav in Resources */,
 				EBA5B3C22553195B00D55F0C /* hit_paddle.wav in Resources */,
-				A0C403B6253968C300DD4C85 /* Actions.sks in Resources */,
 				EBA5B3C42553195B00D55F0C /* BambooBreak.wav in Resources */,
 				EBA5B3C12553195B00D55F0C /* back2.mp3 in Resources */,
 				EBA5B3C62553195B00D55F0C /* game-won.mp3 in Resources */,
