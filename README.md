@@ -1,8 +1,8 @@
-# **Brick** Buster -- ECE564 Project
+# **Brick** Buster
 
 Brick Buster is a 2D cartoon-style Breakout game developed based on SpriteKit.
 
-Made by:Cheng Peng(cp286), Zhihao Qin(zq33), Tianle Zhang(tz94).
+Made by:Cheng Peng, Zhihao Qin, Tianle Zhang.
 
 ## Configuration
 
