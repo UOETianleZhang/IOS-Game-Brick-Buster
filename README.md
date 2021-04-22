@@ -2,7 +2,7 @@
 
 Brick Buster is a 2D cartoon-style Breakout game developed based on SpriteKit.
 
-Made by:Cheng Peng, Zhihao Qin, Tianle Zhang.
+Made by:Tianle Zhang, Cheng Peng, Zhihao Qin.
 
 ## Configuration
 
